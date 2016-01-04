@@ -12,11 +12,4 @@ struct Udacian {
     let firstName: String
     let lastName: String
     let userId: String
-    
-    /* Construct a Udacian from a dictionary */
-    init(dictionary: [String : AnyObject]) {
-        firstName = dictionary[UdacityClient.JSONResponseKeys.FirstName] as! String
-        lastName = dictionary[UdacityClient.JSONResponseKeys.LastName] as! String
-        userId = dictionary[UdacityClient.JSONResponseKeys.UserID] as! String
-    }
 }

@@ -89,7 +89,13 @@ extension UdacityClient {
                 return
             }
             
-            completionHandler(user: Udacian(dictionary: user), errorString: nil)
+            let udacian = Udacian(
+                firstName: user[UdacityClient.JSONResponseKeys.FirstName] as! String,
+                lastName: user[UdacityClient.JSONResponseKeys.LastName] as! String,
+                userId: user[UdacityClient.JSONResponseKeys.UserID] as! String
+            )
+            
+            completionHandler(user: udacian, errorString: nil)
         }
     }
     
