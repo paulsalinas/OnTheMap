@@ -27,12 +27,7 @@ class LoginViewController: UIViewController {
     @IBAction func loginButtonTouch(sender: AnyObject) {
         
         // 1) validate user input
-        guard let username = usernameInput.text, password = passwordInput.text  else {
-            showWarningAlert("Empty Email or Password")
-            return
-        }
-        
-        if username == ""  || password == "" {
+        guard let username = usernameInput.text, password = passwordInput.text where username != "" && password != ""  else {
             showWarningAlert("Empty Email or Password")
             return
         }
@@ -45,7 +40,7 @@ class LoginViewController: UIViewController {
                print("sucess!!")
             } else {
                 dispatch_async(dispatch_get_main_queue(), {
-                    self.showWarningAlert("Invalid Email or Password")
+                    self.showWarningAlert(error!)
                 })
             }
         }
