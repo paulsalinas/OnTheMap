@@ -42,7 +42,14 @@ class LoginViewController: UIViewController {
             print("success!")
             UdacityClient.sharedInstance().getUserData() { (user, errorString) -> Void in
                 
-                //launch the map view an pass the Udacian Model
+                //launch the map view and pass the Udacian Model
+                dispatch_async(dispatch_get_main_queue(), {
+                    let controller = self.storyboard!.instantiateViewControllerWithIdentifier("OnTheMapTabBarController") as! UITabBarController
+                    
+                    // TODO: pass the Udacian to the Tab Bar Controller
+                    
+                    self.presentViewController(controller, animated: true, completion: nil)
+                })
                 
                 return
             }
