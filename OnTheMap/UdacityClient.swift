@@ -49,27 +49,40 @@ class UdacityClient : NSObject {
         
         let session = NSURLSession.sharedSession()
         let task = session.dataTaskWithRequest(request) { data, response, error in
+            
+            /* function to be called when an error occurs from server response */
+            let errorHandler = { (description: String) -> Void in
+                print(description)
+                
+                let userInfo = [NSLocalizedDescriptionKey : description]
+                completionHandler(result: nil, error: NSError(domain: "taskForPOSTMethod", code: 1, userInfo: userInfo))
+            }
+            
+            
             /* GUARD: Was there an error? */
             guard (error == nil) else {
-                print("There was an error with your request: \(error)")
+                errorHandler("There was an error with your request: \(error)")
                 return
             }
             
             /* GUARD: Did we get a successful 2XX response? */
             guard let statusCode = (response as? NSHTTPURLResponse)?.statusCode where statusCode >= 200 && statusCode <= 299 else {
+                let error: String
                 if let response = response as? NSHTTPURLResponse {
-                    print("Your request returned an invalid response! Status code: \(response.statusCode)!")
+                    error = "Your request returned an invalid response! Status code: \(response.statusCode)!"
                 } else if let response = response {
-                    print("Your request returned an invalid response! Response: \(response)!")
+                    error = "Your request returned an invalid response! Response: \(response)!"
                 } else {
-                    print("Your request returned an invalid response!")
+                    error = "Your request returned an invalid response!"
                 }
+                
+                errorHandler(error)
                 return
             }
             
             /* GUARD: Was there any data returned? */
             guard let data = data else {
-                print("No data was returned by the request!")
+                errorHandler("No data was returned by the request!")
                 return
             }
             

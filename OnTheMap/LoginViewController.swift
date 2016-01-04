@@ -25,16 +25,37 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func loginButtonTouch(sender: AnyObject) {
-        //validate user input 
-        guard let username = usernameInput.text else {
+        
+        // 1) validate user input
+        guard let username = usernameInput.text, password = passwordInput.text  else {
+            showWarningAlert("Empty Email or Password")
             return
         }
         
-        guard let password = passwordInput.text else {
+        if username == ""  || password == "" {
+            showWarningAlert("Empty Email or Password")
             return
         }
         
-        UdacityClient.sharedInstance().authenticate(username, password: password)
+        // 2) authenticate user
+        UdacityClient.sharedInstance().authenticate(username, password: password) {
+            success, error -> Void in
+            
+            if success {
+               print("sucess!!")
+            } else {
+                dispatch_async(dispatch_get_main_queue(), {
+                    self.showWarningAlert("Invalid Email or Password")
+                })
+            }
+        }
+    }
+    
+    // MARK: Helpers
+    func showWarningAlert(message: String) {
+        let alert = UIAlertController(title: "", message: message, preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default, handler: nil))
+        self.presentViewController(alert, animated: true, completion: nil)
     }
 }
 

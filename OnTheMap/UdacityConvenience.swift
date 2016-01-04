@@ -10,25 +10,38 @@ import Foundation
 
 extension UdacityClient {
     
-    func authenticate(username: String, password: String) {
+    func authenticate(username: String, password: String , completionHandler: (success: Bool, errorString: String?) -> Void) {
         let jsonBody =  ["udacity": [
             "username": username,
-            "password": password]
+            "password": password
+            ]
         ]
         
         taskForPOSTMethod(Methods.SessionID, parameters: [String: AnyObject](), jsonBody: jsonBody) { result, error -> Void in
+            let errorHandler = { (description: String) -> Void in
+                print(description)
+                
+                completionHandler(success: false, errorString: description)
+            }
+            
+            if let error = error {
+                errorHandler("error: \(error.description)")
+                return
+            }
             
             guard let account = result[JSONResponseKeys.Account] as? [String: AnyObject] else {
-                print("error: no account record in result")
+                errorHandler("error: no account record in result")
                 return
             }
             
             guard let userID = account[JSONResponseKeys.UserID] as? String else {
-                print("error: no user id in result")
+                errorHandler("error: no user id in result")
                 return
             }
             
             self.userID = userID
+            
+            completionHandler(success: true, errorString: nil)
             
             print("found User ID: \(self.userID)")
         }
