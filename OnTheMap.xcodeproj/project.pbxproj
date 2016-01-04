@@ -18,6 +18,7 @@
 		3C4777941C39BBE800DEA421 /* UdacityClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C4777931C39BBE800DEA421 /* UdacityClient.swift */; };
 		3C4777961C39CD9900DEA421 /* UdacityConvenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C4777951C39CD9900DEA421 /* UdacityConvenience.swift */; };
 		3C4777981C3A016800DEA421 /* Udacian.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C4777971C3A016800DEA421 /* Udacian.swift */; };
+		3C4777A01C3AE71F00DEA421 /* CommonClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C47779F1C3AE71F00DEA421 /* CommonClient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		3C4777931C39BBE800DEA421 /* UdacityClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UdacityClient.swift; sourceTree = "<group>"; };
 		3C4777951C39CD9900DEA421 /* UdacityConvenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UdacityConvenience.swift; sourceTree = "<group>"; };
 		3C4777971C3A016800DEA421 /* Udacian.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Udacian.swift; sourceTree = "<group>"; };
+		3C47779F1C3AE71F00DEA421 /* CommonClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +148,7 @@
 			isa = PBXGroup;
 			children = (
 				3C4777901C39BB6600DEA421 /* Udacity */,
+				3C47779F1C3AE71F00DEA421 /* CommonClient.swift */,
 			);
 			name = Clients;
 			sourceTree = "<group>";
@@ -298,6 +301,7 @@
 				3C4777981C3A016800DEA421 /* Udacian.swift in Sources */,
 				3C4777961C39CD9900DEA421 /* UdacityConvenience.swift in Sources */,
 				3C4777921C39BB9700DEA421 /* UdacityConstants.swift in Sources */,
+				3C4777A01C3AE71F00DEA421 /* CommonClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
