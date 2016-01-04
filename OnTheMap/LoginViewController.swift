@@ -30,13 +30,16 @@ class LoginViewController: UIViewController {
         UdacityClient.sharedInstance().authenticate(usernameInput.text!, password: passwordInput.text!) {
             success, error -> Void in
             
-            if success {
-               print("sucess!!")
-            } else {
+            // GUARD - Authentication must be successful
+            guard success else {
                 dispatch_async(dispatch_get_main_queue(), {
                     self.showWarningAlert(error!)
                 })
+                return
             }
+            
+            //get user id models
+            print("success!")
         }
     }
     
