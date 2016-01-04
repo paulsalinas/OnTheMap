@@ -66,8 +66,8 @@ class ParseClient : NSObject {
     func taskForGETMethod(method: String, parameters: [String : AnyObject], completionHandler: (result: AnyObject!, error: NSError?) -> Void) -> NSURLSessionDataTask {
         
         let httpHeaders = [
-            (HttpHeaders.ApiKey, Constants.ApiKey),
-            (HttpHeaders.ApplicationID, Constants.ApplicationID),
+            (Constants.ApiKey, HttpHeaders.ApiKey),
+            (Constants.ApplicationID, HttpHeaders.ApplicationID),
         ]
         
         return helperClient.taskForGETMethod(method, parameters: parameters, httpHeaders: httpHeaders) { data, error -> Void in
