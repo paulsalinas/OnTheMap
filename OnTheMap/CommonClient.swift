@@ -8,6 +8,7 @@
 
 import Foundation
 
+/* Fetches data from a web api given a base url */
 class CommonClient: NSObject {
     
     /* Shared session */
@@ -91,6 +92,8 @@ class CommonClient: NSObject {
         return task
     }
     
+    // MARK: GET
+    
     func taskForGETMethod(method: String, parameters: [String : AnyObject], httpHeaders: [(String, String)], completionHandler: (data: NSData?, error: NSError?) -> Void) -> NSURLSessionDataTask {
         
         /* 1. Set the parameters */
@@ -141,8 +144,6 @@ class CommonClient: NSObject {
     }
     
     // MARK: Helpers
-    
-    // TODO: Refacctor common code between other clients
     
     /* Helper: Substitute the key for the value that is contained within the method name */
     class func substituteKeyInMethod(method: String, key: String, value: String) -> String? {
