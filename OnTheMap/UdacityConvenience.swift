@@ -63,4 +63,26 @@ extension UdacityClient {
         }
     }
     
+    /* The completionHandler is passed the Udacian object with all of the user information from the api  */
+    func getUserData(completionHandler: (user: Udacian?, errorString: String?) -> Void) {
+        
+        // GUARD: User id must be defined
+        guard let userID = userID else {
+            print("no user id found")
+            return
+        }
+        
+        let method = UdacityClient.substituteKeyInMethod(Methods.Users, key: URLKeys.UserID, value: userID)!
+        
+        taskForGETMethod(method, parameters: [String: AnyObject]()) { (result, error) -> Void in
+            
+            if let error = error {
+                completionHandler(user: nil, errorString: error.localizedDescription)
+            }
+            
+            print(result)
+            
+        }
+    }
+    
 }

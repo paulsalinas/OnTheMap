@@ -40,6 +40,12 @@ class LoginViewController: UIViewController {
             
             //get user id models
             print("success!")
+            UdacityClient.sharedInstance().getUserData() { (user, errorString) -> Void in
+                
+                //launch the map view an pass the Udacian Model
+                
+                return
+            }
         }
     }
     
