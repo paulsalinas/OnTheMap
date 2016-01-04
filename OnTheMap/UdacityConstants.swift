@@ -27,4 +27,11 @@ extension UdacityClient {
         static let FirstName = "first_name"
         static let LastName = "last_name"
     }
+    
+    struct ErrorDescription {
+        static let InvalidEmailPassword = "Invalid Email or Password"
+        static let RequestError = "Error Making your Request"
+        static let DataError = "Server Data Error"
+    }
+  
 }
