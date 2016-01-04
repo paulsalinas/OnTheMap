@@ -26,13 +26,6 @@ extension ParseClient {
             }
             
             print(result)
-            
-//            guard let user = result[JSONResponseKeys.User] as? [String: AnyObject] else {
-//                print("error: user found in result")
-//                return
-//            }
-//            
-//            completionHandler(user: Udacian(dictionary: user), errorString: nil)
         }
     }
 }
