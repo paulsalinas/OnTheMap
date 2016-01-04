@@ -107,10 +107,10 @@
             </objects>
             <point key="canvasLocation" x="448" y="-722"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--On The Map Tab Bar Controller-->
         <scene sceneID="eAF-aB-2zQ">
             <objects>
-                <tabBarController storyboardIdentifier="OnTheMapTabBarController" id="kPE-y5-Ld7" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="OnTheMapTabBarController" id="kPE-y5-Ld7" customClass="OnTheMapTabBarController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" id="SE4-pV-hVR">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
