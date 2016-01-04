@@ -14,7 +14,7 @@ extension ParseClient {
         let parameters = [
             "limit" : "100",
             "skip" : "0",
-            "order" : "updatedAt"
+            "order" : "-updatedAt"
         ]
         
         taskForGETMethod(Methods.StudentLocation, parameters: parameters) { (result, error) -> Void in
