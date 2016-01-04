@@ -21,6 +21,7 @@
 		3C4777A01C3AE71F00DEA421 /* CommonClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C47779F1C3AE71F00DEA421 /* CommonClient.swift */; };
 		3C4777A31C3AFF4F00DEA421 /* ParseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C4777A21C3AFF4F00DEA421 /* ParseClient.swift */; };
 		3C4777A51C3AFFF000DEA421 /* ParseConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C4777A41C3AFFF000DEA421 /* ParseConstants.swift */; };
+		3C4777A71C3B046600DEA421 /* ParseConvenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C4777A61C3B046600DEA421 /* ParseConvenience.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,7 @@
 		3C47779F1C3AE71F00DEA421 /* CommonClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonClient.swift; sourceTree = "<group>"; };
 		3C4777A21C3AFF4F00DEA421 /* ParseClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseClient.swift; sourceTree = "<group>"; };
 		3C4777A41C3AFFF000DEA421 /* ParseConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseConstants.swift; sourceTree = "<group>"; };
+		3C4777A61C3B046600DEA421 /* ParseConvenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseConvenience.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,6 +176,7 @@
 			children = (
 				3C4777A21C3AFF4F00DEA421 /* ParseClient.swift */,
 				3C4777A41C3AFFF000DEA421 /* ParseConstants.swift */,
+				3C4777A61C3B046600DEA421 /* ParseConvenience.swift */,
 			);
 			name = Parse;
 			sourceTree = "<group>";
@@ -314,6 +317,7 @@
 				3C4777611C34909E00DEA421 /* AppDelegate.swift in Sources */,
 				3C4777981C3A016800DEA421 /* Udacian.swift in Sources */,
 				3C4777961C39CD9900DEA421 /* UdacityConvenience.swift in Sources */,
+				3C4777A71C3B046600DEA421 /* ParseConvenience.swift in Sources */,
 				3C4777A51C3AFFF000DEA421 /* ParseConstants.swift in Sources */,
 				3C4777921C39BB9700DEA421 /* UdacityConstants.swift in Sources */,
 				3C4777A31C3AFF4F00DEA421 /* ParseClient.swift in Sources */,
