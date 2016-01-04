@@ -11,12 +11,20 @@ import Foundation
 extension UdacityClient {
     
     func authenticate(username: String, password: String , completionHandler: (success: Bool, errorString: String?) -> Void) {
+        
+        // 1) validate - check if username and password are empty
+        guard username != "" && password != ""  else {
+            completionHandler(success: false, errorString: ErrorDescription.EmptyEmailPassword)
+            return
+        }
+        
         let jsonBody =  ["udacity": [
             "username": username,
             "password": password
             ]
         ]
         
+        // 2) POST the data over
         taskForPOSTMethod(Methods.SessionID, parameters: [String: AnyObject](), jsonBody: jsonBody) { result, error -> Void in
             
             // 1) check if there's an error from the POST method

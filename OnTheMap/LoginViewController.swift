@@ -26,14 +26,8 @@ class LoginViewController: UIViewController {
     
     @IBAction func loginButtonTouch(sender: AnyObject) {
         
-        // 1) validate user input
-        guard let username = usernameInput.text, password = passwordInput.text where username != "" && password != ""  else {
-            showWarningAlert("Empty Email or Password")
-            return
-        }
-        
-        // 2) authenticate user
-        UdacityClient.sharedInstance().authenticate(username, password: password) {
+        // authenticate user
+        UdacityClient.sharedInstance().authenticate(usernameInput.text!, password: passwordInput.text!) {
             success, error -> Void in
             
             if success {
