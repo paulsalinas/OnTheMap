@@ -27,7 +27,7 @@ extension UdacityClient {
         // 2) POST the data over
         taskForPOSTMethod(Methods.SessionID, parameters: [String: AnyObject](), jsonBody: jsonBody) { result, error -> Void in
             
-            // 1) check if there's an error from the POST method
+            // GUARD: fail and call completion handler on error
             if let error = error {
                 if error.localizedDescription == "Your request returned an invalid response! Status code: 403!" {
                     completionHandler(success: false, errorString: ErrorDescription.InvalidEmailPassword)
@@ -42,7 +42,7 @@ extension UdacityClient {
                 return
             }
             
-            // 2) parse the data for the user id
+            // parse the data for the user id
             guard let account = result[JSONResponseKeys.Account] as? [String: AnyObject] else {
                 print("error: no account record in result")
                 completionHandler(success: false, errorString: ErrorDescription.DataError)
@@ -55,7 +55,7 @@ extension UdacityClient {
                 return
             }
             
-            // 3) set the user id
+            // set the user id
             self.userID = userID
             completionHandler(success: true, errorString: nil)
             
@@ -76,12 +76,20 @@ extension UdacityClient {
         
         taskForGETMethod(method, parameters: [String: AnyObject]()) { (result, error) -> Void in
             
+            // GUARD: fail and call completion handler on error
             if let error = error {
                 completionHandler(user: nil, errorString: error.localizedDescription)
+                return
             }
             
             print(result)
             
+            guard let user = result[JSONResponseKeys.User] as? [String: AnyObject] else {
+                print("error: user found in result")
+                return
+            }
+            
+            completionHandler(user: Udacian(dictionary: user), errorString: nil)
         }
     }
     

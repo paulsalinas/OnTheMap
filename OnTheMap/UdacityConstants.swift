@@ -27,6 +27,7 @@ extension UdacityClient {
         static let Account = "account"
         static let FirstName = "first_name"
         static let LastName = "last_name"
+        static let User = "user"
     }
     
     // MARK: Error Description
