@@ -22,7 +22,7 @@ class UdacityClient : NSObject {
     // MARK: Initializers
     
     override init() {
-        helperClient = CommonClient(url: UdacityClient.Constants.BaseURLSecure, session: NSURLSession.sharedSession())
+        helperClient = CommonClient(url: Constants.BaseURLSecure, session: NSURLSession.sharedSession())
         super.init()
     }
     
