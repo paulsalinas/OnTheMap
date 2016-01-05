@@ -79,8 +79,6 @@ class ParseClient : NSObject {
                 print("there's data returned")
                 return
             }
-        
-            print(NSString(data: data, encoding: NSUTF8StringEncoding))
             
             CommonClient.parseJSONWithCompletionHandler(data, completionHandler: completionHandler)
             

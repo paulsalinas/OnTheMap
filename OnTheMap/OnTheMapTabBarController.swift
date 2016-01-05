@@ -19,7 +19,6 @@ class OnTheMapTabBarController: UITabBarController {
         // refresh all tabbed controllers that are Refreshable
         for vc in viewControllers! {
             if let vc = vc as? Refreshable {
-                print("refresh")
                 vc.refresh()
             }
         }
