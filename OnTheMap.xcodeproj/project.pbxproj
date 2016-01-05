@@ -23,6 +23,7 @@
 		3C4777A51C3AFFF000DEA421 /* ParseConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C4777A41C3AFFF000DEA421 /* ParseConstants.swift */; };
 		3C4777A71C3B046600DEA421 /* ParseConvenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C4777A61C3B046600DEA421 /* ParseConvenience.swift */; };
 		3C4777AB1C3B0AB500DEA421 /* OnTheMapTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C4777AA1C3B0AB500DEA421 /* OnTheMapTabBarController.swift */; };
+		3C4777AD1C3B75FC00DEA421 /* PinMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C4777AC1C3B75FC00DEA421 /* PinMapViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,7 @@
 		3C4777A41C3AFFF000DEA421 /* ParseConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseConstants.swift; sourceTree = "<group>"; };
 		3C4777A61C3B046600DEA421 /* ParseConvenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ParseConvenience.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		3C4777AA1C3B0AB500DEA421 /* OnTheMapTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = OnTheMapTabBarController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		3C4777AC1C3B75FC00DEA421 /* PinMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PinMapViewController.swift; path = ../PinMapViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,12 +119,13 @@
 			children = (
 				3C47778E1C39B98600DEA421 /* Model */,
 				3C4777601C34909E00DEA421 /* AppDelegate.swift */,
+				3C4777AC1C3B75FC00DEA421 /* PinMapViewController.swift */,
+				3C4777AA1C3B0AB500DEA421 /* OnTheMapTabBarController.swift */,
 				3C4777621C34909E00DEA421 /* LoginViewController.swift */,
 				3C4777641C34909E00DEA421 /* Main.storyboard */,
 				3C4777671C34909E00DEA421 /* Assets.xcassets */,
 				3C4777691C34909E00DEA421 /* LaunchScreen.storyboard */,
 				3C47776C1C34909E00DEA421 /* Info.plist */,
-				3C4777AA1C3B0AB500DEA421 /* OnTheMapTabBarController.swift */,
 			);
 			path = OnTheMap;
 			sourceTree = "<group>";
@@ -324,6 +327,7 @@
 				3C4777AB1C3B0AB500DEA421 /* OnTheMapTabBarController.swift in Sources */,
 				3C4777A51C3AFFF000DEA421 /* ParseConstants.swift in Sources */,
 				3C4777921C39BB9700DEA421 /* UdacityConstants.swift in Sources */,
+				3C4777AD1C3B75FC00DEA421 /* PinMapViewController.swift in Sources */,
 				3C4777A31C3AFF4F00DEA421 /* ParseClient.swift in Sources */,
 				3C4777A01C3AE71F00DEA421 /* CommonClient.swift in Sources */,
 			);
