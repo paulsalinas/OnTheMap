@@ -30,15 +30,15 @@ extension ParseClient {
                 return
             }
             
-            completionHandler(users: ParseClient.udaciansFromResults(result), errorString: nil)
+            completionHandler(users: ParseClient.studentInfoFromResults(result), errorString: nil)
         }
     }
     
-    class func udaciansFromResults(results: [[String: AnyObject]]) -> [StudentInformation] {
-        var udacians = [StudentInformation]()
+    class func studentInfoFromResults(results: [[String: AnyObject]]) -> [StudentInformation] {
+        var students = [StudentInformation]()
         
         for result in results {
-            let udacian = StudentInformation(
+            let student = StudentInformation(
                 firstName: result[JSONResponseKeys.FirstName] as! String,
                 lastName: result[JSONResponseKeys.LastName] as! String,
                 userId: result[JSONResponseKeys.UserID] as! String,
@@ -47,9 +47,9 @@ extension ParseClient {
                 latitude: result[JSONResponseKeys.Latitude] as! Int?
             )
             
-            udacians.append(udacian)
+            students.append(student)
         }
         
-        return udacians
+        return students
     }
 }
