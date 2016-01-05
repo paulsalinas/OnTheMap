@@ -10,7 +10,7 @@ import UIKit
 import MapKit
 
 
-class PinMapViewController: UIViewController, MKMapViewDelegate, Refreshable {
+class PinMapViewController: UIViewController, MKMapViewDelegate, Refreshable, Alertable {
 
     @IBOutlet weak var mapView: MKMapView!
     
@@ -26,7 +26,12 @@ class PinMapViewController: UIViewController, MKMapViewDelegate, Refreshable {
             
             // GUARD: users must not be nil
             guard let users = users else {
-                print("Error fetching user locations")
+                if let errorString = errorString {
+                    self.alert(errorString)
+                }
+                else {
+                    self.alert("Error fetching user locations")
+                }
                 return
             }
             
