@@ -13,4 +13,15 @@ class OnTheMapTabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+    
+    @IBAction func refreshButtonTouch(sender: AnyObject) {
+        
+        // refresh all tabbed controllers that are Refreshable
+        for vc in viewControllers! {
+            if let vc = vc as? Refreshable {
+                print("refresh")
+                vc.refresh()
+            }
+        }
+    }
 }

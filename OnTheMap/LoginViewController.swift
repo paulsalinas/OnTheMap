@@ -57,7 +57,7 @@ class LoginViewController: UIViewController {
                 
                 // launch the map view and pass the StudentInformation Model
                 dispatch_async(dispatch_get_main_queue(), {
-                    let controller = self.storyboard!.instantiateViewControllerWithIdentifier("OnTheMapTabBarController") as! OnTheMapTabBarController
+                    let controller = self.storyboard!.instantiateViewControllerWithIdentifier("OnTheMapNavigationController") as! UINavigationController
                     self.presentViewController(controller, animated: true, completion: nil)
                 })
                 

@@ -9,7 +9,8 @@
 import UIKit
 import MapKit
 
-class PinMapViewController: UIViewController, MKMapViewDelegate {
+
+class PinMapViewController: UIViewController, MKMapViewDelegate, Refreshable {
 
     @IBOutlet weak var mapView: MKMapView!
     
@@ -17,14 +18,10 @@ class PinMapViewController: UIViewController, MKMapViewDelegate {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        reloadData()
+        refresh()
     }
     
-    @IBAction func refreshButtonTouch(sender: AnyObject) {
-        reloadData()
-    }
-    
-    func reloadData() {
+    func refresh() {
         ParseClient.sharedInstance().getUserLocations() { users, errorString -> Void in
             
             // GUARD: users must not be nil
