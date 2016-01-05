@@ -13,6 +13,8 @@ import MapKit
 class PinMapViewController: UIViewController, MKMapViewDelegate, Refreshable, Alertable {
 
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var loadingOverlayView: UIView!
+    @IBOutlet weak var loadingIndicatorView: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,8 +23,24 @@ class PinMapViewController: UIViewController, MKMapViewDelegate, Refreshable, Al
         refresh()
     }
     
+    func loadingIndicators(arehidden arehidden: Bool) {
+        loadingIndicatorView.hidden = arehidden
+        loadingOverlayView.hidden = arehidden
+    }
+    
     func refresh() {
+        
+        //turn on the loading indicators
+        loadingIndicators(arehidden: false)
+        
         ParseClient.sharedInstance().getUserLocations() { users, errorString -> Void in
+            
+            //make sure to turn off the loading indcators when this code block returns
+            defer {
+                dispatch_async(dispatch_get_main_queue(), {
+                    self.loadingIndicators(arehidden: true)
+                })
+            }
             
             // GUARD: users must not be nil
             guard let users = users else {

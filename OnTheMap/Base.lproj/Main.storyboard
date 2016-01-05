@@ -105,17 +105,32 @@
                                     <outlet property="delegate" destination="uWA-dl-3QU" id="6p9-rD-857"/>
                                 </connections>
                             </mapView>
+                            <view hidden="YES" opaque="NO" alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dmo-FC-wy0">
+                                <rect key="frame" x="0.0" y="64" width="600" height="487"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="tYl-gQ-VuU">
+                                <rect key="frame" x="282" y="289" width="37" height="37"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="Mkv-Vo-ZJy" firstAttribute="top" secondItem="dmo-FC-wy0" secondAttribute="bottom" id="2T2-Im-By9"/>
                             <constraint firstAttribute="trailingMargin" secondItem="iXl-jy-xRx" secondAttribute="trailing" constant="-20" id="FVG-wB-whQ"/>
                             <constraint firstItem="iXl-jy-xRx" firstAttribute="top" secondItem="MLj-pb-h8S" secondAttribute="bottom" id="Kli-s1-2wE"/>
+                            <constraint firstItem="tYl-gQ-VuU" firstAttribute="centerX" secondItem="iXl-jy-xRx" secondAttribute="centerX" id="T0R-gh-qPx"/>
                             <constraint firstItem="Mkv-Vo-ZJy" firstAttribute="top" secondItem="iXl-jy-xRx" secondAttribute="bottom" id="gaP-zp-PKy"/>
+                            <constraint firstItem="tYl-gQ-VuU" firstAttribute="centerY" secondItem="iXl-jy-xRx" secondAttribute="centerY" id="hhk-Dx-kO7"/>
+                            <constraint firstItem="dmo-FC-wy0" firstAttribute="leading" secondItem="rst-qd-IbT" secondAttribute="leadingMargin" constant="-20" id="hya-jM-RoV"/>
+                            <constraint firstItem="dmo-FC-wy0" firstAttribute="top" secondItem="MLj-pb-h8S" secondAttribute="bottom" id="jJY-4i-ioh"/>
                             <constraint firstItem="iXl-jy-xRx" firstAttribute="leading" secondItem="rst-qd-IbT" secondAttribute="leadingMargin" constant="-20" id="rPw-Hq-Fxu"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="dmo-FC-wy0" secondAttribute="trailing" constant="-20" id="zzP-gO-qxh"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Map" id="xFt-I4-hk5"/>
                     <connections>
+                        <outlet property="loadingIndicatorView" destination="tYl-gQ-VuU" id="eUb-jl-km9"/>
+                        <outlet property="loadingOverlayView" destination="dmo-FC-wy0" id="vho-c6-2uS"/>
                         <outlet property="mapView" destination="iXl-jy-xRx" id="udM-cz-hzX"/>
                     </connections>
                 </viewController>
