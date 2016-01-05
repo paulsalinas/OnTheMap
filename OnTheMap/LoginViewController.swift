@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, Alertable {
 
     @IBOutlet weak var usernameInput: UITextField!
     @IBOutlet weak var passwordInput: UITextField!
@@ -33,7 +33,7 @@ class LoginViewController: UIViewController {
             // GUARD - Authentication must be successful
             guard success else {
                 dispatch_async(dispatch_get_main_queue(), {
-                    self.showWarningAlert(error!)
+                    self.alert(error!)
                 })
                 return
             }
@@ -45,9 +45,9 @@ class LoginViewController: UIViewController {
                 // GUARD: check if we have valid user data
                 guard let user = user else {
                     if let errorString = errorString {
-                        self.showWarningAlert(errorString)
+                        self.alert(errorString)
                     } else {
-                        self.showWarningAlert("Error occurred fetching user data")
+                        self.alert("Error occurred fetching user data")
                     }
                     return
                 }
@@ -66,11 +66,11 @@ class LoginViewController: UIViewController {
         }
     }
     
-    // MARK: Helpers
-    func showWarningAlert(message: String) {
-        let alert = UIAlertController(title: "", message: message, preferredStyle: UIAlertControllerStyle.Alert)
-        alert.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default, handler: nil))
-        self.presentViewController(alert, animated: true, completion: nil)
-    }
+//    // MARK: Helpers
+//    func showWarningAlert(message: String) {
+//        let alert = UIAlertController(title: "", message: message, preferredStyle: UIAlertControllerStyle.Alert)
+//        alert.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default, handler: nil))
+//        self.presentViewController(alert, animated: true, completion: nil)
+//    }
 }
 

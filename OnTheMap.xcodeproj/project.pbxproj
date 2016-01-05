@@ -25,6 +25,7 @@
 		3C4777AB1C3B0AB500DEA421 /* OnTheMapTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C4777AA1C3B0AB500DEA421 /* OnTheMapTabBarController.swift */; };
 		3C4777AD1C3B75FC00DEA421 /* PinMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C4777AC1C3B75FC00DEA421 /* PinMapViewController.swift */; };
 		3C4777B31C3C143300DEA421 /* Refreshable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C4777B21C3C143300DEA421 /* Refreshable.swift */; };
+		3C4777B51C3C383500DEA421 /* Alertable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C4777B41C3C383500DEA421 /* Alertable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +70,7 @@
 		3C4777AA1C3B0AB500DEA421 /* OnTheMapTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = OnTheMapTabBarController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		3C4777AC1C3B75FC00DEA421 /* PinMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PinMapViewController.swift; path = ../PinMapViewController.swift; sourceTree = "<group>"; };
 		3C4777B21C3C143300DEA421 /* Refreshable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Refreshable.swift; sourceTree = "<group>"; };
+		3C4777B41C3C383500DEA421 /* Alertable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alertable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +131,7 @@
 				3C4777691C34909E00DEA421 /* LaunchScreen.storyboard */,
 				3C47776C1C34909E00DEA421 /* Info.plist */,
 				3C4777B21C3C143300DEA421 /* Refreshable.swift */,
+				3C4777B41C3C383500DEA421 /* Alertable.swift */,
 			);
 			path = OnTheMap;
 			sourceTree = "<group>";
@@ -329,6 +332,7 @@
 				3C4777A71C3B046600DEA421 /* ParseConvenience.swift in Sources */,
 				3C4777AB1C3B0AB500DEA421 /* OnTheMapTabBarController.swift in Sources */,
 				3C4777A51C3AFFF000DEA421 /* ParseConstants.swift in Sources */,
+				3C4777B51C3C383500DEA421 /* Alertable.swift in Sources */,
 				3C4777921C39BB9700DEA421 /* UdacityConstants.swift in Sources */,
 				3C4777AD1C3B75FC00DEA421 /* PinMapViewController.swift in Sources */,
 				3C4777A31C3AFF4F00DEA421 /* ParseClient.swift in Sources */,
