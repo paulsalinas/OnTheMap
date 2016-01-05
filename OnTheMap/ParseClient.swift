@@ -13,7 +13,6 @@ class ParseClient : NSObject {
     // MARK: Properties
     
     /* Authentication state */
-    var sessionID : String? = nil
     var userID : String? = nil
     
     /* helper client */
