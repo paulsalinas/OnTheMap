@@ -13,6 +13,6 @@ struct StudentInformation {
     let lastName: String
     let userId: String
     let url: String?
-    let longitude: Int?
-    let latitude: Int?
+    let longitude: Double?
+    let latitude: Double?
 }

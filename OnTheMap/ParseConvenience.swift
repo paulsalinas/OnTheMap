@@ -43,8 +43,8 @@ extension ParseClient {
                 lastName: result[JSONResponseKeys.LastName] as! String,
                 userId: result[JSONResponseKeys.UserID] as! String,
                 url: result[JSONResponseKeys.Url] as! String?,
-                longitude: result[JSONResponseKeys.Longitude] as! Int?,
-                latitude: result[JSONResponseKeys.Latitude] as! Int?
+                longitude: result[JSONResponseKeys.Longitude] as! Double?,
+                latitude: result[JSONResponseKeys.Latitude] as! Double?
             )
             
             students.append(student)
