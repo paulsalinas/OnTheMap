@@ -89,7 +89,7 @@
             </objects>
             <point key="canvasLocation" x="448" y="-62"/>
         </scene>
-        <!--Item 1-->
+        <!--Map-->
         <scene sceneID="Wfe-TR-fDI">
             <objects>
                 <viewController id="uWA-dl-3QU" customClass="PinMapViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
@@ -102,21 +102,31 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="iXl-jy-xRx">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
+                                <rect key="frame" x="0.0" y="44" width="600" height="507"/>
                                 <connections>
                                     <outlet property="delegate" destination="uWA-dl-3QU" id="6p9-rD-857"/>
                                 </connections>
                             </mapView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="A0H-3K-6gr">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                <items>
+                                    <barButtonItem title="Refresh" id="ofL-ef-nWh">
+                                        <connections>
+                                            <action selector="refreshButtonTouch:" destination="uWA-dl-3QU" id="26G-Nw-XJY"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="iXl-jy-xRx" secondAttribute="trailing" constant="-20" id="FVG-wB-whQ"/>
-                            <constraint firstItem="iXl-jy-xRx" firstAttribute="top" secondItem="rst-qd-IbT" secondAttribute="topMargin" id="ZT4-hK-xkg"/>
+                            <constraint firstItem="iXl-jy-xRx" firstAttribute="top" secondItem="rst-qd-IbT" secondAttribute="topMargin" constant="44" id="ZT4-hK-xkg"/>
                             <constraint firstItem="Mkv-Vo-ZJy" firstAttribute="top" secondItem="iXl-jy-xRx" secondAttribute="bottom" id="gaP-zp-PKy"/>
                             <constraint firstItem="iXl-jy-xRx" firstAttribute="leading" secondItem="rst-qd-IbT" secondAttribute="leadingMargin" constant="-20" id="rPw-Hq-Fxu"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 1" id="xFt-I4-hk5"/>
+                    <tabBarItem key="tabBarItem" title="Map" id="xFt-I4-hk5"/>
                     <connections>
                         <outlet property="mapView" destination="iXl-jy-xRx" id="udM-cz-hzX"/>
                     </connections>

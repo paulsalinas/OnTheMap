@@ -20,6 +20,10 @@ class PinMapViewController: UIViewController, MKMapViewDelegate {
         reloadData()
     }
     
+    @IBAction func refreshButtonTouch(sender: AnyObject) {
+        reloadData()
+    }
+    
     func reloadData() {
         ParseClient.sharedInstance().getUserLocations() { users, errorString -> Void in
             
