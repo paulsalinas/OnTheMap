@@ -8,21 +8,17 @@
 
 import Foundation
 
-class ParseClient : NSObject {
+class ParseClient : Client {
     
     // MARK: Properties
     
     /* Authentication state */
     var userID : String? = nil
     
-    /* helper client */
-    let helperClient : CommonClient
-    
     // MARK: Initializers
     
-    override init() {
-        helperClient = CommonClient(url: Constants.BaseURLSecure, session: NSURLSession.sharedSession())
-        super.init()
+     init() {
+        super.init(url: Constants.BaseURLSecure)
     }
     
     // MARK: POST
@@ -34,7 +30,7 @@ class ParseClient : NSObject {
             ("application/json", "Content-Type"),
         ]
         
-        return helperClient.taskForPOSTMethod(method, parameters: parameters, jsonBody: jsonBody, httpHeaders: httpHeaders) { data, error -> Void in
+        return taskForPOSTMethod(method, parameters: parameters, jsonBody: jsonBody, httpHeaders: httpHeaders) { data, error -> Void in
             
             if let error = error {
                 completionHandler(result: nil, error: error)
@@ -48,7 +44,7 @@ class ParseClient : NSObject {
             let newData = data.subdataWithRange(NSMakeRange(5, data.length - 5))
             print(NSString(data: newData, encoding: NSUTF8StringEncoding))
             
-            CommonClient.parseJSONWithCompletionHandler(newData, completionHandler: completionHandler)
+            ParseClient.parseJSONWithCompletionHandler(newData, completionHandler: completionHandler)
             
         }
     }
@@ -69,7 +65,7 @@ class ParseClient : NSObject {
             (Constants.ApplicationID, HttpHeaders.ApplicationID),
         ]
         
-        return helperClient.taskForGETMethod(method, parameters: parameters, httpHeaders: httpHeaders) { data, error -> Void in
+        return taskForGETMethod(method, parameters: parameters, httpHeaders: httpHeaders) { data, error -> Void in
             
             if let error = error {
                 completionHandler(result: nil, error: error)
@@ -80,7 +76,7 @@ class ParseClient : NSObject {
                 return
             }
             
-            CommonClient.parseJSONWithCompletionHandler(data, completionHandler: completionHandler)
+            ParseClient.parseJSONWithCompletionHandler(data, completionHandler: completionHandler)
             
         }
     }

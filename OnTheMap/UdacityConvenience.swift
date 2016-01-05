@@ -72,7 +72,7 @@ extension UdacityClient {
             return
         }
         
-        let method = CommonClient.substituteKeyInMethod(Methods.Users, key: URLKeys.UserID, value: userID)!
+        let method = UdacityClient.substituteKeyInMethod(Methods.Users, key: URLKeys.UserID, value: userID)!
         
         taskForGETMethod(method, parameters: [String: AnyObject]()) { (result, error) -> Void in
             
