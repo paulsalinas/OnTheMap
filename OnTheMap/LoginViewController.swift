@@ -42,10 +42,22 @@ class LoginViewController: UIViewController {
             print("success!")
             UdacityClient.sharedInstance().getUserData() { (user, errorString) -> Void in
                 
-                //launch the map view and pass the StudentInformation Model
+                // GUARD: check if we have valid user data
+                guard let user = user else {
+                    if let errorString = errorString {
+                        self.showWarningAlert(errorString)
+                    } else {
+                        self.showWarningAlert("Error occurred fetching user data")
+                    }
+                    return
+                }
+                
+                // set the user id in the Parse Client which is required for the user specific client calls
+                ParseClient.sharedInstance().userID = user.userId
+                
+                // launch the map view and pass the StudentInformation Model
                 dispatch_async(dispatch_get_main_queue(), {
                     let controller = self.storyboard!.instantiateViewControllerWithIdentifier("OnTheMapTabBarController") as! OnTheMapTabBarController
-                    controller.user = user
                     self.presentViewController(controller, animated: true, completion: nil)
                 })
                 
