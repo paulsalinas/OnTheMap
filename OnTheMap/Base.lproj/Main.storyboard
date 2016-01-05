@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Qpm-Ih-at9">
-                                <rect key="frame" x="162.5" y="250" width="275" height="100"/>
+                                <rect key="frame" x="163" y="250" width="275" height="100"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SS2-yE-jWi">
                                         <rect key="frame" x="0.0" y="0.0" width="275" height="30"/>
@@ -46,14 +46,20 @@
                                     <constraint firstAttribute="width" constant="275" id="3HI-bn-sd9"/>
                                 </constraints>
                             </stackView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="49r-Sk-4e4">
+                                <rect key="frame" x="290" y="290" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="49r-Sk-4e4" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="5A5-Vf-ztL"/>
                             <constraint firstItem="Qpm-Ih-at9" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="fja-7Z-3Kh"/>
+                            <constraint firstItem="49r-Sk-4e4" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="nqb-hc-WEm"/>
                             <constraint firstItem="Qpm-Ih-at9" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="sBc-NG-nBD"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="loadingIndicatorView" destination="49r-Sk-4e4" id="tku-ZG-kWj"/>
                         <outlet property="passwordInput" destination="L0l-Z4-7fu" id="bRw-LY-lhg"/>
                         <outlet property="usernameInput" destination="SS2-yE-jWi" id="qyF-1Z-cTI"/>
                     </connections>

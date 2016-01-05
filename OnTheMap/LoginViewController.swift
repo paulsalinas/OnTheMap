@@ -12,23 +12,30 @@ class LoginViewController: UIViewController, Alertable {
 
     @IBOutlet weak var usernameInput: UITextField!
     @IBOutlet weak var passwordInput: UITextField!
+    @IBOutlet weak var loadingIndicatorView: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Do any additional setup after loading the view, typically from a nib.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     @IBAction func loginButtonTouch(sender: AnyObject) {
         
+        loadingIndicatorView.hidden = false
+        
         // authenticate user
         UdacityClient.sharedInstance().authenticate(usernameInput.text!, password: passwordInput.text!) {
             success, error -> Void in
+            
+            // make sure to stop the animation when this code block ends
+            defer {
+                dispatch_async(dispatch_get_main_queue(), {
+                    self.loadingIndicatorView.hidden = true
+                })
+            }
             
             // GUARD - Authentication must be successful
             guard success else {
@@ -42,13 +49,22 @@ class LoginViewController: UIViewController, Alertable {
             print("success!")
             UdacityClient.sharedInstance().getUserData() { (user, errorString) -> Void in
                 
+                // make sure to stop the animation when this code block ends
+                defer {
+                    dispatch_async(dispatch_get_main_queue(), {
+                        self.loadingIndicatorView.hidden = true
+                    })
+                }
+                
                 // GUARD: check if we have valid user data
                 guard let user = user else {
-                    if let errorString = errorString {
-                        self.alert(errorString)
-                    } else {
-                        self.alert("Error occurred fetching user data")
-                    }
+                    dispatch_async(dispatch_get_main_queue(), {
+                        if let errorString = errorString {
+                            self.alert(errorString)
+                        } else {
+                            self.alert("Error occurred fetching user data")
+                        }
+                    })
                     return
                 }
                 
@@ -60,8 +76,6 @@ class LoginViewController: UIViewController, Alertable {
                     let controller = self.storyboard!.instantiateViewControllerWithIdentifier("OnTheMapNavigationController") as! UINavigationController
                     self.presentViewController(controller, animated: true, completion: nil)
                 })
-                
-                return
             }
         }
     }
