@@ -97,7 +97,7 @@ extension UdacityClient {
                 longitude: nil,
                 latitude: nil
             )
-            
+        
             completionHandler(user: student, errorString: nil)
         }
     }
