@@ -41,7 +41,10 @@ extension ParseClient {
             let udacian = Udacian(
                 firstName: result[JSONResponseKeys.FirstName] as! String,
                 lastName: result[JSONResponseKeys.LastName] as! String,
-                userId: result[JSONResponseKeys.UserID] as! String
+                userId: result[JSONResponseKeys.UserID] as! String,
+                url: result[JSONResponseKeys.Url] as! String?,
+                longitude: result[JSONResponseKeys.Longitude] as! Int?,
+                latitude: result[JSONResponseKeys.Latitude] as! Int?
             )
             
             udacians.append(udacian)

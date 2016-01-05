@@ -12,4 +12,7 @@ struct Udacian {
     let firstName: String
     let lastName: String
     let userId: String
+    let url: String?
+    let longitude: Int?
+    let latitude: Int?
 }

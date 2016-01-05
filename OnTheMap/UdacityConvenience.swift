@@ -92,7 +92,10 @@ extension UdacityClient {
             let udacian = Udacian(
                 firstName: user[UdacityClient.JSONResponseKeys.FirstName] as! String,
                 lastName: user[UdacityClient.JSONResponseKeys.LastName] as! String,
-                userId: user[UdacityClient.JSONResponseKeys.UserID] as! String
+                userId: user[UdacityClient.JSONResponseKeys.UserID] as! String,
+                url: nil,
+                longitude: nil,
+                latitude: nil
             )
             
             completionHandler(user: udacian, errorString: nil)
