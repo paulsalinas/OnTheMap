@@ -63,8 +63,8 @@ extension UdacityClient {
         }
     }
     
-    /* The completionHandler is passed the Udacian object with all of the user information from the api  */
-    func getUserData(completionHandler: (user: Udacian?, errorString: String?) -> Void) {
+    /* The completionHandler is passed the StudentInformation object with all of the user information from the api  */
+    func getUserData(completionHandler: (user: StudentInformation?, errorString: String?) -> Void) {
         
         // GUARD: User id must be defined
         guard let userID = userID else {
@@ -89,7 +89,7 @@ extension UdacityClient {
                 return
             }
             
-            let udacian = Udacian(
+            let udacian = StudentInformation(
                 firstName: user[UdacityClient.JSONResponseKeys.FirstName] as! String,
                 lastName: user[UdacityClient.JSONResponseKeys.LastName] as! String,
                 userId: user[UdacityClient.JSONResponseKeys.UserID] as! String,

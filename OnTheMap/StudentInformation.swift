@@ -1,5 +1,5 @@
 //
-//  Udacian.swift
+//  StudentInformation.swift
 //  OnTheMap
 //
 //  Created by Paul Salinas on 2016-01-03.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Udacian {
+struct StudentInformation {
     let firstName: String
     let lastName: String
     let userId: String

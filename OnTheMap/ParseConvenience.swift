@@ -10,7 +10,7 @@ import Foundation
 
 extension ParseClient {
     
-    func getUserLocations (completionHandler: (users:[Udacian]?, errorString: String?) -> Void){
+    func getUserLocations (completionHandler: (users:[StudentInformation]?, errorString: String?) -> Void){
         let parameters = [
             "limit" : "100",
             "skip" : "0",
@@ -34,11 +34,11 @@ extension ParseClient {
         }
     }
     
-    class func udaciansFromResults(results: [[String: AnyObject]]) -> [Udacian] {
-        var udacians = [Udacian]()
+    class func udaciansFromResults(results: [[String: AnyObject]]) -> [StudentInformation] {
+        var udacians = [StudentInformation]()
         
         for result in results {
-            let udacian = Udacian(
+            let udacian = StudentInformation(
                 firstName: result[JSONResponseKeys.FirstName] as! String,
                 lastName: result[JSONResponseKeys.LastName] as! String,
                 userId: result[JSONResponseKeys.UserID] as! String,

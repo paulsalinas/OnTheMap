@@ -42,7 +42,7 @@ class LoginViewController: UIViewController {
             print("success!")
             UdacityClient.sharedInstance().getUserData() { (user, errorString) -> Void in
                 
-                //launch the map view and pass the Udacian Model
+                //launch the map view and pass the StudentInformation Model
                 dispatch_async(dispatch_get_main_queue(), {
                     let controller = self.storyboard!.instantiateViewControllerWithIdentifier("OnTheMapTabBarController") as! OnTheMapTabBarController
                     controller.user = user

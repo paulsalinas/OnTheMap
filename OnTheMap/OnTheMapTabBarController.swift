@@ -10,12 +10,19 @@ import UIKit
 
 class OnTheMapTabBarController: UITabBarController {
 
-    var user: Udacian?
+    var user: StudentInformation!
+    var parseClient: ParseClient!
+    var userLocations: [StudentInformation]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
        
-        // Do any additional setup after loading the view.
+        //initialize parseClient and get the user locations
+        parseClient = ParseClient.sharedInstance()
+        parseClient.getUserLocations() { users, errorString -> Void in
+            print(users)
+            return
+        }
     }
 }
