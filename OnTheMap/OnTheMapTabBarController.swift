@@ -23,4 +23,9 @@ class OnTheMapTabBarController: UITabBarController {
             }
         }
     }
+    
+    @IBAction func pinButtonTouch(sender: AnyObject) {
+        let controller = self.storyboard!.instantiateViewControllerWithIdentifier("AddPinViewController")
+        self.presentViewController(controller, animated: true, completion: nil)
+    }
 }

@@ -26,6 +26,7 @@
 		3C4777B31C3C143300DEA421 /* Refreshable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C4777B21C3C143300DEA421 /* Refreshable.swift */; };
 		3C4777B51C3C383500DEA421 /* Alertable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C4777B41C3C383500DEA421 /* Alertable.swift */; };
 		3C4777B91C3C476E00DEA421 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C4777B81C3C476E00DEA421 /* Client.swift */; };
+		3CB909691C3CC25A00EA53C8 /* AddPinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB909681C3CC25A00EA53C8 /* AddPinViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +72,7 @@
 		3C4777B21C3C143300DEA421 /* Refreshable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Refreshable.swift; sourceTree = "<group>"; };
 		3C4777B41C3C383500DEA421 /* Alertable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alertable.swift; sourceTree = "<group>"; };
 		3C4777B81C3C476E00DEA421 /* Client.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
+		3CB909681C3CC25A00EA53C8 /* AddPinViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddPinViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +123,7 @@
 		3C47775F1C34909E00DEA421 /* OnTheMap */ = {
 			isa = PBXGroup;
 			children = (
+				3CB909631C3CA1D100EA53C8 /* Controllers */,
 				3C47778E1C39B98600DEA421 /* Model */,
 				3C4777601C34909E00DEA421 /* AppDelegate.swift */,
 				3C4777641C34909E00DEA421 /* Main.storyboard */,
@@ -152,7 +155,6 @@
 		3C47778E1C39B98600DEA421 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				3CB909631C3CA1D100EA53C8 /* Controllers */,
 				3C47778F1C39BB5200DEA421 /* Clients */,
 			);
 			name = Model;
@@ -197,6 +199,7 @@
 				3C4777AC1C3B75FC00DEA421 /* PinMapViewController.swift */,
 				3C4777AA1C3B0AB500DEA421 /* OnTheMapTabBarController.swift */,
 				3C4777621C34909E00DEA421 /* LoginViewController.swift */,
+				3CB909681C3CC25A00EA53C8 /* AddPinViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -333,6 +336,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3C4777941C39BBE800DEA421 /* UdacityClient.swift in Sources */,
+				3CB909691C3CC25A00EA53C8 /* AddPinViewController.swift in Sources */,
 				3C4777631C34909E00DEA421 /* LoginViewController.swift in Sources */,
 				3C4777611C34909E00DEA421 /* AppDelegate.swift in Sources */,
 				3C4777981C3A016800DEA421 /* StudentInformation.swift in Sources */,
