@@ -123,15 +123,10 @@
 			children = (
 				3C47778E1C39B98600DEA421 /* Model */,
 				3C4777601C34909E00DEA421 /* AppDelegate.swift */,
-				3C4777AC1C3B75FC00DEA421 /* PinMapViewController.swift */,
-				3C4777AA1C3B0AB500DEA421 /* OnTheMapTabBarController.swift */,
-				3C4777621C34909E00DEA421 /* LoginViewController.swift */,
 				3C4777641C34909E00DEA421 /* Main.storyboard */,
 				3C4777671C34909E00DEA421 /* Assets.xcassets */,
 				3C4777691C34909E00DEA421 /* LaunchScreen.storyboard */,
 				3C47776C1C34909E00DEA421 /* Info.plist */,
-				3C4777B21C3C143300DEA421 /* Refreshable.swift */,
-				3C4777B41C3C383500DEA421 /* Alertable.swift */,
 			);
 			path = OnTheMap;
 			sourceTree = "<group>";
@@ -157,6 +152,7 @@
 		3C47778E1C39B98600DEA421 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				3CB909631C3CA1D100EA53C8 /* Controllers */,
 				3C47778F1C39BB5200DEA421 /* Clients */,
 			);
 			name = Model;
@@ -191,6 +187,18 @@
 				3C4777A61C3B046600DEA421 /* ParseConvenience.swift */,
 			);
 			name = Parse;
+			sourceTree = "<group>";
+		};
+		3CB909631C3CA1D100EA53C8 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				3C4777B21C3C143300DEA421 /* Refreshable.swift */,
+				3C4777B41C3C383500DEA421 /* Alertable.swift */,
+				3C4777AC1C3B75FC00DEA421 /* PinMapViewController.swift */,
+				3C4777AA1C3B0AB500DEA421 /* OnTheMapTabBarController.swift */,
+				3C4777621C34909E00DEA421 /* LoginViewController.swift */,
+			);
+			name = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -562,6 +570,7 @@
 				3C4777871C34909E00DEA421 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		3C4777881C34909E00DEA421 /* Build configuration list for PBXNativeTarget "OnTheMapTests" */ = {
 			isa = XCConfigurationList;
@@ -570,6 +579,7 @@
 				3C47778A1C34909E00DEA421 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		3C47778B1C34909E00DEA421 /* Build configuration list for PBXNativeTarget "OnTheMapUITests" */ = {
 			isa = XCConfigurationList;
@@ -578,6 +588,7 @@
 				3C47778D1C34909E00DEA421 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
