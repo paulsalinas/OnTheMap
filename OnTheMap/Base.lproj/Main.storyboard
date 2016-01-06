@@ -238,7 +238,7 @@
                                                 </connections>
                                             </button>
                                         </subviews>
-                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstItem="SSS-3P-XbT" firstAttribute="centerX" secondItem="zwE-w8-idl" secondAttribute="centerX" id="2RL-Dk-Imu"/>
                                             <constraint firstItem="PSL-0o-0B9" firstAttribute="top" secondItem="zwE-w8-idl" secondAttribute="top" constant="18" id="KAe-l5-DKZ"/>
@@ -250,10 +250,10 @@
                                     <view contentMode="scaleToFill" verticalCompressionResistancePriority="1" translatesAutoresizingMaskIntoConstraints="NO" id="eO8-kB-vYb" userLabel="MiddleView">
                                         <rect key="frame" x="0.0" y="200" width="600" height="300"/>
                                         <subviews>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter Your Location Here" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ABH-aZ-LrW">
-                                                <rect key="frame" x="0.0" y="31" width="600" height="30"/>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" placeholder="Enter Your Location Here" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ABH-aZ-LrW">
+                                                <rect key="frame" x="0.0" y="31" width="600" height="80"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="30" id="5E8-wb-i53"/>
+                                                    <constraint firstAttribute="height" constant="80" id="5E8-wb-i53"/>
                                                 </constraints>
                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
@@ -276,11 +276,11 @@
                                         <rect key="frame" x="0.0" y="500" width="600" height="100"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lSQ-Yh-xEh">
-                                                <rect key="frame" x="180" y="35" width="241" height="30"/>
+                                                <rect key="frame" x="210" y="35" width="181" height="30"/>
                                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="Wt1-vc-bQ8"/>
-                                                    <constraint firstAttribute="width" constant="241" id="p8z-t0-xfY"/>
+                                                    <constraint firstAttribute="width" constant="181" id="p8z-t0-xfY"/>
                                                 </constraints>
                                                 <state key="normal" title="Find on the Map">
                                                     <color key="titleColor" red="0.1450980392" green="0.28235294119999998" blue="0.43137254899999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -292,7 +292,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </button>
                                         </subviews>
-                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="100" id="RFI-Oj-0Gb"/>
                                             <constraint firstItem="lSQ-Yh-xEh" firstAttribute="centerX" secondItem="0PX-g8-eXK" secondAttribute="centerX" id="gJh-Az-42p"/>
