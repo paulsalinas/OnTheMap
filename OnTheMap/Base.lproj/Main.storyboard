@@ -4,6 +4,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
     </dependencies>
     <scenes>
         <!--Login View Controller-->
@@ -127,7 +128,7 @@
                             <constraint firstAttribute="trailingMargin" secondItem="dmo-FC-wy0" secondAttribute="trailing" constant="-20" id="zzP-gO-qxh"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Map" id="xFt-I4-hk5"/>
+                    <tabBarItem key="tabBarItem" title="Map" image="Map" id="xFt-I4-hk5"/>
                     <connections>
                         <outlet property="loadingIndicatorView" destination="tYl-gQ-VuU" id="eUb-jl-km9"/>
                         <outlet property="loadingOverlayView" destination="dmo-FC-wy0" id="vho-c6-2uS"/>
@@ -159,11 +160,14 @@
             <objects>
                 <tabBarController storyboardIdentifier="OnTheMapTabBarController" id="kPE-y5-Ld7" customClass="OnTheMapTabBarController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="KzM-JS-LPA">
-                        <barButtonItem key="rightBarButtonItem" title="Refresh" id="fGa-on-XxN">
-                            <connections>
-                                <action selector="refreshButtonTouch:" destination="kPE-y5-Ld7" id="Cpi-Fp-6nG"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="refresh" id="fGa-on-XxN">
+                                <connections>
+                                    <action selector="refreshButtonTouch:" destination="kPE-y5-Ld7" id="Cpi-Fp-6nG"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem image="Pin" id="dXY-Iv-RTK"/>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="SE4-pV-hVR">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
@@ -180,4 +184,8 @@
             <point key="canvasLocation" x="-372" y="-392"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Map" width="32" height="32"/>
+        <image name="Pin" width="32" height="32"/>
+    </resources>
 </document>
