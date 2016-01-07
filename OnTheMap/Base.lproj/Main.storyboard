@@ -206,10 +206,10 @@
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="200"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="SSS-3P-XbT">
-                                                <rect key="frame" x="209" y="63" width="182" height="108"/>
+                                                <rect key="frame" x="209.5" y="63" width="181.5" height="108"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Where are you" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a5C-fq-obS">
-                                                        <rect key="frame" x="0.0" y="0.0" width="182" height="36"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="181.5" height="36"/>
                                                         <fontDescription key="fontDescription" type="system" weight="thin" pointSize="30"/>
                                                         <color key="textColor" red="0.1450980392" green="0.28235294119999998" blue="0.43137254899999999" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -221,7 +221,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="today?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="op9-7n-BKI">
-                                                        <rect key="frame" x="49" y="72" width="85" height="36"/>
+                                                        <rect key="frame" x="48.5" y="72" width="84.5" height="36"/>
                                                         <fontDescription key="fontDescription" type="system" weight="thin" pointSize="30"/>
                                                         <color key="textColor" red="0.1450980392" green="0.28235294119999998" blue="0.43137254899999999" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -229,7 +229,7 @@
                                                 </subviews>
                                             </stackView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PSL-0o-0B9">
-                                                <rect key="frame" x="544" y="18" width="48" height="30"/>
+                                                <rect key="frame" x="531" y="20" width="48" height="30"/>
                                                 <state key="normal" title="Cancel">
                                                     <color key="titleColor" red="0.1450980392" green="0.28235294119999998" blue="0.43137254899999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
@@ -241,10 +241,9 @@
                                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstItem="SSS-3P-XbT" firstAttribute="centerX" secondItem="zwE-w8-idl" secondAttribute="centerX" id="2RL-Dk-Imu"/>
-                                            <constraint firstItem="PSL-0o-0B9" firstAttribute="top" secondItem="zwE-w8-idl" secondAttribute="top" constant="18" id="KAe-l5-DKZ"/>
                                             <constraint firstAttribute="bottom" secondItem="SSS-3P-XbT" secondAttribute="bottom" constant="29" id="Oe0-ii-O4z"/>
                                             <constraint firstAttribute="height" constant="200" id="eNt-A9-i7w"/>
-                                            <constraint firstAttribute="trailing" secondItem="PSL-0o-0B9" secondAttribute="trailing" constant="8" id="yky-OP-iru"/>
+                                            <constraint firstItem="PSL-0o-0B9" firstAttribute="trailing" secondItem="zwE-w8-idl" secondAttribute="trailing" constant="-21" id="j2r-yn-7LB"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" verticalCompressionResistancePriority="1" translatesAutoresizingMaskIntoConstraints="NO" id="eO8-kB-vYb" userLabel="MiddleView">
@@ -304,6 +303,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="cCh-yq-2u0" firstAttribute="leading" secondItem="mrB-sV-cCT" secondAttribute="leading" id="0Rn-c3-nKC"/>
+                            <constraint firstItem="PSL-0o-0B9" firstAttribute="top" secondItem="f4l-Pc-NKC" secondAttribute="bottom" id="7hp-UM-Dx8"/>
                             <constraint firstItem="cCh-yq-2u0" firstAttribute="top" secondItem="mrB-sV-cCT" secondAttribute="top" id="AVD-ta-jn4"/>
                             <constraint firstAttribute="trailing" secondItem="cCh-yq-2u0" secondAttribute="trailing" id="qak-WK-Ux5"/>
                             <constraint firstAttribute="bottomMargin" secondItem="cCh-yq-2u0" secondAttribute="bottom" id="sIr-5y-rmi"/>
