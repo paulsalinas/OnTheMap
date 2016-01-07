@@ -250,26 +250,22 @@
                                     <view contentMode="scaleToFill" verticalCompressionResistancePriority="1" translatesAutoresizingMaskIntoConstraints="NO" id="eO8-kB-vYb" userLabel="MiddleView">
                                         <rect key="frame" x="0.0" y="200" width="600" height="300"/>
                                         <subviews>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" placeholder="Enter Your Location Here" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ABH-aZ-LrW">
-                                                <rect key="frame" x="0.0" y="31" width="600" height="80"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="80" id="5E8-wb-i53"/>
-                                                </constraints>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Enter Location Here" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ArD-vI-Bg6">
+                                                <rect key="frame" x="0.0" y="44" width="600" height="256"/>
                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="color" keyPath="_placeholderLabel.textColor">
-                                                        <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="keyPath" value="YES"/>
                                                 </userDefinedRuntimeAttributes>
-                                            </textField>
+                                            </textView>
                                         </subviews>
                                         <color key="backgroundColor" red="0.26885685628854872" green="0.53035259251220956" blue="0.81726270051515149" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
-                                            <constraint firstItem="ABH-aZ-LrW" firstAttribute="top" secondItem="eO8-kB-vYb" secondAttribute="top" constant="31" id="7iV-nn-yDg"/>
-                                            <constraint firstItem="ABH-aZ-LrW" firstAttribute="leading" secondItem="eO8-kB-vYb" secondAttribute="leading" id="OKL-qj-8mg"/>
-                                            <constraint firstAttribute="trailing" secondItem="ABH-aZ-LrW" secondAttribute="trailing" id="gI9-mx-DNq"/>
+                                            <constraint firstItem="ArD-vI-Bg6" firstAttribute="top" secondItem="eO8-kB-vYb" secondAttribute="top" constant="44" id="I3Y-HY-eH4"/>
+                                            <constraint firstAttribute="bottom" secondItem="ArD-vI-Bg6" secondAttribute="bottom" id="Vni-O3-jIQ"/>
+                                            <constraint firstItem="ArD-vI-Bg6" firstAttribute="leading" secondItem="eO8-kB-vYb" secondAttribute="leading" id="ahv-Ab-yvL"/>
+                                            <constraint firstAttribute="trailing" secondItem="ArD-vI-Bg6" secondAttribute="trailing" id="yXL-rq-n5A"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" verticalCompressionResistancePriority="1" translatesAutoresizingMaskIntoConstraints="NO" id="0PX-g8-eXK" userLabel="BottomView">
