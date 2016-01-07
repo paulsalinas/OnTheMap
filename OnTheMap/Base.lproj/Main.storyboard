@@ -286,6 +286,9 @@
                                                         <integer key="value" value="10"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="findOnTheMapButtonTouch:" destination="HTL-9h-TGn" eventType="touchUpInside" id="Rdt-ya-QSt"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -306,10 +309,47 @@
                             <constraint firstAttribute="bottomMargin" secondItem="cCh-yq-2u0" secondAttribute="bottom" id="sIr-5y-rmi"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="enterLocationTextView" destination="ArD-vI-Bg6" id="xZA-kg-WbF"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KBa-ko-tYu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-945" y="426"/>
+        </scene>
+        <!--Submit Pin View Controller-->
+        <scene sceneID="qy3-DO-zVW">
+            <objects>
+                <viewController storyboardIdentifier="SubmitPinViewController" id="nUC-JS-qWO" customClass="SubmitPinViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Jgg-bD-bw8"/>
+                        <viewControllerLayoutGuide type="bottom" id="zMG-Zn-EcB"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="jXR-D0-yyn">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NEI-Ik-xwb">
+                                <rect key="frame" x="532" y="20" width="48" height="30"/>
+                                <state key="normal" title="Cancel">
+                                    <color key="titleColor" red="0.1450980392" green="0.28235294119999998" blue="0.43137254899999999" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="cancelButtonTouch:" destination="HTL-9h-TGn" eventType="touchUpInside" id="RhH-jN-1l8"/>
+                                    <action selector="cancelButtonTouch:" destination="nUC-JS-qWO" eventType="touchUpInside" id="q9w-wA-6U5"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="NEI-Ik-xwb" firstAttribute="top" secondItem="Jgg-bD-bw8" secondAttribute="bottom" id="RB4-EL-crN"/>
+                            <constraint firstItem="NEI-Ik-xwb" firstAttribute="trailing" secondItem="jXR-D0-yyn" secondAttribute="trailingMargin" id="Sv0-5k-bI4"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="12G-AQ-a2y" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-287" y="426"/>
         </scene>
     </scenes>
     <resources>

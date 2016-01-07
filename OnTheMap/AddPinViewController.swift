@@ -7,9 +7,13 @@
 //
 
 import UIKit
+import CoreLocation
 
-class AddPinViewController: UIViewController {
 
+class AddPinViewController: UIViewController, Alertable {
+
+    @IBOutlet weak var enterLocationTextView: UITextView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -25,14 +29,29 @@ class AddPinViewController: UIViewController {
         presentingViewController!.dismissViewControllerAnimated(true, completion: nil)
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    @IBAction func findOnTheMapButtonTouch(sender: AnyObject) {
+        
+        // GUARD - Ensure that the textfield has text
+        guard let locationString = enterLocationTextView.text where locationString != "" else {
+            alert("Location can not be empty")
+            return
+        }
+        
+        // Geocode the string
+        let geocode = CLGeocoder()
+        geocode.geocodeAddressString(locationString) {(placemarks, error)->Void in
+            print(placemarks?.first?.location)
+            
+            guard let location = placemarks?.first?.location else {
+                self.alert("Location can not be Found")
+                return
+            }
+        
+            let controller = self.storyboard!.instantiateViewControllerWithIdentifier("SubmitPinViewController") as! SubmitPinViewController
+            controller.rootPresentingController = self.presentingViewController
+            controller.location = location
+            self.presentViewController(controller, animated: false, completion: nil)
+        }
     }
-    */
 
 }
