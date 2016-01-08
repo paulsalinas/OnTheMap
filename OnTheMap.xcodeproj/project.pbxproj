@@ -27,6 +27,7 @@
 		3C4777B51C3C383500DEA421 /* Alertable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C4777B41C3C383500DEA421 /* Alertable.swift */; };
 		3C4777B91C3C476E00DEA421 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C4777B81C3C476E00DEA421 /* Client.swift */; };
 		3CAC1FBB1C3E0D5C00740E45 /* SubmitPinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CAC1FBA1C3E0D5C00740E45 /* SubmitPinViewController.swift */; };
+		3CAC1FBD1C3F295100740E45 /* PlaceHolderTextViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CAC1FBC1C3F295100740E45 /* PlaceHolderTextViewDelegate.swift */; };
 		3CB909691C3CC25A00EA53C8 /* AddPinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB909681C3CC25A00EA53C8 /* AddPinViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -74,6 +75,7 @@
 		3C4777B41C3C383500DEA421 /* Alertable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alertable.swift; sourceTree = "<group>"; };
 		3C4777B81C3C476E00DEA421 /* Client.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
 		3CAC1FBA1C3E0D5C00740E45 /* SubmitPinViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubmitPinViewController.swift; sourceTree = "<group>"; };
+		3CAC1FBC1C3F295100740E45 /* PlaceHolderTextViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceHolderTextViewDelegate.swift; sourceTree = "<group>"; };
 		3CB909681C3CC25A00EA53C8 /* AddPinViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddPinViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -203,6 +205,7 @@
 				3C4777621C34909E00DEA421 /* LoginViewController.swift */,
 				3CB909681C3CC25A00EA53C8 /* AddPinViewController.swift */,
 				3CAC1FBA1C3E0D5C00740E45 /* SubmitPinViewController.swift */,
+				3CAC1FBC1C3F295100740E45 /* PlaceHolderTextViewDelegate.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -344,6 +347,7 @@
 				3C4777631C34909E00DEA421 /* LoginViewController.swift in Sources */,
 				3C4777611C34909E00DEA421 /* AppDelegate.swift in Sources */,
 				3C4777981C3A016800DEA421 /* StudentInformation.swift in Sources */,
+				3CAC1FBD1C3F295100740E45 /* PlaceHolderTextViewDelegate.swift in Sources */,
 				3C4777961C39CD9900DEA421 /* UdacityConvenience.swift in Sources */,
 				3C4777A71C3B046600DEA421 /* ParseConvenience.swift in Sources */,
 				3C4777B91C3C476E00DEA421 /* Client.swift in Sources */,

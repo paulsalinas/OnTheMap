@@ -13,7 +13,7 @@ class SubmitPinViewController: UIViewController {
     
     var rootPresentingController: UIViewController!
     var location: CLLocation?
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

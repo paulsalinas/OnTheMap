@@ -14,17 +14,16 @@ class AddPinViewController: UIViewController, Alertable {
 
     @IBOutlet weak var enterLocationTextView: UITextView!
     
+    // strong reference to the delegate
+    var placeHolderDelegate: PlaceHolderTextViewDelegate?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        placeHolderDelegate = PlaceHolderTextViewDelegate(placeHolder: enterLocationTextView.text)
+        enterLocationTextView.delegate = placeHolderDelegate
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     @IBAction func cancelButtonTouch(sender: AnyObject) {
         presentingViewController!.dismissViewControllerAnimated(true, completion: nil)
     }
@@ -53,5 +52,4 @@ class AddPinViewController: UIViewController, Alertable {
             self.presentViewController(controller, animated: false, completion: nil)
         }
     }
-
 }
