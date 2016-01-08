@@ -365,6 +365,9 @@
                                     </view>
                                     <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="K7T-Wp-lDZ">
                                         <rect key="frame" x="0.0" y="200" width="600" height="400"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="nUC-JS-qWO" id="mpW-Zy-4RR"/>
+                                        </connections>
                                     </mapView>
                                 </subviews>
                             </stackView>
@@ -379,6 +382,7 @@
                     </view>
                     <connections>
                         <outlet property="enterLinkTextView" destination="etY-C4-gfs" id="f3B-fp-gwS"/>
+                        <outlet property="mapView" destination="K7T-Wp-lDZ" id="bYB-pi-Zg6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="12G-AQ-a2y" userLabel="First Responder" sceneMemberID="firstResponder"/>

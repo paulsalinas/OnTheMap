@@ -9,10 +9,12 @@
 import UIKit
 import MapKit
 
-class SubmitPinViewController: UIViewController {
+class SubmitPinViewController: UIViewController, MKMapViewDelegate {
+    
+    @IBOutlet weak var mapView: MKMapView!
     
     var rootPresentingController: UIViewController!
-    var location: CLLocation?
+    var coordinate: CLLocationCoordinate2D!
     
     @IBOutlet weak var enterLinkTextView: UITextView!
     
@@ -24,6 +26,12 @@ class SubmitPinViewController: UIViewController {
 
         placeHolderDelegate = PlaceHolderTextViewDelegate(placeHolder: enterLinkTextView.text)
         enterLinkTextView.delegate = placeHolderDelegate
+        
+        //add the pin
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = coordinate
+        mapView.addAnnotation(annotation)
+        mapView.setRegion(MKCoordinateRegion(center: coordinate, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)), animated: true)
     }
 
     override func didReceiveMemoryWarning() {
@@ -36,5 +44,4 @@ class SubmitPinViewController: UIViewController {
         // we need to dismiss at the root to also dismiss all of the modals that may have presented this one
         rootPresentingController.dismissViewControllerAnimated(true, completion: nil)
     }
-
 }

@@ -48,7 +48,7 @@ class AddPinViewController: UIViewController, Alertable {
         
             let controller = self.storyboard!.instantiateViewControllerWithIdentifier("SubmitPinViewController") as! SubmitPinViewController
             controller.rootPresentingController = self.presentingViewController
-            controller.location = location
+            controller.coordinate = location.coordinate
             self.presentViewController(controller, animated: false, completion: nil)
         }
     }
