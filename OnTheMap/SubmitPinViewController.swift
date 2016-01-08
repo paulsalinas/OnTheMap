@@ -14,10 +14,16 @@ class SubmitPinViewController: UIViewController {
     var rootPresentingController: UIViewController!
     var location: CLLocation?
     
+    @IBOutlet weak var enterLinkTextView: UITextView!
+    
+    // strong reference to the delegate
+    var placeHolderDelegate: PlaceHolderTextViewDelegate?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        placeHolderDelegate = PlaceHolderTextViewDelegate(placeHolder: enterLinkTextView.text)
+        enterLinkTextView.delegate = placeHolderDelegate
     }
 
     override func didReceiveMemoryWarning() {
@@ -30,15 +36,5 @@ class SubmitPinViewController: UIViewController {
         // we need to dismiss at the root to also dismiss all of the modals that may have presented this one
         rootPresentingController.dismissViewControllerAnimated(true, completion: nil)
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
