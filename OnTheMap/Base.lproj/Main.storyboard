@@ -329,23 +329,57 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NEI-Ik-xwb">
-                                <rect key="frame" x="532" y="20" width="48" height="30"/>
-                                <state key="normal" title="Cancel">
-                                    <color key="titleColor" red="0.1450980392" green="0.28235294119999998" blue="0.43137254899999999" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="cancelButtonTouch:" destination="HTL-9h-TGn" eventType="touchUpInside" id="RhH-jN-1l8"/>
-                                    <action selector="cancelButtonTouch:" destination="nUC-JS-qWO" eventType="touchUpInside" id="q9w-wA-6U5"/>
-                                </connections>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="EPf-yO-9rN">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZCt-zU-viV">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="200"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NEI-Ik-xwb">
+                                                <rect key="frame" x="521" y="16" width="48" height="30"/>
+                                                <state key="normal" title="Cancel">
+                                                    <color key="titleColor" red="0.1450980392" green="0.28235294119999998" blue="0.43137254899999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="cancelButtonTouch:" destination="HTL-9h-TGn" eventType="touchUpInside" id="RhH-jN-1l8"/>
+                                                    <action selector="cancelButtonTouch:" destination="nUC-JS-qWO" eventType="touchUpInside" id="q9w-wA-6U5"/>
+                                                </connections>
+                                            </button>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Enter Link to Share Here" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="etY-C4-gfs">
+                                                <rect key="frame" x="0.0" y="64" width="600" height="128"/>
+                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                            </textView>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.2688568563" green="0.5303525925" blue="0.81726270050000005" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstItem="NEI-Ik-xwb" firstAttribute="top" secondItem="ZCt-zU-viV" secondAttribute="top" constant="16" id="3Xe-iC-mPJ"/>
+                                            <constraint firstItem="etY-C4-gfs" firstAttribute="top" secondItem="NEI-Ik-xwb" secondAttribute="bottom" constant="18" id="E3P-bb-tCM"/>
+                                            <constraint firstItem="etY-C4-gfs" firstAttribute="leading" secondItem="ZCt-zU-viV" secondAttribute="leading" id="FRe-zA-W93"/>
+                                            <constraint firstAttribute="trailing" secondItem="NEI-Ik-xwb" secondAttribute="trailing" constant="31" id="HAD-es-4HL"/>
+                                            <constraint firstAttribute="height" constant="200" id="HOt-nP-MLb"/>
+                                            <constraint firstAttribute="bottom" secondItem="etY-C4-gfs" secondAttribute="bottom" constant="8" id="KJ4-Ra-Pw5"/>
+                                            <constraint firstAttribute="trailing" secondItem="etY-C4-gfs" secondAttribute="trailing" id="w2F-E6-ox2"/>
+                                        </constraints>
+                                    </view>
+                                    <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="K7T-Wp-lDZ">
+                                        <rect key="frame" x="0.0" y="200" width="600" height="400"/>
+                                    </mapView>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="NEI-Ik-xwb" firstAttribute="top" secondItem="Jgg-bD-bw8" secondAttribute="bottom" id="RB4-EL-crN"/>
-                            <constraint firstItem="NEI-Ik-xwb" firstAttribute="trailing" secondItem="jXR-D0-yyn" secondAttribute="trailingMargin" id="Sv0-5k-bI4"/>
+                            <constraint firstItem="EPf-yO-9rN" firstAttribute="leading" secondItem="jXR-D0-yyn" secondAttribute="leadingMargin" constant="-20" id="N0y-X2-pMo"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="EPf-yO-9rN" secondAttribute="trailing" constant="-20" id="c0k-4V-H9q"/>
+                            <constraint firstItem="zMG-Zn-EcB" firstAttribute="top" secondItem="EPf-yO-9rN" secondAttribute="bottom" id="qVQ-xA-Ifn"/>
+                            <constraint firstItem="EPf-yO-9rN" firstAttribute="top" secondItem="jXR-D0-yyn" secondAttribute="topMargin" id="zJv-fE-Vhy"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="enterLinkTextView" destination="etY-C4-gfs" id="f3B-fp-gwS"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="12G-AQ-a2y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
