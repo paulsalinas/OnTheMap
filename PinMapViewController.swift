@@ -33,7 +33,7 @@ class PinMapViewController: UIViewController, MKMapViewDelegate, Refreshable, Al
         //turn on the loading indicators
         loadingIndicators(arehidden: false)
         
-        ParseClient.sharedInstance().getUserLocations() { users, errorString -> Void in
+        ParseClient.sharedInstance().getStudentLocations() { users, errorString -> Void in
             
             //make sure to turn off the loading indcators when this code block returns
             defer {

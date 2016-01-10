@@ -11,7 +11,7 @@ import Foundation
 extension ParseClient {
     
     /* get the 100 most recent student locations */
-    func getUserLocations (completionHandler: (users:[StudentInformation]?, errorString: String?) -> Void){
+    func getStudentLocations (completionHandler: (users:[StudentInformation]?, errorString: String?) -> Void){
         let parameters = [
             "limit" : "100",
             "skip" : "0",
