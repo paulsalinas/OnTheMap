@@ -43,14 +43,24 @@ class AddPinViewController: UIViewController, Alertable {
         geocode.geocodeAddressString(locationString) {(placemarks, error)->Void in
             print(placemarks?.first?.location)
             
-            guard let location = placemarks?.first?.location else {
+            guard let location = placemarks?.first?.location, name = placemarks?.first?.name, user = self.user else {
                 self.alert("Location can not be Found")
                 return
             }
+            
         
             let controller = self.storyboard!.instantiateViewControllerWithIdentifier("SubmitPinViewController") as! SubmitPinViewController
             controller.rootPresentingController = self.presentingViewController
             controller.coordinate = location.coordinate
+            controller.user = StudentInformation(
+                firstName: user.firstName,
+                lastName: user.lastName,
+                userId: user.userId,
+                url: nil,
+                longitude: location.coordinate.longitude,
+                latitude: location.coordinate.latitude,
+                mapString: name)
+            
             self.presentViewController(controller, animated: false, completion: nil)
         }
     }

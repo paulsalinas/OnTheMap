@@ -12,6 +12,7 @@ import MapKit
 class SubmitPinViewController: UIViewController, MKMapViewDelegate {
     
     @IBOutlet weak var mapView: MKMapView!
+    var user: StudentInformation?
     
     var rootPresentingController: UIViewController!
     var coordinate: CLLocationCoordinate2D!
