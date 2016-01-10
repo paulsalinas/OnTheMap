@@ -48,10 +48,8 @@ class AddPinViewController: UIViewController, Alertable {
                 return
             }
             
-        
             let controller = self.storyboard!.instantiateViewControllerWithIdentifier("SubmitPinViewController") as! SubmitPinViewController
             
-    
             controller.rootPresentingController = self.presentingViewController
             controller.user = StudentInformation(
                 firstName: user.firstName,
@@ -62,7 +60,9 @@ class AddPinViewController: UIViewController, Alertable {
                 latitude: location.coordinate.latitude,
                 mapString: name)
             
-            self.presentViewController(controller, animated: false, completion: nil)
+            dispatch_async(dispatch_get_main_queue(), {
+                self.presentViewController(controller, animated: false, completion: nil)
+            })
         }
     }
 }

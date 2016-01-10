@@ -51,7 +51,9 @@ class OnTheMapTabBarController: UITabBarController, Alertable {
                 })
                 alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Default, handler: nil))
                 
-                self.presentViewController(alert, animated: true, completion: nil)
+                dispatch_async(dispatch_get_main_queue(), {
+                    self.presentViewController(alert, animated: true, completion: nil)
+                })
             }
             else {
                 
