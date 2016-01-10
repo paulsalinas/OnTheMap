@@ -41,4 +41,14 @@ struct StudentInformation {
         latitude = nil
         mapString = nil
     }
+    
+    init (firstName: String, lastName: String, userId: String, url: String?, longitude: Double?, latitude: Double?, mapString: String?) {
+        self.firstName = firstName
+        self.lastName = lastName
+        self.userId = userId
+        self.url = url
+        self.longitude = longitude
+        self.latitude = latitude
+        self.mapString = mapString
+    }
 }
