@@ -26,8 +26,8 @@ class ParseClient : Client {
     func taskForPOSTMethod(method: String, parameters: [String : AnyObject], jsonBody: [String:AnyObject], completionHandler: (result: AnyObject!, error: NSError?) -> Void) -> NSURLSessionDataTask {
         
         let httpHeaders = [
-            ("application/json", "Accept"),
-            ("application/json", "Content-Type"),
+            (Constants.ApiKey, HttpHeaders.ApiKey),
+            (Constants.ApplicationID, HttpHeaders.ApplicationID),
         ]
         
         return taskForPOSTMethod(method, parameters: parameters, jsonBody: jsonBody, httpHeaders: httpHeaders) { data, error -> Void in
@@ -41,10 +41,7 @@ class ParseClient : Client {
                 return
             }
             
-            let newData = data.subdataWithRange(NSMakeRange(5, data.length - 5))
-            print(NSString(data: newData, encoding: NSUTF8StringEncoding))
-            
-            ParseClient.parseJSONWithCompletionHandler(newData, completionHandler: completionHandler)
+            ParseClient.parseJSONWithCompletionHandler(data, completionHandler: completionHandler)
             
         }
     }
