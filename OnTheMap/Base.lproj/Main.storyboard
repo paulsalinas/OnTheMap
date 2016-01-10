@@ -142,6 +142,7 @@
         <!--Navigation Controller-->
         <scene sceneID="R6f-Yf-5WI">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vDu-Jj-z3r" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController storyboardIdentifier="OnTheMapNavigationController" id="QUq-sz-Jdw" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="SCK-Yx-LVl">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -151,7 +152,6 @@
                         <segue destination="kPE-y5-Ld7" kind="relationship" relationship="rootViewController" id="w9M-B3-1MI"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="vDu-Jj-z3r" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1041" y="-392"/>
         </scene>
@@ -254,9 +254,6 @@
                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="keyPath" value="YES"/>
-                                                </userDefinedRuntimeAttributes>
                                             </textView>
                                         </subviews>
                                         <color key="backgroundColor" red="0.26885685628854872" green="0.53035259251220956" blue="0.81726270051515149" alpha="1" colorSpace="calibratedRGB"/>
