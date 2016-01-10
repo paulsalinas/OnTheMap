@@ -15,6 +15,7 @@ struct StudentInformation {
     let url: String?
     let longitude: Double?
     let latitude: Double?
+    let mapString: String?
     
     init (parseDictionary: [String: AnyObject]){
         firstName = parseDictionary[ParseClient.JSONResponseKeys.FirstName] as! String
@@ -23,6 +24,12 @@ struct StudentInformation {
         url = parseDictionary[ParseClient.JSONResponseKeys.Url] as! String?
         longitude = parseDictionary[ParseClient.JSONResponseKeys.Longitude] as! Double?
         latitude = parseDictionary[ParseClient.JSONResponseKeys.Latitude] as! Double?
+        
+        if let mapString = parseDictionary[ParseClient.JSONResponseKeys.MapString] as? String {
+            self.mapString = mapString
+        } else {
+            self.mapString = nil
+        }
     }
     
     init (udacityDictionary: [String: AnyObject]) {
@@ -32,5 +39,6 @@ struct StudentInformation {
         url = nil
         longitude = nil
         latitude = nil
+        mapString = nil
     }
 }

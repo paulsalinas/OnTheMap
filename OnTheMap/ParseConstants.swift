@@ -38,6 +38,7 @@ extension ParseClient {
         static let Url = "mediaURL"
         static let ObjectId = "objectId"
         static let CreatedAt = "createdAt"
+        static let MapString = "mapString"
     }
     
     struct Errors {
