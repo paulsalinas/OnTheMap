@@ -15,7 +15,6 @@ class SubmitPinViewController: UIViewController, MKMapViewDelegate {
     var user: StudentInformation?
     
     var rootPresentingController: UIViewController!
-    var coordinate: CLLocationCoordinate2D!
     
     @IBOutlet weak var enterLinkTextView: UITextView!
     
@@ -30,9 +29,9 @@ class SubmitPinViewController: UIViewController, MKMapViewDelegate {
         
         //add the pin
         let annotation = MKPointAnnotation()
-        annotation.coordinate = coordinate
+        annotation.coordinate = CLLocationCoordinate2D(latitude: user!.latitude!, longitude: user! .longitude!)
         mapView.addAnnotation(annotation)
-        mapView.setRegion(MKCoordinateRegion(center: coordinate, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)), animated: true)
+        mapView.setRegion(MKCoordinateRegion(center: annotation.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)), animated: true)
     }
 
     override func didReceiveMemoryWarning() {

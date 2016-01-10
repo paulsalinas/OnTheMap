@@ -50,8 +50,9 @@ class AddPinViewController: UIViewController, Alertable {
             
         
             let controller = self.storyboard!.instantiateViewControllerWithIdentifier("SubmitPinViewController") as! SubmitPinViewController
+            
+    
             controller.rootPresentingController = self.presentingViewController
-            controller.coordinate = location.coordinate
             controller.user = StudentInformation(
                 firstName: user.firstName,
                 lastName: user.lastName,
