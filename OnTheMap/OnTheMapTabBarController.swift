@@ -29,12 +29,37 @@ class OnTheMapTabBarController: UITabBarController, Alertable {
     @IBAction func pinButtonTouch(sender: AnyObject) {
         ParseClient.sharedInstance().searchForStudenLocation(user!.userId) { user, errorString -> Void in
             
-            // TODO: check for user and alert them to overwrite or cancel. pass the user model to the add pin controller
-            
-            dispatch_async(dispatch_get_main_queue(), {
-                let controller = self.storyboard!.instantiateViewControllerWithIdentifier("AddPinViewController")
+            // closure to show the next controller
+            let showAddPinController = { (user: StudentInformation?) -> Void in
+                let controller = self.storyboard!.instantiateViewControllerWithIdentifier("AddPinViewController") as! AddPinViewController
+                controller.user = user
                 self.presentViewController(controller, animated: true, completion: nil)
-            })
+            }
+            
+            // user has already placed a location?
+            if let user = user {
+                
+                //alert them with the ability to overwrite
+                let alert = UIAlertController(title: "", message: "\(user.firstName) \(user.lastName) already has input a location do you want to overwrite?", preferredStyle: UIAlertControllerStyle.Alert)
+                
+                alert.addAction(UIAlertAction(title: "Overwrite", style: UIAlertActionStyle.Default){
+                    alert -> Void in
+                    
+                    dispatch_async(dispatch_get_main_queue(), {
+                        showAddPinController(user)
+                    })
+                })
+                alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Default, handler: nil))
+                
+                self.presentViewController(alert, animated: true, completion: nil)
+            }
+            else {
+                
+                // no existing user? let user do what they initially intended
+                dispatch_async(dispatch_get_main_queue(), {
+                    showAddPinController(user)
+                })
+            }
         }
        
     }

@@ -14,6 +14,8 @@ class AddPinViewController: UIViewController, Alertable {
 
     @IBOutlet weak var enterLocationTextView: UITextView!
     
+    var user: StudentInformation?
+    
     // strong reference to the delegate
     var placeHolderDelegate: PlaceHolderTextViewDelegate?
     
