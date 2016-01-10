@@ -10,6 +10,7 @@ import Foundation
 
 extension ParseClient {
     
+    /* get the 100 most recent student locations */
     func getUserLocations (completionHandler: (users:[StudentInformation]?, errorString: String?) -> Void){
         let parameters = [
             "limit" : "100",
@@ -34,18 +35,39 @@ extension ParseClient {
         }
     }
     
+    /* get the student location. the user object will be nil on the call back if it doesn't exist */
+    func searchForStudenLocation(userId: String, completionHandler: (user: StudentInformation?, errorString: String?) -> Void){
+        let parameters = [
+            "where" : "{\"uniqueKey\":\"\(userId)\"}"
+        ]
+        
+        taskForGETMethod(Methods.StudentLocation, parameters: parameters) { (result, error) -> Void in
+            
+            // GUARD: fail and call completion handler on error
+            if let error = error {
+                completionHandler(user: nil, errorString: error.localizedDescription)
+                return
+            }
+            
+            guard let result = result[JSONResponseKeys.Results] as? [[String: AnyObject]] else {
+                completionHandler(user: nil, errorString: "User not found")
+                return
+            }
+            
+            guard let user = result.first  else {
+                completionHandler(user: nil, errorString: "User not found")
+                return
+            }
+            
+            completionHandler(user: StudentInformation(parseDictionary: user), errorString: nil)
+        }
+    }
+    
     class func studentInfoFromResults(results: [[String: AnyObject]]) -> [StudentInformation] {
         var students = [StudentInformation]()
         
         for result in results {
-            let student = StudentInformation(
-                firstName: result[JSONResponseKeys.FirstName] as! String,
-                lastName: result[JSONResponseKeys.LastName] as! String,
-                userId: result[JSONResponseKeys.UserID] as! String,
-                url: result[JSONResponseKeys.Url] as! String?,
-                longitude: result[JSONResponseKeys.Longitude] as! Double?,
-                latitude: result[JSONResponseKeys.Latitude] as! Double?
-            )
+            let student = StudentInformation(parseDictionary: result)
             
             students.append(student)
         }

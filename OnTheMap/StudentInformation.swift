@@ -15,4 +15,22 @@ struct StudentInformation {
     let url: String?
     let longitude: Double?
     let latitude: Double?
+    
+    init (parseDictionary: [String: AnyObject]){
+        firstName = parseDictionary[ParseClient.JSONResponseKeys.FirstName] as! String
+        lastName = parseDictionary[ParseClient.JSONResponseKeys.LastName] as! String
+        userId = parseDictionary[ParseClient.JSONResponseKeys.UserID] as! String
+        url = parseDictionary[ParseClient.JSONResponseKeys.Url] as! String?
+        longitude = parseDictionary[ParseClient.JSONResponseKeys.Longitude] as! Double?
+        latitude = parseDictionary[ParseClient.JSONResponseKeys.Latitude] as! Double?
+    }
+    
+    init (udacityDictionary: [String: AnyObject]) {
+        firstName = udacityDictionary[UdacityClient.JSONResponseKeys.FirstName] as! String
+        lastName = udacityDictionary[UdacityClient.JSONResponseKeys.LastName] as! String
+        userId = udacityDictionary[UdacityClient.JSONResponseKeys.UserID] as! String
+        url = nil
+        longitude = nil
+        latitude = nil
+    }
 }

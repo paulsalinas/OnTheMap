@@ -89,14 +89,7 @@ extension UdacityClient {
                 return
             }
             
-            let student = StudentInformation(
-                firstName: user[UdacityClient.JSONResponseKeys.FirstName] as! String,
-                lastName: user[UdacityClient.JSONResponseKeys.LastName] as! String,
-                userId: user[UdacityClient.JSONResponseKeys.UserID] as! String,
-                url: nil,
-                longitude: nil,
-                latitude: nil
-            )
+            let student = StudentInformation(udacityDictionary: user)
         
             completionHandler(user: student, errorString: nil)
         }

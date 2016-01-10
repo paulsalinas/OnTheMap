@@ -8,7 +8,9 @@
 
 import UIKit
 
-class OnTheMapTabBarController: UITabBarController {
+class OnTheMapTabBarController: UITabBarController, Alertable {
+    
+    var user: StudentInformation?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,7 +27,15 @@ class OnTheMapTabBarController: UITabBarController {
     }
     
     @IBAction func pinButtonTouch(sender: AnyObject) {
-        let controller = self.storyboard!.instantiateViewControllerWithIdentifier("AddPinViewController")
-        self.presentViewController(controller, animated: true, completion: nil)
+        ParseClient.sharedInstance().searchForStudenLocation(user!.userId) { user, errorString -> Void in
+            
+            // TODO: check for user and alert them to overwrite or cancel. pass the user model to the add pin controller
+            
+            dispatch_async(dispatch_get_main_queue(), {
+                let controller = self.storyboard!.instantiateViewControllerWithIdentifier("AddPinViewController")
+                self.presentViewController(controller, animated: true, completion: nil)
+            })
+        }
+       
     }
 }

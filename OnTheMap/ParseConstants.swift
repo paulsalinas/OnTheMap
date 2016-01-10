@@ -36,5 +36,7 @@ extension ParseClient {
         static let Latitude = "latitude"
         static let Longitude = "longitude"
         static let Url = "mediaURL"
+        static let ObjectId = "objectId"
+        static let CreatedAt = "createdAt"
     }
 }
