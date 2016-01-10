@@ -27,7 +27,7 @@ extension ParseClient {
             }
             
             guard let result = result[JSONResponseKeys.Results] as? [[String: AnyObject]] else {
-                print("couldn't find result key")
+                completionHandler(users: nil, errorString: Errors.ErrorReadingResults)
                 return
             }
             
@@ -50,7 +50,7 @@ extension ParseClient {
             }
             
             guard let result = result[JSONResponseKeys.Results] as? [[String: AnyObject]] else {
-                completionHandler(user: nil, errorString: "User not found")
+                completionHandler(user: nil, errorString: Errors.ErrorReadingResults)
                 return
             }
             

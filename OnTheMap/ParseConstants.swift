@@ -39,4 +39,8 @@ extension ParseClient {
         static let ObjectId = "objectId"
         static let CreatedAt = "createdAt"
     }
+    
+    struct Errors {
+        static let ErrorReadingResults = "Error Reading Server Results"
+    }
 }
