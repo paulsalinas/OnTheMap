@@ -16,6 +16,7 @@ struct StudentInformation {
     let longitude: Double?
     let latitude: Double?
     let mapString: String?
+    let objectId: String?
     
     init (parseDictionary: [String: AnyObject]){
         firstName = parseDictionary[ParseClient.JSONResponseKeys.FirstName] as! String
@@ -24,6 +25,7 @@ struct StudentInformation {
         url = parseDictionary[ParseClient.JSONResponseKeys.Url] as! String?
         longitude = parseDictionary[ParseClient.JSONResponseKeys.Longitude] as! Double?
         latitude = parseDictionary[ParseClient.JSONResponseKeys.Latitude] as! Double?
+        objectId = parseDictionary[ParseClient.JSONResponseKeys.ObjectId] as! String?
         
         if let mapString = parseDictionary[ParseClient.JSONResponseKeys.MapString] as? String {
             self.mapString = mapString
@@ -40,6 +42,7 @@ struct StudentInformation {
         longitude = nil
         latitude = nil
         mapString = nil
+        objectId = nil
     }
     
     init (firstName: String, lastName: String, userId: String, url: String?, longitude: Double?, latitude: Double?, mapString: String?) {
@@ -50,5 +53,6 @@ struct StudentInformation {
         self.longitude = longitude
         self.latitude = latitude
         self.mapString = mapString
+        objectId = nil
     }
 }
