@@ -92,6 +92,75 @@ class Client : NSObject {
         return task
     }
     
+    // MARK: GENERAL TASK
+    
+    func taskForMethod(method: String, httpMethod: String, parameters: [String : AnyObject], jsonBody: [String:AnyObject], httpHeaders: [(String, String)], completionHandler: (data: NSData?, error: NSError?) -> Void) -> NSURLSessionDataTask {
+        
+        /* 1. Set the parameters */
+        let mutableParameters = parameters
+        
+        /* 2/3. Build the URL and configure the request */
+        let urlString = url + method + Client.escapedParameters(mutableParameters)
+        
+        let request = NSMutableURLRequest(URL: NSURL(string: urlString)!)
+        request.HTTPMethod = httpMethod
+        
+        for (val, field) in httpHeaders {
+            request.addValue(val, forHTTPHeaderField: field)
+        }
+        
+        do {
+            request.HTTPBody = try! NSJSONSerialization.dataWithJSONObject(jsonBody, options: .PrettyPrinted)
+        }
+        
+        let session = NSURLSession.sharedSession()
+        let task = session.dataTaskWithRequest(request) { data, response, error in
+            
+            /* function to be called when an error occurs from server response */
+            let errorHandler = { (description: String) -> Void in
+                print(description)
+                
+                let userInfo = [NSLocalizedDescriptionKey : description]
+                completionHandler(data: nil, error: NSError(domain: "taskForPOSTMethod", code: 1, userInfo: userInfo))
+            }
+            
+            
+            /* GUARD: Was there an error? */
+            guard (error == nil) else {
+                errorHandler("There was an error with your request: \(error)")
+                return
+            }
+            
+            /* GUARD: Did we get a successful 2XX response? */
+            guard let statusCode = (response as? NSHTTPURLResponse)?.statusCode where statusCode >= 200 && statusCode <= 299 else {
+                let error: String
+                if let response = response as? NSHTTPURLResponse {
+                    error = "Your request returned an invalid response! Status code: \(response.statusCode)!"
+                } else if let response = response {
+                    error = "Your request returned an invalid response! Response: \(response)!"
+                } else {
+                    error = "Your request returned an invalid response!"
+                }
+                
+                errorHandler(error)
+                return
+            }
+            
+            /* GUARD: Was there any data returned? */
+            guard let data = data else {
+                errorHandler("No data was returned by the request!")
+                return
+            }
+            
+            
+            completionHandler(data: data, error: nil)
+        }
+        
+        task.resume()
+        
+        return task
+    }
+    
     // MARK: GET
     
     func taskForGETMethod(method: String, parameters: [String : AnyObject], httpHeaders: [(String, String)], completionHandler: (data: NSData?, error: NSError?) -> Void) -> NSURLSessionDataTask {
