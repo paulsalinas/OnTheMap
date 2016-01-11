@@ -23,7 +23,7 @@ class ParseClient : Client {
     
     // MARK: POST
     
-    func taskForPOSTMethod(method: String, parameters: [String : AnyObject], jsonBody: [String:AnyObject], completionHandler: (result: AnyObject!, error: NSError?) -> Void) -> NSURLSessionDataTask {
+    func taskForPOSTMethod(method: String, parameters: [String : AnyObject], jsonBody: [String : AnyObject], completionHandler: (result: AnyObject!, error: NSError?) -> Void) -> NSURLSessionDataTask {
         
         let httpHeaders = [
             (Constants.ApiKey, HttpHeaders.ApiKey),
@@ -31,6 +31,31 @@ class ParseClient : Client {
         ]
         
         return taskForPOSTMethod(method, parameters: parameters, jsonBody: jsonBody, httpHeaders: httpHeaders) { data, error -> Void in
+            
+            if let error = error {
+                completionHandler(result: nil, error: error)
+            }
+            
+            guard let data = data else {
+                print("there's data returned")
+                return
+            }
+            
+            ParseClient.parseJSONWithCompletionHandler(data, completionHandler: completionHandler)
+            
+        }
+    }
+    
+    // MARK: GENERAL TASK
+    
+    func taskForMethod(method: String, httpMethod: String, parameters: [String : AnyObject], jsonBody: [String : AnyObject], completionHandler: (result: AnyObject!, error: NSError?) -> Void) -> NSURLSessionDataTask {
+        
+        let httpHeaders = [
+            (Constants.ApiKey, HttpHeaders.ApiKey),
+            (Constants.ApplicationID, HttpHeaders.ApplicationID),
+        ]
+        
+        return taskForMethod(method, httpMethod: httpMethod, parameters: parameters, jsonBody: jsonBody, httpHeaders: httpHeaders) { data, error -> Void in
             
             if let error = error {
                 completionHandler(result: nil, error: error)
