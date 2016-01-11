@@ -20,6 +20,11 @@ extension ParseClient {
         static let StudentLocation = "StudentLocation"
     }
     
+    struct HttpMethod {
+        static let POST = "POST"
+        static let PUT = "PUT"
+    }
+    
     struct HttpHeaders {
         static let ApiKey : String = "X-Parse-REST-API-Key"
         static let ApplicationID : String = "X-Parse-Application-Id"
@@ -41,7 +46,20 @@ extension ParseClient {
         static let MapString = "mapString"
     }
     
+    struct JSONBody {
+        static let UserID = "uniqueKey"
+        static let FirstName = "firstName"
+        static let LastName = "lastName"
+        static let Latitude = "latitude"
+        static let Longitude = "longitude"
+        static let Url = "mediaURL"
+        static let MapString = "mapString"
+    }
+    
     struct Errors {
         static let ErrorReadingResults = "Error Reading Server Results"
+        static let EmptyUrlForStudent = "Student Location has an empty url field"
+        static let InvalidLongitude = "Student Location has en invalid longitude"
+        static let InvalidLatitude = "Student Location has en invalid latitude"
     }
 }

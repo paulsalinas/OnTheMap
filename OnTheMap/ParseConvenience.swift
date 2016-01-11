@@ -18,7 +18,8 @@ extension ParseClient {
             "order" : "-updatedAt"
         ]
         
-        taskForGETMethod(Methods.StudentLocation, parameters: parameters) { (result, error) -> Void in
+        taskForGETMethod(Methods.StudentLocation, parameters: parameters) {
+            (result, error) -> Void in
             
             // GUARD: fail and call completion handler on error
             if let error = error {
@@ -41,7 +42,8 @@ extension ParseClient {
             "where" : "{\"uniqueKey\":\"\(userId)\"}"
         ]
         
-        taskForGETMethod(Methods.StudentLocation, parameters: parameters) { (result, error) -> Void in
+        taskForGETMethod(Methods.StudentLocation, parameters: parameters) {
+            (result, error) -> Void in
             
             // GUARD: fail and call completion handler on error
             if let error = error {
@@ -61,6 +63,86 @@ extension ParseClient {
             
             completionHandler(user: StudentInformation(parseDictionary: user), errorString: nil)
         }
+    }
+    
+    func addStudentLocation(user: StudentInformation, completionHandler: (success: Bool?, errorString: String?) -> Void){
+        
+        // validate the model
+        let validationResult = ParseClient.validateStudentLocation(user)
+        
+        // end it here if validation fails
+        if !validationResult.success {
+            completionHandler(success: validationResult.success, errorString: validationResult.errorString)
+            return
+        }
+        
+        let jsonBody : [String: AnyObject]
+        
+        jsonBody = [
+            JSONBody.FirstName: user.firstName,
+            JSONBody.LastName: user.lastName,
+            JSONBody.Latitude: user.latitude!,
+            JSONBody.Longitude: user.longitude!,
+            JSONBody.Url: user.url!,
+            JSONBody.MapString: user.mapString!
+        ]
+        
+        taskForMethod(Methods.StudentLocation, httpMethod: HttpMethod.POST, parameters: [String: AnyObject](), jsonBody: jsonBody) {
+            (result, error) -> Void in
+            
+            return
+        }
+    }
+    
+    func changeStudentLocation(user: StudentInformation, completionHandler: (success: Bool?, errorString: String?) -> Void){
+        
+        // validate the model
+        let validationResult = ParseClient.validateStudentLocation(user)
+        
+        // end it here if validation fails
+        if !validationResult.success {
+            completionHandler(success: validationResult.success, errorString: validationResult.errorString)
+            return
+        }
+        
+        let jsonBody : [String: AnyObject]
+        
+        jsonBody = [
+            JSONBody.FirstName: user.firstName,
+            JSONBody.LastName: user.lastName,
+            JSONBody.Latitude: user.latitude!,
+            JSONBody.Longitude: user.longitude!,
+            JSONBody.Url: user.url!,
+            JSONBody.MapString: user.mapString!
+        ]
+        
+        taskForMethod(Methods.StudentLocation, httpMethod: HttpMethod.PUT, parameters: [String: AnyObject](), jsonBody: jsonBody) {
+            (result, error) -> Void in
+            
+            return
+        }
+    }
+    
+    class func validateStudentLocation(user: StudentInformation) -> (success: Bool, errorString: String?) {
+        
+        // validate the model
+        guard let url = user.url where url != "" else {
+            return (success: false, errorString: Errors.EmptyUrlForStudent)
+        }
+        
+        guard let mapString = user.mapString where mapString != "" else {
+            return (success: false, errorString: Errors.EmptyUrlForStudent)
+        }
+        
+        guard let latitude = user.latitude where latitude >= -90 && latitude <= 90 else {
+            return (success: false, errorString: Errors.InvalidLatitude)
+        }
+        
+        guard let longitude = user.longitude where longitude >= -180 && longitude <= 180 else {
+            return (success: false, errorString: Errors.InvalidLongitude)
+        }
+        
+        return (success: true, errorString: nil)
     }
     
     class func studentInfoFromResults(results: [[String: AnyObject]]) -> [StudentInformation] {
