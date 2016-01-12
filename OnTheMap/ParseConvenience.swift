@@ -84,13 +84,25 @@ extension ParseClient {
             JSONBody.Latitude: user.latitude!,
             JSONBody.Longitude: user.longitude!,
             JSONBody.Url: user.url!,
-            JSONBody.MapString: user.mapString!
+            JSONBody.MapString: user.mapString!,
+            JSONBody.UserID: user.userId
         ]
         
         taskForMethod(Methods.StudentLocation, httpMethod: HttpMethod.POST, parameters: [String: AnyObject](), jsonBody: jsonBody) {
             (result, error) -> Void in
             
-            return
+            // GUARD: fail and call completion handler on error
+            if let error = error {
+                completionHandler(success: false, errorString: error.localizedDescription)
+                return
+            }
+            
+            guard (result[JSONResponseKeys.CreatedAt] as? String) != nil  else {
+                completionHandler(success: false, errorString: Errors.ErrorReadingResults)
+                return
+            }
+            
+            completionHandler(success: true, errorString: nil)
         }
     }
     
@@ -113,13 +125,27 @@ extension ParseClient {
             JSONBody.Latitude: user.latitude!,
             JSONBody.Longitude: user.longitude!,
             JSONBody.Url: user.url!,
-            JSONBody.MapString: user.mapString!
+            JSONBody.MapString: user.mapString!,
+            JSONBody.UserID: user.userId
         ]
         
-        taskForMethod(Methods.StudentLocation, httpMethod: HttpMethod.PUT, parameters: [String: AnyObject](), jsonBody: jsonBody) {
+        let method = ParseClient.substituteKeyInMethod(Methods.PUTStudentLocation, key: "objectId", value: user.objectId!)
+        
+        taskForMethod(method!, httpMethod: HttpMethod.PUT, parameters: [String: AnyObject](), jsonBody: jsonBody) {
             (result, error) -> Void in
             
-            return
+            // GUARD: fail and call completion handler on error
+            if let error = error {
+                completionHandler(success: false, errorString: error.localizedDescription)
+                return
+            }
+            
+            guard (result[JSONResponseKeys.UpdatedAt] as? String) != nil else {
+                completionHandler(success: false, errorString: Errors.ErrorReadingResults)
+                return
+            }
+            
+            completionHandler(success: true, errorString: nil)
         }
     }
     

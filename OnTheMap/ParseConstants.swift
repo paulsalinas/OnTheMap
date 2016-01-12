@@ -18,6 +18,7 @@ extension ParseClient {
     
     struct Methods {
         static let StudentLocation = "StudentLocation"
+        static let PUTStudentLocation = "StudentLocation/{objectId}"
     }
     
     struct HttpMethod {
@@ -44,6 +45,7 @@ extension ParseClient {
         static let ObjectId = "objectId"
         static let CreatedAt = "createdAt"
         static let MapString = "mapString"
+        static let UpdatedAt = "updatedAt"
     }
     
     struct JSONBody {
