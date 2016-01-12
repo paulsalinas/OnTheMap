@@ -58,7 +58,9 @@ class AddPinViewController: UIViewController, Alertable {
                 url: nil,
                 longitude: location.coordinate.longitude,
                 latitude: location.coordinate.latitude,
-                mapString: name)
+                mapString: name,
+                objectId: nil
+            )
             
             dispatch_async(dispatch_get_main_queue(), {
                 self.presentViewController(controller, animated: false, completion: nil)

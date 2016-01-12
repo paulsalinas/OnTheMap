@@ -45,7 +45,7 @@ struct StudentInformation {
         objectId = nil
     }
     
-    init (firstName: String, lastName: String, userId: String, url: String?, longitude: Double?, latitude: Double?, mapString: String?) {
+    init (firstName: String, lastName: String, userId: String, url: String?, longitude: Double?, latitude: Double?, mapString: String?, objectId: String?) {
         self.firstName = firstName
         self.lastName = lastName
         self.userId = userId
@@ -53,6 +53,6 @@ struct StudentInformation {
         self.longitude = longitude
         self.latitude = latitude
         self.mapString = mapString
-        objectId = nil
+        self.objectId = objectId
     }
 }
