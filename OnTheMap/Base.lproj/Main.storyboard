@@ -355,21 +355,21 @@
                                                 </connections>
                                             </button>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Enter Link to Share Here" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="etY-C4-gfs">
-                                                <rect key="frame" x="0.0" y="64" width="600" height="128"/>
+                                                <rect key="frame" x="20" y="64" width="560" height="128"/>
                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                <textInputTraits key="textInputTraits"/>
                                             </textView>
                                         </subviews>
                                         <color key="backgroundColor" red="0.2688568563" green="0.5303525925" blue="0.81726270050000005" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstItem="NEI-Ik-xwb" firstAttribute="top" secondItem="ZCt-zU-viV" secondAttribute="top" constant="16" id="3Xe-iC-mPJ"/>
                                             <constraint firstItem="etY-C4-gfs" firstAttribute="top" secondItem="NEI-Ik-xwb" secondAttribute="bottom" constant="18" id="E3P-bb-tCM"/>
-                                            <constraint firstItem="etY-C4-gfs" firstAttribute="leading" secondItem="ZCt-zU-viV" secondAttribute="leading" id="FRe-zA-W93"/>
+                                            <constraint firstItem="etY-C4-gfs" firstAttribute="leading" secondItem="ZCt-zU-viV" secondAttribute="leading" constant="20" id="FRe-zA-W93"/>
                                             <constraint firstAttribute="trailing" secondItem="NEI-Ik-xwb" secondAttribute="trailing" constant="31" id="HAD-es-4HL"/>
                                             <constraint firstAttribute="height" constant="200" id="HOt-nP-MLb"/>
                                             <constraint firstAttribute="bottom" secondItem="etY-C4-gfs" secondAttribute="bottom" constant="8" id="KJ4-Ra-Pw5"/>
-                                            <constraint firstAttribute="trailing" secondItem="etY-C4-gfs" secondAttribute="trailing" id="w2F-E6-ox2"/>
+                                            <constraint firstAttribute="trailing" secondItem="etY-C4-gfs" secondAttribute="trailing" constant="20" id="w2F-E6-ox2"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eXY-wH-bbv">
