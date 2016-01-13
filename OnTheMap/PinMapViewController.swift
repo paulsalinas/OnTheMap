@@ -27,12 +27,15 @@ class PinMapViewController: UIViewController, MKMapViewDelegate, Refreshable, Al
     
     func refresh() {
         
-        //turn on the loading indicators
+        // clear the map for new annotations
+        removeMapAnnotations()
+        
+        // turn on the loading indicators
         loadingIndicators(arehidden: false)
         
         ParseClient.sharedInstance().getStudentLocations() { users, errorString -> Void in
             
-            //make sure to turn off the loading indcators when this code block returns
+            // make sure to turn off the loading indcators when this code block returns
             defer {
                 dispatch_async(dispatch_get_main_queue(), {
                     self.loadingIndicators(arehidden: true)
@@ -111,5 +114,11 @@ class PinMapViewController: UIViewController, MKMapViewDelegate, Refreshable, Al
                 app.openURL(NSURL(string: toOpen)!)
             }
         }
+    }
+    
+    /* removes all of the annotations on the map */
+    func removeMapAnnotations() {
+        let annotationsToRemove = mapView.annotations.filter { $0 !== mapView.userLocation }
+        mapView.removeAnnotations( annotationsToRemove )
     }
 }
