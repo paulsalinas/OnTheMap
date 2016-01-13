@@ -401,6 +401,7 @@
                                                         </userDefinedRuntimeAttributes>
                                                         <connections>
                                                             <action selector="findOnTheMapButtonTouch:" destination="HTL-9h-TGn" eventType="touchUpInside" id="mxQ-EC-gli"/>
+                                                            <action selector="submitLinkButtonTouch:" destination="nUC-JS-qWO" eventType="touchUpInside" id="Gus-mW-OoV"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
