@@ -49,6 +49,17 @@ class SubmitPinViewController: UIViewController, MKMapViewDelegate, Alertable {
         //see if the user has already been submitted
         ParseClient.sharedInstance().searchForStudenLocation(user!.userId) {
             user, errorString -> Void in
+            let onComplete = {(success: Bool?, errorString: String?) -> Void in
+                
+                if success == true {
+                    dispatch_async(dispatch_get_main_queue(), {
+                        self.rootPresentingController.dismissViewControllerAnimated(true, completion: nil)
+                    })
+                } else {
+                    self.alert(errorString!)
+                }
+            }
+            
             
             if let user = user {
                 
@@ -67,10 +78,7 @@ class SubmitPinViewController: UIViewController, MKMapViewDelegate, Alertable {
                         
                         // pass the object id from the search
                         objectId: user.objectId
-                    )) {
-                        success, errorString -> Void in
-                        return
-                }
+                    ), completionHandler: onComplete)
             } else {
                 
                 //use was not found, we send an add request
@@ -88,16 +96,15 @@ class SubmitPinViewController: UIViewController, MKMapViewDelegate, Alertable {
                         
                         // new add
                         objectId: nil
-                    )) {
-                        success, errorString -> Void in
-                        return
-                }
+                    ), completionHandler: onComplete)
             }
         }
     }
+    
     @IBAction func cancelButtonTouch(sender: AnyObject) {
         
         // we need to dismiss at the root to also dismiss all of the modals that may have presented this one
         rootPresentingController.dismissViewControllerAnimated(true, completion: nil)
     }
+
 }

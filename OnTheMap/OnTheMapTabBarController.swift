@@ -16,14 +16,15 @@ class OnTheMapTabBarController: UITabBarController, Alertable {
         super.viewDidLoad()
     }
     
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        refreshAllTabbedViewControllers()
+    }
+    
     @IBAction func refreshButtonTouch(sender: AnyObject) {
         
-        // refresh all tabbed controllers that are Refreshable
-        for vc in viewControllers! {
-            if let vc = vc as? Refreshable {
-                vc.refresh()
-            }
-        }
+        refreshAllTabbedViewControllers()
     }
     
     @IBAction func pinButtonTouch(sender: AnyObject) {
@@ -64,5 +65,16 @@ class OnTheMapTabBarController: UITabBarController, Alertable {
             }
         }
        
+    }
+    
+    /* function to refresh all of the tab's child controllers */
+    func refreshAllTabbedViewControllers() {
+        
+        // refresh all tabbed controllers that are Refreshable
+        for vc in viewControllers! {
+            if let vc = vc as? Refreshable {
+                vc.refresh()
+            }
+        }
     }
 }

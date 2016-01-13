@@ -18,9 +18,6 @@ class PinMapViewController: UIViewController, MKMapViewDelegate, Refreshable, Al
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-        refresh()
     }
     
     func loadingIndicators(arehidden arehidden: Bool) {
