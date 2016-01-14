@@ -24,6 +24,7 @@ extension ParseClient {
     struct HttpMethod {
         static let POST = "POST"
         static let PUT = "PUT"
+        static let DELETE = "DELETE"
     }
     
     struct HttpHeaders {

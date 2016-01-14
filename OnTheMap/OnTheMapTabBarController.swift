@@ -27,6 +27,22 @@ class OnTheMapTabBarController: UITabBarController, Alertable {
         refreshAllTabbedViewControllers()
     }
     
+    /* THIS WAS USED FOR TESTING */
+    @IBAction func deleteButtonTouch(sender: AnyObject) {
+        ParseClient.sharedInstance().searchForStudenLocation(user!.userId) { user, errorString -> Void in
+            
+            // user has already placed a location?
+            if let user = user {
+                ParseClient.sharedInstance().deleteStudentLocation(user) {
+                    success, errorString -> Void in
+                    dispatch_async(dispatch_get_main_queue(), {
+                        self.refreshAllTabbedViewControllers()
+                    })
+                }
+            }
+        }
+    }
+ 
     @IBAction func pinButtonTouch(sender: AnyObject) {
         ParseClient.sharedInstance().searchForStudenLocation(user!.userId) { user, errorString -> Void in
             
@@ -60,7 +76,7 @@ class OnTheMapTabBarController: UITabBarController, Alertable {
                 
                 // no existing user? let user do what they initially intended
                 dispatch_async(dispatch_get_main_queue(), {
-                    showAddPinController(user)
+                    showAddPinController(self.user)
                 })
             }
         }

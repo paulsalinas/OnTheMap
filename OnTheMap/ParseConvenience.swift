@@ -149,6 +149,34 @@ extension ParseClient {
         }
     }
     
+    func deleteStudentLocation (user: StudentInformation, completionHandler: (success: Bool?, errorString: String?) -> Void){
+        
+        // validate the model
+        let validationResult = ParseClient.validateStudentLocation(user)
+        
+        // end it here if validation fails
+        if !validationResult.success {
+            completionHandler(success: validationResult.success, errorString: validationResult.errorString)
+            return
+        }
+        
+        let jsonBody = [String: AnyObject]()
+        
+        let method = ParseClient.substituteKeyInMethod(Methods.PUTStudentLocation, key: "objectId", value: user.objectId!)
+        
+        taskForMethod(method!, httpMethod: HttpMethod.DELETE, parameters: [String: AnyObject](), jsonBody: jsonBody) {
+            (result, error) -> Void in
+            
+            // GUARD: fail and call completion handler on error
+            if let error = error {
+                completionHandler(success: false, errorString: error.localizedDescription)
+                return
+            }
+            
+            completionHandler(success: true, errorString: nil)
+        }
+    }
+    
     class func validateStudentLocation(user: StudentInformation) -> (success: Bool, errorString: String?) {
         
         // validate the model
