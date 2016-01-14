@@ -9,6 +9,7 @@
     <customFonts key="customFonts">
         <mutableArray key="Roboto-Medium.ttf">
             <string>Roboto-Medium</string>
+            <string>Roboto-Medium</string>
         </mutableArray>
         <mutableArray key="Roboto-Regular.ttf">
             <string>Roboto-Regular</string>
@@ -29,9 +30,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="49r-Sk-4e4">
-                                <rect key="frame" x="290" y="290" width="20" height="20"/>
-                            </activityIndicatorView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Qpm-Ih-at9">
                                 <rect key="frame" x="163" y="250" width="275" height="100"/>
                                 <subviews>
@@ -93,14 +91,72 @@
                                     <constraint firstAttribute="width" constant="275" id="3HI-bn-sd9"/>
                                 </constraints>
                             </stackView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="49r-Sk-4e4">
+                                <rect key="frame" x="290" y="290" width="20" height="20"/>
+                            </activityIndicatorView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login to Udacity" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="frO-xa-SXc">
+                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="21"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Udacity" translatesAutoresizingMaskIntoConstraints="NO" id="ZcP-KW-UbL">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="mRa-VL-Vzg"/>
+                                    <constraint firstAttribute="height" constant="80" id="qrE-Kp-SVH"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="mRa-VL-Vzg"/>
+                                        <exclude reference="qrE-Kp-SVH"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="mRa-VL-Vzg"/>
+                                        <include reference="qrE-Kp-SVH"/>
+                                    </mask>
+                                </variation>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.60754016220849527" blue="0.22546713504913651" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="49r-Sk-4e4" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="5A5-Vf-ztL"/>
+                            <constraint firstItem="ZcP-KW-UbL" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ZPP-JX-YBn"/>
                             <constraint firstItem="Qpm-Ih-at9" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="fja-7Z-3Kh"/>
+                            <constraint firstItem="frO-xa-SXc" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ipz-Kt-8ve"/>
                             <constraint firstItem="49r-Sk-4e4" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="nqb-hc-WEm"/>
                             <constraint firstItem="Qpm-Ih-at9" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="sBc-NG-nBD"/>
+                            <constraint firstItem="Qpm-Ih-at9" firstAttribute="top" secondItem="frO-xa-SXc" secondAttribute="bottom" constant="22" id="sid-Dj-Owx"/>
+                            <constraint firstItem="frO-xa-SXc" firstAttribute="top" secondItem="ZcP-KW-UbL" secondAttribute="bottom" constant="8" id="uBt-QP-ZnL">
+                                <variation key="heightClass=regular-widthClass=compact" constant="8"/>
+                            </constraint>
                         </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="frO-xa-SXc"/>
+                                <exclude reference="ZcP-KW-UbL"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="ZPP-JX-YBn"/>
+                                <exclude reference="ipz-Kt-8ve"/>
+                                <exclude reference="uBt-QP-ZnL"/>
+                                <exclude reference="sid-Dj-Owx"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="frO-xa-SXc"/>
+                                <include reference="ZcP-KW-UbL"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="ZPP-JX-YBn"/>
+                                <include reference="ipz-Kt-8ve"/>
+                                <include reference="uBt-QP-ZnL"/>
+                                <include reference="sid-Dj-Owx"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="loadingIndicatorView" destination="49r-Sk-4e4" id="tku-ZG-kWj"/>
@@ -110,7 +166,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1724" y="-401"/>
+            <point key="canvasLocation" x="-1725" y="-401.25"/>
         </scene>
         <!--Item 2-->
         <scene sceneID="AAG-R6-B59">
@@ -486,5 +542,6 @@
     <resources>
         <image name="Map" width="32" height="32"/>
         <image name="Pin" width="32" height="32"/>
+        <image name="Udacity" width="256" height="256"/>
     </resources>
 </document>
