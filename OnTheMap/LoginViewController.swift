@@ -34,7 +34,7 @@ class LoginViewController: UIViewController, Alertable {
         loadingIndicatorView.hidden = false
         
         // authenticate user
-        UdacityClient.sharedInstance().authenticate(usernameInput.text!, password: passwordInput.text!) {
+        UdacityClient.sharedInstance().authenticateAndCreateSession(usernameInput.text!, password: passwordInput.text!) {
             success, error -> Void in
             
             // make sure to stop the animation when this code block ends
