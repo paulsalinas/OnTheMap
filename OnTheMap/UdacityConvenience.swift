@@ -10,7 +10,7 @@ import Foundation
 
 extension UdacityClient {
     
-    func authenticate(username: String, password: String , completionHandler: (success: Bool, errorString: String?) -> Void) {
+    func authenticateAndCreateSession(username: String, password: String , completionHandler: (success: Bool, errorString: String?) -> Void) {
         
         // 1) validate - check if username and password are empty
         guard username != "" && password != ""  else {
