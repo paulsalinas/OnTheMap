@@ -49,7 +49,6 @@ class Client : NSObject {
             
             /* function to be called when an error occurs from server response */
             let errorHandler = { (description: String) -> Void in
-                print(description)
                 
                 let userInfo = [NSLocalizedDescriptionKey : description]
                 completionHandler(data: nil, error: NSError(domain: "taskForPOSTMethod", code: 1, userInfo: userInfo))
@@ -118,7 +117,6 @@ class Client : NSObject {
             
             /* function to be called when an error occurs from server response */
             let errorHandler = { (description: String) -> Void in
-                print(description)
                 
                 let userInfo = [NSLocalizedDescriptionKey : description]
                 completionHandler(data: nil, error: NSError(domain: "taskForPOSTMethod", code: 1, userInfo: userInfo))

@@ -43,8 +43,6 @@ class UdacityClient : Client {
             }
             
             let newData = data.subdataWithRange(NSMakeRange(5, data.length - 5))
-            print(NSString(data: newData, encoding: NSUTF8StringEncoding))
-            
             UdacityClient.parseJSONWithCompletionHandler(newData, completionHandler: completionHandler)
             
         }
@@ -73,8 +71,6 @@ class UdacityClient : Client {
             }
             
             let newData = data.subdataWithRange(NSMakeRange(5, data.length - 5))
-            print(NSString(data: newData, encoding: NSUTF8StringEncoding))
-            
             UdacityClient.parseJSONWithCompletionHandler(newData, completionHandler: completionHandler)
             
         }

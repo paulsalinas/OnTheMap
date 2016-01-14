@@ -53,7 +53,6 @@ class LoginViewController: UIViewController, Alertable {
             }
             
             //get user id models
-            print("success!")
             UdacityClient.sharedInstance().getUserData() { (user, errorString) -> Void in
                 
                 // make sure to stop the animation when this code block ends

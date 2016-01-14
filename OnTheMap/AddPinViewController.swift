@@ -41,7 +41,6 @@ class AddPinViewController: UIViewController, Alertable {
         // Geocode the string
         let geocode = CLGeocoder()
         geocode.geocodeAddressString(locationString) {(placemarks, error)->Void in
-            print(placemarks?.first?.location)
             
             guard let location = placemarks?.first?.location, name = placemarks?.first?.name, user = self.user else {
                 self.alert("Location can not be Found")
