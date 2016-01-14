@@ -22,6 +22,13 @@ class LoginViewController: UIViewController, Alertable {
         super.didReceiveMemoryWarning()
     }
     
+    @IBAction func signUpButtonTouch(sender: AnyObject) {
+        
+        let app = UIApplication.sharedApplication()
+        let udacitySignUpUrl = "http://www.udacity.com/account/auth#!/signup"
+        app.openURL(NSURL(string: udacitySignUpUrl)!)
+    }
+    
     @IBAction func loginButtonTouch(sender: AnyObject) {
         
         loadingIndicatorView.hidden = false
