@@ -29,10 +29,10 @@ extension UdacityClient {
             
             // GUARD: fail and call completion handler on error
             if let error = error {
-                if error.code ==  ErrorCodes.Forbidden {
+                if error.code ==  Client.ErrorCodes.Forbidden {
                     completionHandler(success: false, errorString: Errors.InvalidEmailPassword)
                 }
-                else if error.code == ErrorCodes.DataError {
+                else if error.code == Client.ErrorCodes.DataError {
                     completionHandler(success: false, errorString: Errors.DataError)
                 }
                 else {
@@ -68,16 +68,16 @@ extension UdacityClient {
             return
         }
         
-        let method = UdacityClient.substituteKeyInMethod(Methods.Users, key: URLKeys.UserID, value: userID)!
+        let method = Client.substituteKeyInMethod(Methods.Users, key: URLKeys.UserID, value: userID)!
         
         taskForGETMethod(method, parameters: [String: AnyObject]()) { (result, error) -> Void in
             
             // GUARD: fail and call completion handler on error
             if let error = error {
-                if error.code ==  ErrorCodes.Forbidden {
+                if error.code ==  Client.ErrorCodes.Forbidden {
                     completionHandler(user: nil, errorString: Errors.InvalidEmailPassword)
                 }
-                else if error.code == ErrorCodes.DataError {
+                else if error.code == Client.ErrorCodes.DataError {
                     completionHandler(user: nil, errorString: Errors.DataError)
                 }
                 else {

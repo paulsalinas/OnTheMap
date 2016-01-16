@@ -129,7 +129,7 @@ extension ParseClient {
             JSONBody.UserID: user.userId
         ]
         
-        let method = ParseClient.substituteKeyInMethod(Methods.PUTStudentLocation, key: "objectId", value: user.objectId!)
+        let method = Client.substituteKeyInMethod(Methods.PUTStudentLocation, key: "objectId", value: user.objectId!)
         
         taskForMethod(method!, httpMethod: HttpMethod.PUT, parameters: [String: AnyObject](), jsonBody: jsonBody) {
             (result, error) -> Void in
@@ -162,7 +162,7 @@ extension ParseClient {
         
         let jsonBody = [String: AnyObject]()
         
-        let method = ParseClient.substituteKeyInMethod(Methods.PUTStudentLocation, key: "objectId", value: user.objectId!)
+        let method = Client.substituteKeyInMethod(Methods.PUTStudentLocation, key: "objectId", value: user.objectId!)
         
         taskForMethod(method!, httpMethod: HttpMethod.DELETE, parameters: [String: AnyObject](), jsonBody: jsonBody) {
             (result, error) -> Void in

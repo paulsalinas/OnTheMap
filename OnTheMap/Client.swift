@@ -176,7 +176,7 @@ class Client : NSObject {
         let mutableParameters = parameters
         
         /* 2/3. Build the URL and configure the request */
-        let urlString = url + method + ParseClient.escapedParameters(mutableParameters)
+        let urlString = url + method + Client.escapedParameters(mutableParameters)
         let request = NSMutableURLRequest(URL: NSURL(string: urlString)!)
         
         for (val, field) in httpHeaders {

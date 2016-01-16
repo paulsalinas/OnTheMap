@@ -8,9 +8,11 @@
 
 import Foundation
 
-class UdacityClient : Client {
+class UdacityClient : NSObject {
     
     // MARK: Properties
+    
+    let baseClient : Client
     
     /* Authentication state */
     var sessionID : String? = nil
@@ -18,8 +20,9 @@ class UdacityClient : Client {
     
     // MARK: Initializers
     
-    init() {
-        super.init(url: Constants.BaseURLSecure)
+    override init() {
+        baseClient = Client(url: Constants.BaseURLSecure)
+        super.init()
     }
     
     // MARK: POST
@@ -31,7 +34,7 @@ class UdacityClient : Client {
             ("application/json", "Content-Type"),
         ]
         
-         return taskForPOSTMethod(method, parameters: parameters, jsonBody: jsonBody, httpHeaders: httpHeaders) { data, error -> Void in
+         return baseClient.taskForPOSTMethod(method, parameters: parameters, jsonBody: jsonBody, httpHeaders: httpHeaders) { data, error -> Void in
             
             if let error = error {
                 completionHandler(result: nil, error: error)
@@ -39,12 +42,12 @@ class UdacityClient : Client {
             }
             
             guard let data = data else {
-                completionHandler(result: nil, error: NSError(domain: "TaskForPostMethod", code: ErrorCodes.DataError, userInfo: [NSLocalizedDescriptionKey : "There was error in the data response from the server"]))
+                completionHandler(result: nil, error: NSError(domain: "TaskForPostMethod", code: Client.ErrorCodes.DataError, userInfo: [NSLocalizedDescriptionKey : "There was error in the data response from the server"]))
                 return
             }
             
             let newData = data.subdataWithRange(NSMakeRange(5, data.length - 5))
-            UdacityClient.parseJSONWithCompletionHandler(newData, completionHandler: completionHandler)
+            Client.parseJSONWithCompletionHandler(newData, completionHandler: completionHandler)
             
         }
     }
@@ -60,7 +63,7 @@ class UdacityClient : Client {
     
     func taskForGETMethod(method: String, parameters: [String : AnyObject], completionHandler: (result: AnyObject!, error: NSError?) -> Void) -> NSURLSessionDataTask {
         
-        return taskForGETMethod(method, parameters: parameters, httpHeaders: [(String, String)]()) { data, error -> Void in
+        return baseClient.taskForGETMethod(method, parameters: parameters, httpHeaders: [(String, String)]()) { data, error -> Void in
             
             if let error = error {
                 completionHandler(result: nil, error: error)
@@ -68,12 +71,12 @@ class UdacityClient : Client {
             }
             
             guard let data = data else {
-                completionHandler(result: nil, error: NSError(domain: "TaskForGetMethod", code: ErrorCodes.DataError, userInfo: [NSLocalizedDescriptionKey : "There was error in the data response from the server"]))
+                completionHandler(result: nil, error: NSError(domain: "TaskForGetMethod", code: Client.ErrorCodes.DataError, userInfo: [NSLocalizedDescriptionKey : "There was error in the data response from the server"]))
                 return
             }
             
             let newData = data.subdataWithRange(NSMakeRange(5, data.length - 5))
-            UdacityClient.parseJSONWithCompletionHandler(newData, completionHandler: completionHandler)
+            Client.parseJSONWithCompletionHandler(newData, completionHandler: completionHandler)
             
         }
     }

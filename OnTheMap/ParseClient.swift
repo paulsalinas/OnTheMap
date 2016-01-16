@@ -8,17 +8,20 @@
 
 import Foundation
 
-class ParseClient : Client {
+class ParseClient: NSObject {
     
     // MARK: Properties
     
     /* Authentication state */
     var userID : String? = nil
     
+    let baseClient : Client
+    
     // MARK: Initializers
     
-     init() {
-        super.init(url: Constants.BaseURLSecure)
+    override init() {
+        baseClient = Client(url: Constants.BaseURLSecure)
+        super.init()
     }
     
     // MARK: POST
@@ -30,7 +33,7 @@ class ParseClient : Client {
             (Constants.ApplicationID, HttpHeaders.ApplicationID),
         ]
         
-        return taskForPOSTMethod(method, parameters: parameters, jsonBody: jsonBody, httpHeaders: httpHeaders) { data, error -> Void in
+        return baseClient.taskForPOSTMethod(method, parameters: parameters, jsonBody: jsonBody, httpHeaders: httpHeaders) { data, error -> Void in
             
             if let error = error {
                 completionHandler(result: nil, error: error)
@@ -41,7 +44,7 @@ class ParseClient : Client {
                 return
             }
             
-            ParseClient.parseJSONWithCompletionHandler(data, completionHandler: completionHandler)
+            Client.parseJSONWithCompletionHandler(data, completionHandler: completionHandler)
             
         }
     }
@@ -55,7 +58,7 @@ class ParseClient : Client {
             (Constants.ApplicationID, HttpHeaders.ApplicationID),
         ]
         
-        return taskForMethod(method, httpMethod: httpMethod, parameters: parameters, jsonBody: jsonBody, httpHeaders: httpHeaders) { data, error -> Void in
+        return baseClient.taskForMethod(method, httpMethod: httpMethod, parameters: parameters, jsonBody: jsonBody, httpHeaders: httpHeaders) { data, error -> Void in
             
             if let error = error {
                 completionHandler(result: nil, error: error)
@@ -66,7 +69,7 @@ class ParseClient : Client {
                 return
             }
             
-            ParseClient.parseJSONWithCompletionHandler(data, completionHandler: completionHandler)
+            Client.parseJSONWithCompletionHandler(data, completionHandler: completionHandler)
             
         }
     }
@@ -87,7 +90,7 @@ class ParseClient : Client {
             (Constants.ApplicationID, HttpHeaders.ApplicationID),
         ]
         
-        return taskForGETMethod(method, parameters: parameters, httpHeaders: httpHeaders) { data, error -> Void in
+        return baseClient.taskForGETMethod(method, parameters: parameters, httpHeaders: httpHeaders) { data, error -> Void in
             
             if let error = error {
                 completionHandler(result: nil, error: error)
@@ -98,7 +101,7 @@ class ParseClient : Client {
                 return
             }
             
-            ParseClient.parseJSONWithCompletionHandler(data, completionHandler: completionHandler)
+            Client.parseJSONWithCompletionHandler(data, completionHandler: completionHandler)
             
         }
     }
