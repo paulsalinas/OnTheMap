@@ -21,12 +21,6 @@ extension ParseClient {
         static let PUTStudentLocation = "StudentLocation/{objectId}"
     }
     
-    struct HttpMethod {
-        static let POST = "POST"
-        static let PUT = "PUT"
-        static let DELETE = "DELETE"
-    }
-    
     struct HttpHeaders {
         static let ApiKey : String = "X-Parse-REST-API-Key"
         static let ApplicationID : String = "X-Parse-Application-Id"

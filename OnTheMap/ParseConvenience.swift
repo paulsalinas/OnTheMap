@@ -88,7 +88,7 @@ extension ParseClient {
             JSONBody.UserID: user.userId
         ]
         
-        taskForMethod(Methods.StudentLocation, httpMethod: HttpMethod.POST, parameters: [String: AnyObject](), jsonBody: jsonBody) {
+        taskForMethod(Methods.StudentLocation, httpMethod: Client.HttpMethod.POST, parameters: [String: AnyObject](), jsonBody: jsonBody) {
             (result, error) -> Void in
             
             // GUARD: fail and call completion handler on error
@@ -131,7 +131,7 @@ extension ParseClient {
         
         let method = Client.substituteKeyInMethod(Methods.PUTStudentLocation, key: "objectId", value: user.objectId!)
         
-        taskForMethod(method!, httpMethod: HttpMethod.PUT, parameters: [String: AnyObject](), jsonBody: jsonBody) {
+        taskForMethod(method!, httpMethod: Client.HttpMethod.PUT, parameters: [String: AnyObject](), jsonBody: jsonBody) {
             (result, error) -> Void in
             
             // GUARD: fail and call completion handler on error
@@ -164,7 +164,7 @@ extension ParseClient {
         
         let method = Client.substituteKeyInMethod(Methods.PUTStudentLocation, key: "objectId", value: user.objectId!)
         
-        taskForMethod(method!, httpMethod: HttpMethod.DELETE, parameters: [String: AnyObject](), jsonBody: jsonBody) {
+        taskForMethod(method!, httpMethod: Client.HttpMethod.DELETE, parameters: [String: AnyObject](), jsonBody: jsonBody) {
             (result, error) -> Void in
             
             // GUARD: fail and call completion handler on error

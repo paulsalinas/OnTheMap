@@ -19,10 +19,17 @@ class Client : NSObject {
     let url: String
     
     // MARK: Structs
+    
     struct ErrorCodes {
         static let RequestError = 1
         static let DataError = 2
         static let Forbidden = 403
+    }
+    
+    struct HttpMethod {
+        static let POST = "POST"
+        static let PUT = "PUT"
+        static let DELETE = "DELETE"
     }
     
     // MARK: Initializers
@@ -31,73 +38,6 @@ class Client : NSObject {
         self.url = url
         session = NSURLSession.sharedSession()
         super.init()
-    }
-    
-    // deprecated - can be removed
-    func taskForPOSTMethod(method: String, parameters: [String : AnyObject], jsonBody: [String:AnyObject], httpHeaders: [(String, String)], completionHandler: (data: NSData?, error: NSError?) -> Void) -> NSURLSessionDataTask {
-        
-        /* 1. Set the parameters */
-        let mutableParameters = parameters
-        
-        /* 2/3. Build the URL and configure the request */
-        let urlString = url + method + Client.escapedParameters(mutableParameters)
-        
-        let request = NSMutableURLRequest(URL: NSURL(string: urlString)!)
-        request.HTTPMethod = "POST"
-        
-        for (val, field) in httpHeaders {
-            request.addValue(val, forHTTPHeaderField: field)
-        }
-        
-        do {
-            request.HTTPBody = try! NSJSONSerialization.dataWithJSONObject(jsonBody, options: .PrettyPrinted)
-        }
-        
-        let session = NSURLSession.sharedSession()
-        let task = session.dataTaskWithRequest(request) { data, response, error in
-            
-            /* closure to be called when an error occurs from server response */
-            let errorHandler = { (code: Int, description: String) -> Void in
-                
-                let userInfo = [NSLocalizedDescriptionKey : description]
-                completionHandler(data: nil, error: NSError(domain: "taskForPOSTMethod", code: code, userInfo: userInfo))
-            }
-            
-            
-            /* GUARD: Was there an error? */
-            guard (error == nil) else {
-                errorHandler(ErrorCodes.RequestError, "There was an error with your request: \(error)")
-                return
-            }
-            
-            /* GUARD: Did we get a successful 2XX response? */
-            if let statusCode = (response as? NSHTTPURLResponse)?.statusCode where statusCode < 200 || statusCode > 299 {
-                
-                let error: String
-                if let response = response as? NSHTTPURLResponse {
-                    error = "Your request returned an invalid response! Status code: \(response.statusCode)!"
-                } else if let response = response {
-                    error = "Your request returned an invalid response! Response: \(response)!"
-                } else {
-                    error = "Your request returned an invalid response!"
-                }
-                
-                errorHandler(statusCode, error)
-                return
-            }
-            
-            /* GUARD: Was there any data returned? */
-            guard let data = data else {
-                errorHandler(ErrorCodes.DataError, "No data was returned by the request!")
-                return
-            }
-            
-            completionHandler(data: data, error: nil)
-        }
-        
-        task.resume()
-        
-        return task
     }
     
     // MARK: GENERAL TASK

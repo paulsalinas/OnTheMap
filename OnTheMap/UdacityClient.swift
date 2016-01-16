@@ -34,7 +34,7 @@ class UdacityClient : NSObject {
             ("application/json", "Content-Type"),
         ]
         
-         return baseClient.taskForPOSTMethod(method, parameters: parameters, jsonBody: jsonBody, httpHeaders: httpHeaders) { data, error -> Void in
+        return baseClient.taskForMethod(method, httpMethod: Client.HttpMethod.POST, parameters: parameters, jsonBody: jsonBody, httpHeaders: httpHeaders) { data, error -> Void in
             
             if let error = error {
                 completionHandler(result: nil, error: error)

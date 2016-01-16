@@ -33,7 +33,7 @@ class ParseClient: NSObject {
             (Constants.ApplicationID, HttpHeaders.ApplicationID),
         ]
         
-        return baseClient.taskForPOSTMethod(method, parameters: parameters, jsonBody: jsonBody, httpHeaders: httpHeaders) { data, error -> Void in
+        return baseClient.taskForMethod(method, httpMethod: Client.HttpMethod.POST, parameters: parameters, jsonBody: jsonBody, httpHeaders: httpHeaders) { data, error -> Void in
             
             if let error = error {
                 completionHandler(result: nil, error: error)
