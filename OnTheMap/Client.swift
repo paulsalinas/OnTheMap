@@ -57,8 +57,10 @@ class Client : NSObject {
             request.addValue(val, forHTTPHeaderField: field)
         }
         
-        do {
-            request.HTTPBody = try! NSJSONSerialization.dataWithJSONObject(jsonBody, options: .PrettyPrinted)
+        if (jsonBody.count > 0) {
+            do {
+                request.HTTPBody = try! NSJSONSerialization.dataWithJSONObject(jsonBody, options: .PrettyPrinted)
+            }
         }
         
         let session = NSURLSession.sharedSession()
