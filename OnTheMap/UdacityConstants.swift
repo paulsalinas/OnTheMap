@@ -28,6 +28,7 @@ extension UdacityClient {
         static let FirstName = "first_name"
         static let LastName = "last_name"
         static let User = "user"
+        static let Session = "session"
     }
     
     // MARK: Errors

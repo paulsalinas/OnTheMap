@@ -42,6 +42,20 @@ class OnTheMapTabBarController: UITabBarController, Alertable {
             }
         }
     }
+    
+    @IBAction func signOutButtonTouch(sender: AnyObject) {
+        UdacityClient.sharedInstance().logOutOfSession() {
+            success, errorString -> Void in
+            
+            dispatch_async(dispatch_get_main_queue(), {
+                if success {
+                    self.dismissViewControllerAnimated(true, completion: nil)
+                } else {
+                    self.alert(errorString!)
+                }
+            })
+        }
+    }
  
     @IBAction func pinButtonTouch(sender: AnyObject) {
         ParseClient.sharedInstance().searchForStudenLocation(user!.userId) { user, errorString -> Void in

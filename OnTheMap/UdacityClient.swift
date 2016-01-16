@@ -80,4 +80,26 @@ class UdacityClient : NSObject {
             
         }
     }
+    
+    
+    func taskForDELETEMethod(method: String, httpHeaders: [(String, String)], completionHandler: (result: AnyObject!, error: NSError?) -> Void) -> NSURLSessionDataTask {
+        
+        
+        return baseClient.taskForMethod(method, httpMethod: Client.HttpMethod.DELETE, parameters: [String : AnyObject](), jsonBody: [String : AnyObject](), httpHeaders: httpHeaders) { data, error -> Void in
+            
+            if let error = error {
+                completionHandler(result: nil, error: error)
+                return
+            }
+            
+            guard let data = data else {
+                completionHandler(result: nil, error: NSError(domain: "TaskForDELETEMethod", code: Client.ErrorCodes.DataError, userInfo: [NSLocalizedDescriptionKey : "There was error in the data response from the server"]))
+                return
+            }
+            
+            let newData = data.subdataWithRange(NSMakeRange(5, data.length - 5))
+            Client.parseJSONWithCompletionHandler(newData, completionHandler: completionHandler)
+            
+        }
+    }
 }

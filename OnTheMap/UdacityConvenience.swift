@@ -59,6 +59,48 @@ extension UdacityClient {
         }
     }
     
+    func logOutOfSession(completionHandler: (success: Bool, errorString: String?) -> Void) {
+        
+        var xsrfCookie: NSHTTPCookie? = nil
+        let sharedCookieStorage = NSHTTPCookieStorage.sharedHTTPCookieStorage()
+        var httpHeaders = [(String, String)]()
+        
+        for cookie in sharedCookieStorage.cookies! {
+            if cookie.name == "XSRF-TOKEN" { xsrfCookie = cookie }
+        }
+        
+        if let xsrfCookie = xsrfCookie {
+            httpHeaders.append((xsrfCookie.value, "X-XSRF-TOKEN"))
+        }
+        
+        taskForDELETEMethod(Methods.SessionID, httpHeaders: httpHeaders) {
+            result, error -> Void in
+            
+            // GUARD: fail and call completion handler on error
+            if let error = error {
+                if error.code ==  Client.ErrorCodes.Forbidden {
+                    completionHandler(success: false, errorString: Errors.InvalidEmailPassword)
+                }
+                else if error.code == Client.ErrorCodes.DataError {
+                    completionHandler(success: false, errorString: Errors.DataError)
+                }
+                else {
+                    completionHandler(success: false, errorString: Errors.RequestError)
+                }
+                
+                return
+            }
+            
+            // parse the data for the user id
+            if (result[JSONResponseKeys.Session] as? [String: AnyObject]) == nil {
+                completionHandler(success: false, errorString: Errors.DataError)
+                return
+            }
+            
+            completionHandler(success: true, errorString: nil)
+        }
+    }
+    
     /* The completionHandler is passed the StudentInformation object with all of the user information from the api  */
     func getUserData(completionHandler: (user: StudentInformation?, errorString: String?) -> Void) {
         
