@@ -35,10 +35,11 @@ class UdacityClient : Client {
             
             if let error = error {
                 completionHandler(result: nil, error: error)
+                return
             }
             
             guard let data = data else {
-                print("there's data returned")
+                completionHandler(result: nil, error: NSError(domain: "TaskForPostMethod", code: ErrorCodes.DataError, userInfo: [NSLocalizedDescriptionKey : "There was error in the data response from the server"]))
                 return
             }
             
@@ -63,10 +64,11 @@ class UdacityClient : Client {
             
             if let error = error {
                 completionHandler(result: nil, error: error)
+                return
             }
             
             guard let data = data else {
-                print("there's data returned")
+                completionHandler(result: nil, error: NSError(domain: "TaskForGetMethod", code: ErrorCodes.DataError, userInfo: [NSLocalizedDescriptionKey : "There was error in the data response from the server"]))
                 return
             }
             

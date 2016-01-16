@@ -30,12 +30,12 @@ extension UdacityClient {
         static let User = "user"
     }
     
-    // MARK: Error Description
-    struct ErrorDescription {
+    // MARK: Errors
+    struct Errors {
         static let EmptyEmailPassword = "Empty Email or Password"
         static let InvalidEmailPassword = "Invalid Email or Password"
         static let RequestError = "Error Making your Request"
-        static let DataError = "Server Data Error"
+        static let DataError = "Data Response Error"
     }
     
     // MARK: URL Keys

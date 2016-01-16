@@ -57,7 +57,7 @@ extension ParseClient {
             }
             
             guard let user = result.first  else {
-                completionHandler(user: nil, errorString: "User not found")
+                completionHandler(user: nil, errorString: Errors.UserNotFound)
                 return
             }
             

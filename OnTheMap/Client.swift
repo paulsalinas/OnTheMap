@@ -9,6 +9,7 @@
 import Foundation
 
 class Client : NSObject {
+    
     // MARK: Properties
     
     /* Shared session */
@@ -16,6 +17,13 @@ class Client : NSObject {
     
     /* base url */
     let url: String
+    
+    // MARK: Structs
+    struct ErrorCodes {
+        static let RequestError = 1
+        static let DataError = 2
+        static let Forbidden = 403
+    }
     
     // MARK: Initializers
     
@@ -25,6 +33,7 @@ class Client : NSObject {
         super.init()
     }
     
+    // deprecated - can be removed
     func taskForPOSTMethod(method: String, parameters: [String : AnyObject], jsonBody: [String:AnyObject], httpHeaders: [(String, String)], completionHandler: (data: NSData?, error: NSError?) -> Void) -> NSURLSessionDataTask {
         
         /* 1. Set the parameters */
@@ -47,22 +56,23 @@ class Client : NSObject {
         let session = NSURLSession.sharedSession()
         let task = session.dataTaskWithRequest(request) { data, response, error in
             
-            /* function to be called when an error occurs from server response */
-            let errorHandler = { (description: String) -> Void in
+            /* closure to be called when an error occurs from server response */
+            let errorHandler = { (code: Int, description: String) -> Void in
                 
                 let userInfo = [NSLocalizedDescriptionKey : description]
-                completionHandler(data: nil, error: NSError(domain: "taskForPOSTMethod", code: 1, userInfo: userInfo))
+                completionHandler(data: nil, error: NSError(domain: "taskForPOSTMethod", code: code, userInfo: userInfo))
             }
             
             
             /* GUARD: Was there an error? */
             guard (error == nil) else {
-                errorHandler("There was an error with your request: \(error)")
+                errorHandler(ErrorCodes.RequestError, "There was an error with your request: \(error)")
                 return
             }
             
             /* GUARD: Did we get a successful 2XX response? */
-            guard let statusCode = (response as? NSHTTPURLResponse)?.statusCode where statusCode >= 200 && statusCode <= 299 else {
+            if let statusCode = (response as? NSHTTPURLResponse)?.statusCode where statusCode < 200 || statusCode > 299 {
+                
                 let error: String
                 if let response = response as? NSHTTPURLResponse {
                     error = "Your request returned an invalid response! Status code: \(response.statusCode)!"
@@ -72,16 +82,15 @@ class Client : NSObject {
                     error = "Your request returned an invalid response!"
                 }
                 
-                errorHandler(error)
+                errorHandler(statusCode, error)
                 return
             }
             
             /* GUARD: Was there any data returned? */
             guard let data = data else {
-                errorHandler("No data was returned by the request!")
+                errorHandler(ErrorCodes.DataError, "No data was returned by the request!")
                 return
             }
-            
             
             completionHandler(data: data, error: nil)
         }
@@ -115,22 +124,23 @@ class Client : NSObject {
         let session = NSURLSession.sharedSession()
         let task = session.dataTaskWithRequest(request) { data, response, error in
             
-            /* function to be called when an error occurs from server response */
-            let errorHandler = { (description: String) -> Void in
+            /* closure to be called when an error occurs from server response */
+            let errorHandler = { (code: Int, description: String) -> Void in
                 
                 let userInfo = [NSLocalizedDescriptionKey : description]
-                completionHandler(data: nil, error: NSError(domain: "taskForPOSTMethod", code: 1, userInfo: userInfo))
+                completionHandler(data: nil, error: NSError(domain: "taskForPOSTMethod", code: code, userInfo: userInfo))
             }
             
             
             /* GUARD: Was there an error? */
             guard (error == nil) else {
-                errorHandler("There was an error with your request: \(error)")
+                errorHandler(ErrorCodes.RequestError, "There was an error with your request: \(error)")
                 return
             }
             
             /* GUARD: Did we get a successful 2XX response? */
-            guard let statusCode = (response as? NSHTTPURLResponse)?.statusCode where statusCode >= 200 && statusCode <= 299 else {
+            if let statusCode = (response as? NSHTTPURLResponse)?.statusCode where statusCode < 200 || statusCode > 299 {
+                
                 let error: String
                 if let response = response as? NSHTTPURLResponse {
                     error = "Your request returned an invalid response! Status code: \(response.statusCode)!"
@@ -140,16 +150,15 @@ class Client : NSObject {
                     error = "Your request returned an invalid response!"
                 }
                 
-                errorHandler(error)
+                errorHandler(statusCode, error)
                 return
             }
             
             /* GUARD: Was there any data returned? */
             guard let data = data else {
-                errorHandler("No data was returned by the request!")
+                errorHandler(ErrorCodes.DataError, "No data was returned by the request!")
                 return
             }
-            
             
             completionHandler(data: data, error: nil)
         }
@@ -177,27 +186,39 @@ class Client : NSObject {
         /* 4. Make the request */
         let task = session.dataTaskWithRequest(request) { (data, response, error) in
             
+            /* closure to be called when an error occurs from server response */
+            let errorHandler = { (code: Int, description: String) -> Void in
+                
+                let userInfo = [NSLocalizedDescriptionKey : description]
+                completionHandler(data: nil, error: NSError(domain: "taskForPOSTMethod", code: code, userInfo: userInfo))
+            }
+            
+            
             /* GUARD: Was there an error? */
             guard (error == nil) else {
-                print("There was an error with your request: \(error)")
+                errorHandler(ErrorCodes.RequestError, "There was an error with your request: \(error)")
                 return
             }
             
             /* GUARD: Did we get a successful 2XX response? */
-            guard let statusCode = (response as? NSHTTPURLResponse)?.statusCode where statusCode >= 200 && statusCode <= 299 else {
+            if let statusCode = (response as? NSHTTPURLResponse)?.statusCode where statusCode < 200 || statusCode > 299 {
+                
+                let error: String
                 if let response = response as? NSHTTPURLResponse {
-                    print("Your request returned an invalid response! Status code: \(response.statusCode)!")
+                    error = "Your request returned an invalid response! Status code: \(response.statusCode)!"
                 } else if let response = response {
-                    print("Your request returned an invalid response! Response: \(response)!")
+                    error = "Your request returned an invalid response! Response: \(response)!"
                 } else {
-                    print("Your request returned an invalid response!")
+                    error = "Your request returned an invalid response!"
                 }
+                
+                errorHandler(statusCode, error)
                 return
             }
             
             /* GUARD: Was there any data returned? */
             guard let data = data else {
-                print("No data was returned by the request!")
+                errorHandler(ErrorCodes.DataError, "No data was returned by the request!")
                 return
             }
             

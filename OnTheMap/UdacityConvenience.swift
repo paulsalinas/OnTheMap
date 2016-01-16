@@ -14,7 +14,7 @@ extension UdacityClient {
         
         // 1) validate - check if username and password are empty
         guard username != "" && password != ""  else {
-            completionHandler(success: false, errorString: ErrorDescription.EmptyEmailPassword)
+            completionHandler(success: false, errorString: Errors.EmptyEmailPassword)
             return
         }
         
@@ -29,14 +29,14 @@ extension UdacityClient {
             
             // GUARD: fail and call completion handler on error
             if let error = error {
-                if error.localizedDescription == "Your request returned an invalid response! Status code: 403!" {
-                    completionHandler(success: false, errorString: ErrorDescription.InvalidEmailPassword)
+                if error.code ==  ErrorCodes.Forbidden {
+                    completionHandler(success: false, errorString: Errors.InvalidEmailPassword)
                 }
-                else if error.localizedDescription.containsString("There was an error with your request") {
-                    completionHandler(success: false, errorString: ErrorDescription.RequestError)
+                else if error.code == ErrorCodes.DataError {
+                    completionHandler(success: false, errorString: Errors.DataError)
                 }
                 else {
-                    completionHandler(success: false, errorString: ErrorDescription.DataError)
+                    completionHandler(success: false, errorString: Errors.RequestError)
                 }
                 
                 return
@@ -44,22 +44,18 @@ extension UdacityClient {
             
             // parse the data for the user id
             guard let account = result[JSONResponseKeys.Account] as? [String: AnyObject] else {
-                print("error: no account record in result")
-                completionHandler(success: false, errorString: ErrorDescription.DataError)
+                completionHandler(success: false, errorString: Errors.DataError)
                 return
             }
             
             guard let userID = account[JSONResponseKeys.UserID] as? String else {
-                print("error: no user id in result")
-                completionHandler(success: false, errorString: ErrorDescription.DataError)
+                completionHandler(success: false, errorString: Errors.DataError)
                 return
             }
             
             // set the user id
             self.userID = userID
             completionHandler(success: true, errorString: nil)
-            
-            print("found User ID: \(self.userID)")
         }
     }
     
@@ -78,14 +74,21 @@ extension UdacityClient {
             
             // GUARD: fail and call completion handler on error
             if let error = error {
-                completionHandler(user: nil, errorString: error.localizedDescription)
+                if error.code ==  ErrorCodes.Forbidden {
+                    completionHandler(user: nil, errorString: Errors.InvalidEmailPassword)
+                }
+                else if error.code == ErrorCodes.DataError {
+                    completionHandler(user: nil, errorString: Errors.DataError)
+                }
+                else {
+                    completionHandler(user: nil, errorString: Errors.RequestError)
+                }
+                
                 return
             }
             
-            print(result)
-            
             guard let user = result[JSONResponseKeys.User] as? [String: AnyObject] else {
-                print("error: user found in result")
+                completionHandler(user: nil, errorString: Errors.DataError)
                 return
             }
             

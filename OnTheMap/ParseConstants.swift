@@ -64,5 +64,6 @@ extension ParseClient {
         static let EmptyUrlForStudent = "Student Location has an empty url field"
         static let InvalidLongitude = "Student Location has en invalid longitude"
         static let InvalidLatitude = "Student Location has en invalid latitude"
+        static let UserNotFound = "User not found"
     }
 }
