@@ -26,7 +26,7 @@ class ParseClient: NSObject {
     
     // MARK: POST
     
-    func taskForPOSTMethod(method: String, parameters: [String : AnyObject], jsonBody: [String : AnyObject], completionHandler: (result: AnyObject!, error: NSError?) -> Void) -> NSURLSessionDataTask {
+    internal func taskForPOSTMethod(method: String, parameters: [String : AnyObject], jsonBody: [String : AnyObject], completionHandler: (result: AnyObject!, error: NSError?) -> Void) -> NSURLSessionDataTask {
         
         let httpHeaders = [
             (Constants.ApiKey, HttpHeaders.ApiKey),
@@ -51,7 +51,7 @@ class ParseClient: NSObject {
     
     // MARK: GENERAL TASK
     
-    func taskForMethod(method: String, httpMethod: String, parameters: [String : AnyObject], jsonBody: [String : AnyObject], completionHandler: (result: AnyObject!, error: NSError?) -> Void) -> NSURLSessionDataTask {
+    internal func taskForMethod(method: String, httpMethod: String, parameters: [String : AnyObject], jsonBody: [String : AnyObject], completionHandler: (result: AnyObject!, error: NSError?) -> Void) -> NSURLSessionDataTask {
         
         let httpHeaders = [
             (Constants.ApiKey, HttpHeaders.ApiKey),
@@ -83,7 +83,7 @@ class ParseClient: NSObject {
         return Singleton.sharedInstance
     }
     
-    func taskForGETMethod(method: String, parameters: [String : AnyObject], completionHandler: (result: AnyObject!, error: NSError?) -> Void) -> NSURLSessionDataTask {
+    internal func taskForGETMethod(method: String, parameters: [String : AnyObject], completionHandler: (result: AnyObject!, error: NSError?) -> Void) -> NSURLSessionDataTask {
         
         let httpHeaders = [
             (Constants.ApiKey, HttpHeaders.ApiKey),
