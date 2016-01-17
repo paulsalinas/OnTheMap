@@ -7,15 +7,19 @@
 //
 
 import UIKit
+import FBSDKLoginKit
 
 class LoginViewController: UIViewController, Alertable {
 
     @IBOutlet weak var usernameInput: UITextField!
     @IBOutlet weak var passwordInput: UITextField!
     @IBOutlet weak var loadingIndicatorView: UIActivityIndicatorView!
+
+    @IBOutlet weak var fbLoginButton: FBSDKLoginButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        fbLoginButton = FBSDKLoginButton()
     }
 
     override func didReceiveMemoryWarning() {

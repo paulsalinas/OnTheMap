@@ -89,6 +89,10 @@
                                             <action selector="signUpButtonTouch:" destination="BYZ-38-t0r" eventType="touchUpInside" id="knc-Ve-Ye8"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pT8-EK-fHR" customClass="FBSDKLoginButton">
+                                        <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                        <state key="normal" title="Button"/>
+                                    </button>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="275" id="3HI-bn-sd9"/>
@@ -162,6 +166,7 @@
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="fbLoginButton" destination="pT8-EK-fHR" id="4je-pO-QeV"/>
                         <outlet property="loadingIndicatorView" destination="49r-Sk-4e4" id="tku-ZG-kWj"/>
                         <outlet property="passwordInput" destination="L0l-Z4-7fu" id="bRw-LY-lhg"/>
                         <outlet property="usernameInput" destination="SS2-yE-jWi" id="qyF-1Z-cTI"/>
