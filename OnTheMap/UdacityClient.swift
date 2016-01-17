@@ -15,7 +15,6 @@ class UdacityClient : NSObject {
     let baseClient : Client
     
     /* Authentication state */
-    var sessionID : String? = nil
     var userID : String? = nil
     
     // MARK: Initializers
