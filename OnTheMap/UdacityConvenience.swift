@@ -10,18 +10,16 @@ import Foundation
 
 extension UdacityClient {
     
-    func authenticateAndCreateSession(username: String, password: String , completionHandler: (success: Bool, errorString: String?) -> Void) {
+     func authenticateWithFacebook(accessToken: String, completionHandler: (success: Bool, errorString: String?) -> Void) {
         
         // 1) validate - check if username and password are empty
-        guard username != "" && password != ""  else {
-            completionHandler(success: false, errorString: Errors.EmptyEmailPassword)
+        guard accessToken != "" else {
+            completionHandler(success: false, errorString: "Empty access token")
             return
         }
         
-        let jsonBody =  ["udacity": [
-            "username": username,
-            "password": password
-            ]
+        let jsonBody =  [
+            "facebook_mobile": ["access_token": accessToken ]
         ]
         
         // 2) POST the data over
@@ -53,8 +51,61 @@ extension UdacityClient {
                 return
             }
             
-            // set the user id
+            // set the user id for this session
             self.userID = userID
+            
+            completionHandler(success: true, errorString: nil)
+        }
+
+    }
+    
+    func authenticateAndCreateSession(username: String, password: String , completionHandler: (success: Bool, errorString: String?) -> Void) {
+        
+        // 1) validate - check if username and password are empty
+        guard username != "" && password != ""  else {
+            completionHandler(success: false, errorString: Errors.EmptyEmailPassword)
+            return
+        }
+        
+        let jsonBody =  [
+            "udacity": [
+                "username": username,
+                "password": password
+                ]
+        ]
+        
+        // 2) POST the data over
+        taskForPOSTMethod(Methods.SessionID, parameters: [String: AnyObject](), jsonBody: jsonBody) { result, error -> Void in
+            
+            // GUARD: fail and call completion handler on error
+            if let error = error {
+                if error.code ==  Client.ErrorCodes.Forbidden {
+                    completionHandler(success: false, errorString: Errors.InvalidEmailPassword)
+                }
+                else if error.code == Client.ErrorCodes.DataError {
+                    completionHandler(success: false, errorString: Errors.DataError)
+                }
+                else {
+                    completionHandler(success: false, errorString: Errors.RequestError)
+                }
+                
+                return
+            }
+            
+            // parse the data for the user id
+            guard let account = result[JSONResponseKeys.Account] as? [String: AnyObject] else {
+                completionHandler(success: false, errorString: Errors.DataError)
+                return
+            }
+            
+            guard let userID = account[JSONResponseKeys.UserID] as? String else {
+                completionHandler(success: false, errorString: Errors.DataError)
+                return
+            }
+            
+            // set the user id for this session
+            self.userID = userID
+            
             completionHandler(success: true, errorString: nil)
         }
     }
@@ -96,6 +147,9 @@ extension UdacityClient {
                 completionHandler(success: false, errorString: Errors.DataError)
                 return
             }
+            
+            // reset state of client - we've logged out of the session
+            self.userID = nil
             
             completionHandler(success: true, errorString: nil)
         }
