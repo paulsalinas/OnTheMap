@@ -10,7 +10,7 @@ import Foundation
 
 extension UdacityClient {
     
-     func authenticateWithFacebook(accessToken: String, completionHandler: (success: Bool, errorString: String?) -> Void) {
+     func createSessionWithFacebookToken(accessToken: String, completionHandler: (success: Bool, errorString: String?) -> Void) {
         
         // 1) validate - check if username and password are empty
         guard accessToken != "" else {
