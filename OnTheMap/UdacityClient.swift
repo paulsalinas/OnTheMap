@@ -26,7 +26,7 @@ class UdacityClient : NSObject {
     
     // MARK: POST
     
-    func taskForPOSTMethod(method: String, parameters: [String : AnyObject], jsonBody: [String:AnyObject], completionHandler: (result: AnyObject!, error: NSError?) -> Void) -> NSURLSessionDataTask {
+    internal func taskForPOSTMethod(method: String, parameters: [String : AnyObject], jsonBody: [String:AnyObject], completionHandler: (result: AnyObject!, error: NSError?) -> Void) -> NSURLSessionDataTask {
         
         let httpHeaders = [
             ("application/json", "Accept"),
@@ -60,7 +60,9 @@ class UdacityClient : NSObject {
         return Singleton.sharedInstance
     }
     
-    func taskForGETMethod(method: String, parameters: [String : AnyObject], completionHandler: (result: AnyObject!, error: NSError?) -> Void) -> NSURLSessionDataTask {
+    // MARK: GET
+    
+    internal func taskForGETMethod(method: String, parameters: [String : AnyObject], completionHandler: (result: AnyObject!, error: NSError?) -> Void) -> NSURLSessionDataTask {
         
         return baseClient.taskForGETMethod(method, parameters: parameters, httpHeaders: [(String, String)]()) { data, error -> Void in
             
@@ -80,8 +82,9 @@ class UdacityClient : NSObject {
         }
     }
     
+    // MARK: DELETE
     
-    func taskForDELETEMethod(method: String, httpHeaders: [(String, String)], completionHandler: (result: AnyObject!, error: NSError?) -> Void) -> NSURLSessionDataTask {
+    internal func taskForDELETEMethod(method: String, httpHeaders: [(String, String)], completionHandler: (result: AnyObject!, error: NSError?) -> Void) -> NSURLSessionDataTask {
         
         
         return baseClient.taskForMethod(method, httpMethod: Client.HttpMethod.DELETE, parameters: [String : AnyObject](), jsonBody: [String : AnyObject](), httpHeaders: httpHeaders) { data, error -> Void in
