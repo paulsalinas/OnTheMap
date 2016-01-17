@@ -21,42 +21,8 @@ extension UdacityClient {
         let jsonBody =  [
             "facebook_mobile": ["access_token": accessToken ]
         ]
-        
-        // 2) POST the data over
-        taskForPOSTMethod(Methods.SessionID, parameters: [String: AnyObject](), jsonBody: jsonBody) { result, error -> Void in
-            
-            // GUARD: fail and call completion handler on error
-            if let error = error {
-                if error.code ==  Client.ErrorCodes.Forbidden {
-                    completionHandler(success: false, errorString: Errors.InvalidEmailPassword)
-                }
-                else if error.code == Client.ErrorCodes.DataError {
-                    completionHandler(success: false, errorString: Errors.DataError)
-                }
-                else {
-                    completionHandler(success: false, errorString: Errors.RequestError)
-                }
-                
-                return
-            }
-            
-            // parse the data for the user id
-            guard let account = result[JSONResponseKeys.Account] as? [String: AnyObject] else {
-                completionHandler(success: false, errorString: Errors.DataError)
-                return
-            }
-            
-            guard let userID = account[JSONResponseKeys.UserID] as? String else {
-                completionHandler(success: false, errorString: Errors.DataError)
-                return
-            }
-            
-            // set the user id for this session
-            self.userID = userID
-            
-            completionHandler(success: true, errorString: nil)
-        }
-
+       
+        createSessionHelper(jsonBody, completionHandler: completionHandler)
     }
     
     func authenticateAndCreateSession(username: String, password: String , completionHandler: (success: Bool, errorString: String?) -> Void) {
@@ -74,40 +40,7 @@ extension UdacityClient {
                 ]
         ]
         
-        // 2) POST the data over
-        taskForPOSTMethod(Methods.SessionID, parameters: [String: AnyObject](), jsonBody: jsonBody) { result, error -> Void in
-            
-            // GUARD: fail and call completion handler on error
-            if let error = error {
-                if error.code ==  Client.ErrorCodes.Forbidden {
-                    completionHandler(success: false, errorString: Errors.InvalidEmailPassword)
-                }
-                else if error.code == Client.ErrorCodes.DataError {
-                    completionHandler(success: false, errorString: Errors.DataError)
-                }
-                else {
-                    completionHandler(success: false, errorString: Errors.RequestError)
-                }
-                
-                return
-            }
-            
-            // parse the data for the user id
-            guard let account = result[JSONResponseKeys.Account] as? [String: AnyObject] else {
-                completionHandler(success: false, errorString: Errors.DataError)
-                return
-            }
-            
-            guard let userID = account[JSONResponseKeys.UserID] as? String else {
-                completionHandler(success: false, errorString: Errors.DataError)
-                return
-            }
-            
-            // set the user id for this session
-            self.userID = userID
-            
-            completionHandler(success: true, errorString: nil)
-        }
+       createSessionHelper(jsonBody, completionHandler: completionHandler)
     }
     
     func logOutOfSession(completionHandler: (success: Bool, errorString: String?) -> Void) {
@@ -191,6 +124,45 @@ extension UdacityClient {
             let student = StudentInformation(udacityDictionary: user)
         
             completionHandler(user: student, errorString: nil)
+        }
+    }
+    
+    /* executes the create session task */
+    private func createSessionHelper(jsonBody: [String: AnyObject], completionHandler: (success: Bool, errorString: String?) -> Void) {
+        
+        // 2) POST the data over
+        taskForPOSTMethod(Methods.SessionID, parameters: [String: AnyObject](), jsonBody: jsonBody) { result, error -> Void in
+        
+            // GUARD: fail and call completion handler on error
+            if let error = error {
+                if error.code ==  Client.ErrorCodes.Forbidden {
+                    completionHandler(success: false, errorString: Errors.InvalidEmailPassword)
+                }
+                else if error.code == Client.ErrorCodes.DataError {
+                    completionHandler(success: false, errorString: Errors.DataError)
+                }
+                else {
+                    completionHandler(success: false, errorString: Errors.RequestError)
+                }
+            
+                return
+            }
+            
+            // parse the data for the user id
+            guard let account = result[JSONResponseKeys.Account] as? [String: AnyObject] else {
+                completionHandler(success: false, errorString: Errors.DataError)
+                return
+            }
+            
+            guard let userID = account[JSONResponseKeys.UserID] as? String else {
+                completionHandler(success: false, errorString: Errors.DataError)
+                return
+            }
+            
+            // set the user id for this session
+            self.userID = userID
+            
+            completionHandler(success: true, errorString: nil)
         }
     }
     
