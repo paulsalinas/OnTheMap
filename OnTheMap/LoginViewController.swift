@@ -9,7 +9,7 @@
 import UIKit
 import FBSDKLoginKit
 
-class LoginViewController: UIViewController, Alertable {
+class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, Alertable {
 
     @IBOutlet weak var usernameInput: UITextField!
     @IBOutlet weak var passwordInput: UITextField!
@@ -19,7 +19,7 @@ class LoginViewController: UIViewController, Alertable {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        fbLoginButton = FBSDKLoginButton()
+        fbLoginButton.delegate = self
     }
 
     override func didReceiveMemoryWarning() {
@@ -90,6 +90,14 @@ class LoginViewController: UIViewController, Alertable {
                 })
             }
         }
+    }
+    
+    func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
+        print(result.token)
+    }
+    
+    func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
+        return
     }
 }
 
