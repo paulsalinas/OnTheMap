@@ -9,7 +9,9 @@
 import UIKit
 import FBSDKLoginKit
 
-class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, Alertable {
+// MARK: - LoginViewController: UIViewController
+
+class LoginViewController: UIViewController, Alertable {
 
     @IBOutlet weak var usernameInput: UITextField!
     @IBOutlet weak var passwordInput: UITextField!
@@ -19,6 +21,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, Alertable
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         fbLoginButton.delegate = self
     }
     
@@ -48,54 +51,6 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, Alertable
             
             self.fetchUserDataAndCompleteLogin()
         }
-    }
-    
-    /* facebook button delegate to handle the result from login */
-    func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
-        
-        // GUARD - do nothing if user cancelled
-        if result.isCancelled {
-            return
-        }
-        
-        // GUARD - any errors?
-        if let error = error {
-            alert(error.localizedDescription)
-            return
-        }
-        
-        // GUARD - valid access token
-        guard let accessToken = result.token?.tokenString else {
-            alert("There was an error authenticating via Facebook")
-            return
-        }
-        
-        loadingIndicatorView.hidden = false
-        
-        // logout of FB once you've obtained an access token
-        FBSDKLoginManager().logOut()
-      
-        
-        UdacityClient.sharedInstance().createSessionWithFacebookToken(accessToken) {
-            success, error -> Void in
-            
-            // GUARD - Authentication must be successful
-            guard success else {
-                dispatch_async(dispatch_get_main_queue(), {
-                    self.alert(error!)
-                    self.loadingIndicatorView.hidden = true
-                })
-                return
-            }
-            
-            self.fetchUserDataAndCompleteLogin()
-        }
-    }
-    
-    func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
-        
-        //do nothing
-        return
     }
     
     /* fetch the user id corresponding to the logged in user and complete the login and transition to next VC */
@@ -143,5 +98,60 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, Alertable
         passwordInput.text = ""
         usernameInput.text = ""
     }
+}
+
+
+// MARK: - LoginViewController: FBSDKLoginButtonDelegate
+
+extension LoginViewController: FBSDKLoginButtonDelegate {
+    
+    /* facebook button delegate to handle the result from login */
+    func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
+        
+        // GUARD - do nothing if user cancelled
+        if result.isCancelled {
+            return
+        }
+        
+        // GUARD - any errors?
+        if let error = error {
+            alert(error.localizedDescription)
+            return
+        }
+        
+        // GUARD - valid access token
+        guard let accessToken = result.token?.tokenString else {
+            alert("There was an error authenticating via Facebook")
+            return
+        }
+        
+        loadingIndicatorView.hidden = false
+        
+        // logout of FB once you've obtained an access token
+        FBSDKLoginManager().logOut()
+        
+        
+        UdacityClient.sharedInstance().createSessionWithFacebookToken(accessToken) {
+            success, error -> Void in
+            
+            // GUARD - Authentication must be successful
+            guard success else {
+                dispatch_async(dispatch_get_main_queue(), {
+                    self.alert(error!)
+                    self.loadingIndicatorView.hidden = true
+                })
+                return
+            }
+            
+            self.fetchUserDataAndCompleteLogin()
+        }
+    }
+    
+    func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
+        
+        //do nothing
+        return
+    }
+    
 }
 
