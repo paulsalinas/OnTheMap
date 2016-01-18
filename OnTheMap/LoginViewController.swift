@@ -26,6 +26,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, Alertable
         super.didReceiveMemoryWarning()
     }
     
+    /* present udacity login page */
     @IBAction func signUpButtonTouch(sender: AnyObject) {
         
         let app = UIApplication.sharedApplication()
@@ -37,21 +38,14 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, Alertable
         
         loadingIndicatorView.hidden = false
         
-        // authenticate user
         UdacityClient.sharedInstance().authenticateAndCreateSession(usernameInput.text!, password: passwordInput.text!) {
             success, error -> Void in
-            
-            // make sure to stop the animation when this code block ends
-            defer {
-                dispatch_async(dispatch_get_main_queue(), {
-                    self.loadingIndicatorView.hidden = true
-                })
-            }
             
             // GUARD - Authentication must be successful
             guard success else {
                 dispatch_async(dispatch_get_main_queue(), {
                     self.alert(error!)
+                    self.loadingIndicatorView.hidden = true
                 })
                 return
             }
@@ -60,6 +54,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, Alertable
         }
     }
     
+    /* facebook button delegate to handle the result from login */
     func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
         
         loadingIndicatorView.hidden = false
@@ -68,24 +63,18 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, Alertable
         FBSDKLoginManager().logOut()
         
         guard let accessToken = result.token?.tokenString else {
-            print("accessToken error")
+            alert("There was an error authenticating via Facebook")
             return
         }
         
         UdacityClient.sharedInstance().createSessionWithFacebookToken(accessToken) {
             success, error -> Void in
             
-            // make sure to stop the animation when this code block ends
-            defer {
-                dispatch_async(dispatch_get_main_queue(), {
-                    self.loadingIndicatorView.hidden = true
-                })
-            }
-            
             // GUARD - Authentication must be successful
             guard success else {
                 dispatch_async(dispatch_get_main_queue(), {
                     self.alert(error!)
+                    self.loadingIndicatorView.hidden = true
                 })
                 return
             }
@@ -100,7 +89,9 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, Alertable
         return
     }
     
+    /* fetch the user id corresponding to the logged in user and complete the login and transition to next VC */
     func fetchUserDataAndCompleteLogin() {
+        
         //get user id models
         UdacityClient.sharedInstance().getUserData() { (user, errorString) -> Void in
             
