@@ -56,48 +56,85 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, Alertable
                 return
             }
             
-            //get user id models
-            UdacityClient.sharedInstance().getUserData() { (user, errorString) -> Void in
-                
-                // make sure to stop the animation when this code block ends
-                defer {
-                    dispatch_async(dispatch_get_main_queue(), {
-                        self.loadingIndicatorView.hidden = true
-                    })
-                }
-                
-                // GUARD: check if we have valid user data
-                guard let user = user else {
-                    dispatch_async(dispatch_get_main_queue(), {
-                        if let errorString = errorString {
-                            self.alert(errorString)
-                        } else {
-                            self.alert("Error occurred fetching user data")
-                        }
-                    })
-                    return
-                }
-                
-                // set the user id in the Parse Client which is required for the user specific client calls
-                ParseClient.sharedInstance().userID = user.userId
-                
-                // launch the map view and pass the StudentInformation Model
-                dispatch_async(dispatch_get_main_queue(), {
-                    let controller = self.storyboard!.instantiateViewControllerWithIdentifier("OnTheMapNavigationController") as! UINavigationController
-                    let tabController = controller.topViewController as! OnTheMapTabBarController
-                    tabController.user = user
-                    self.presentViewController(controller, animated: true, completion: nil)
-                })
-            }
+            self.fetchUserDataAndCompleteLogin()
         }
     }
     
     func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
-        print(result.token)
+        
+        loadingIndicatorView.hidden = false
+        
+        // logout of FB once you've obtained an access token
+        FBSDKLoginManager().logOut()
+        
+        guard let accessToken = result.token?.tokenString else {
+            print("accessToken error")
+            return
+        }
+        
+        UdacityClient.sharedInstance().createSessionWithFacebookToken(accessToken) {
+            success, error -> Void in
+            
+            // make sure to stop the animation when this code block ends
+            defer {
+                dispatch_async(dispatch_get_main_queue(), {
+                    self.loadingIndicatorView.hidden = true
+                })
+            }
+            
+            // GUARD - Authentication must be successful
+            guard success else {
+                dispatch_async(dispatch_get_main_queue(), {
+                    self.alert(error!)
+                })
+                return
+            }
+            
+            self.fetchUserDataAndCompleteLogin()
+        }
     }
     
     func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
+        
+        //do nothing
         return
+    }
+    
+    func fetchUserDataAndCompleteLogin() {
+        //get user id models
+        UdacityClient.sharedInstance().getUserData() { (user, errorString) -> Void in
+            
+            // make sure to stop the animation when this code block ends
+            defer {
+                dispatch_async(dispatch_get_main_queue(), {
+                    self.loadingIndicatorView.hidden = true
+                })
+            }
+            
+            // GUARD: check if we have valid user data
+            guard let user = user else {
+                dispatch_async(dispatch_get_main_queue(), {
+                    if let errorString = errorString {
+                        self.alert(errorString)
+                    } else {
+                        self.alert("Error occurred fetching user data")
+                    }
+                })
+                return
+            }
+            
+            // set the user id in the Parse Client which is required for the user specific client calls
+            ParseClient.sharedInstance().userID = user.userId
+            
+            // launch the map view and pass the StudentInformation Model
+            dispatch_async(dispatch_get_main_queue(), {
+                let controller = self.storyboard!.instantiateViewControllerWithIdentifier("OnTheMapNavigationController") as! UINavigationController
+                let tabController = controller.topViewController as! OnTheMapTabBarController
+                tabController.user = user
+                self.presentViewController(controller, animated: true, completion: nil)
+            })
+        }
+
     }
 }
 
