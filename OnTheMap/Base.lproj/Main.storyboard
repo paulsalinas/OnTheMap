@@ -30,11 +30,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Qpm-Ih-at9">
-                                <rect key="frame" x="163" y="250" width="275" height="100"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Qpm-Ih-at9">
+                                <rect key="frame" x="163" y="250" width="275" height="185"/>
                                 <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SS2-yE-jWi">
-                                        <rect key="frame" x="0.0" y="0.0" width="275" height="30"/>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SS2-yE-jWi">
+                                        <rect key="frame" x="0.0" y="0.0" width="275" height="33"/>
                                         <color key="textColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -44,8 +44,8 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="L0l-Z4-7fu">
-                                        <rect key="frame" x="0.0" y="35" width="275" height="30"/>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="L0l-Z4-7fu">
+                                        <rect key="frame" x="0.0" y="38" width="275" height="33"/>
                                         <color key="textColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
@@ -55,8 +55,8 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G3w-cu-3xc">
-                                        <rect key="frame" x="0.0" y="70" width="275" height="30"/>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G3w-cu-3xc">
+                                        <rect key="frame" x="0.0" y="76" width="275" height="33"/>
                                         <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="u3V-28-o5w"/>
@@ -79,8 +79,8 @@
                                             <action selector="loginButtonTouch:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hBC-41-Kwq"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P29-7a-CUf">
-                                        <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P29-7a-CUf">
+                                        <rect key="frame" x="0.0" y="114" width="275" height="33"/>
                                         <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="18"/>
                                         <state key="normal" title="Don't have an account? Sign Up!">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -89,8 +89,8 @@
                                             <action selector="signUpButtonTouch:" destination="BYZ-38-t0r" eventType="touchUpInside" id="knc-Ve-Ye8"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pT8-EK-fHR" customClass="FBSDKLoginButton">
-                                        <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pT8-EK-fHR" customClass="FBSDKLoginButton">
+                                        <rect key="frame" x="0.0" y="152" width="275" height="33"/>
                                         <state key="normal" title="Place holder button for FB"/>
                                         <connections>
                                             <outlet property="delegate" destination="BYZ-38-t0r" id="XsU-9X-DeW"/>
@@ -149,9 +149,9 @@
                                 <exclude reference="ZcP-KW-UbL"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="ZPP-JX-YBn"/>
                                 <exclude reference="ipz-Kt-8ve"/>
                                 <exclude reference="uBt-QP-ZnL"/>
+                                <exclude reference="ZPP-JX-YBn"/>
                                 <exclude reference="sid-Dj-Owx"/>
                             </mask>
                         </variation>
@@ -161,9 +161,9 @@
                                 <include reference="ZcP-KW-UbL"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="ZPP-JX-YBn"/>
                                 <include reference="ipz-Kt-8ve"/>
                                 <include reference="uBt-QP-ZnL"/>
+                                <include reference="ZPP-JX-YBn"/>
                                 <include reference="sid-Dj-Owx"/>
                             </mask>
                         </variation>
@@ -292,6 +292,7 @@
                         <viewControllerLayoutGuide type="bottom" id="AXH-RB-H7r"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="fvR-Ka-aqC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Xie-Pq-vZC">
@@ -302,9 +303,11 @@
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5Q4-Jg-Vgx" id="T2R-Gz-ceG">
+                                            <rect key="frame" x="0.0" y="0.0" width="240" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="80A-ov-rz2">
+                                                    <rect key="frame" x="15" y="2" width="33.5" height="20.5"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -314,6 +317,7 @@
                                                     </variation>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Faw-nd-JTA">
+                                                    <rect key="frame" x="15" y="22.5" width="59" height="20.5"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -326,9 +330,6 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
-                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="0.0" y="20" width="400" height="780"/>
-                                </variation>
                                 <connections>
                                     <outlet property="dataSource" destination="FKy-V8-HC9" id="Rdm-lr-Fje"/>
                                     <outlet property="delegate" destination="FKy-V8-HC9" id="8K7-O9-Q3d"/>
@@ -336,14 +337,32 @@
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Xie-Pq-vZC" firstAttribute="top" secondItem="x7q-8q-CI7" secondAttribute="bottom" id="DHD-n2-pNA"/>
+                            <constraint firstItem="Xie-Pq-vZC" firstAttribute="leading" secondItem="fvR-Ka-aqC" secondAttribute="leadingMargin" constant="-20" id="FTF-ZB-iaI"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Xie-Pq-vZC" secondAttribute="trailing" constant="-20" id="RRb-0x-jyA"/>
+                            <constraint firstItem="Xie-Pq-vZC" firstAttribute="bottom" secondItem="fvR-Ka-aqC" secondAttribute="bottomMargin" id="klp-0k-TJz"/>
+                        </constraints>
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="Xie-Pq-vZC"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="DHD-n2-pNA"/>
+                                <exclude reference="FTF-ZB-iaI"/>
+                                <exclude reference="RRb-0x-jyA"/>
+                                <exclude reference="klp-0k-TJz"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
                             <mask key="subviews">
                                 <include reference="Xie-Pq-vZC"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="DHD-n2-pNA"/>
+                                <include reference="FTF-ZB-iaI"/>
+                                <include reference="RRb-0x-jyA"/>
+                                <include reference="klp-0k-TJz"/>
                             </mask>
                         </variation>
                     </view>
