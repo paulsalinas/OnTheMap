@@ -335,21 +335,37 @@
                                     <outlet property="delegate" destination="FKy-V8-HC9" id="8K7-O9-Q3d"/>
                                 </connections>
                             </tableView>
+                            <searchBar contentMode="redraw" placeholder="Search Student Name" translatesAutoresizingMaskIntoConstraints="NO" id="wDx-kE-gdc">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="FKy-V8-HC9" id="JkE-DL-SEu"/>
+                                </connections>
+                            </searchBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Xie-Pq-vZC" firstAttribute="top" secondItem="x7q-8q-CI7" secondAttribute="bottom" id="DHD-n2-pNA"/>
+                            <constraint firstItem="wDx-kE-gdc" firstAttribute="leading" secondItem="fvR-Ka-aqC" secondAttribute="leadingMargin" constant="-20" id="4B0-hv-dGr"/>
+                            <constraint firstItem="wDx-kE-gdc" firstAttribute="top" secondItem="x7q-8q-CI7" secondAttribute="bottom" id="8RG-72-yGh"/>
                             <constraint firstItem="Xie-Pq-vZC" firstAttribute="leading" secondItem="fvR-Ka-aqC" secondAttribute="leadingMargin" constant="-20" id="FTF-ZB-iaI"/>
+                            <constraint firstItem="Xie-Pq-vZC" firstAttribute="top" secondItem="wDx-kE-gdc" secondAttribute="bottom" id="La3-27-pO5"/>
+                            <constraint firstItem="Xie-Pq-vZC" firstAttribute="top" secondItem="wDx-kE-gdc" secondAttribute="bottom" id="OfA-MR-Isf"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Xie-Pq-vZC" secondAttribute="trailing" constant="-20" id="RRb-0x-jyA"/>
                             <constraint firstItem="Xie-Pq-vZC" firstAttribute="bottom" secondItem="fvR-Ka-aqC" secondAttribute="bottomMargin" id="klp-0k-TJz"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="wDx-kE-gdc" secondAttribute="trailing" constant="-20" id="xyZ-YW-wbB"/>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="Xie-Pq-vZC"/>
+                                <exclude reference="wDx-kE-gdc"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="DHD-n2-pNA"/>
+                                <exclude reference="4B0-hv-dGr"/>
+                                <exclude reference="8RG-72-yGh"/>
+                                <exclude reference="xyZ-YW-wbB"/>
                                 <exclude reference="FTF-ZB-iaI"/>
+                                <exclude reference="La3-27-pO5"/>
+                                <exclude reference="OfA-MR-Isf"/>
                                 <exclude reference="RRb-0x-jyA"/>
                                 <exclude reference="klp-0k-TJz"/>
                             </mask>
@@ -357,10 +373,15 @@
                         <variation key="heightClass=regular-widthClass=compact">
                             <mask key="subviews">
                                 <include reference="Xie-Pq-vZC"/>
+                                <include reference="wDx-kE-gdc"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="DHD-n2-pNA"/>
+                                <include reference="4B0-hv-dGr"/>
+                                <include reference="8RG-72-yGh"/>
+                                <include reference="xyZ-YW-wbB"/>
                                 <include reference="FTF-ZB-iaI"/>
+                                <include reference="La3-27-pO5"/>
+                                <include reference="OfA-MR-Isf"/>
                                 <include reference="RRb-0x-jyA"/>
                                 <include reference="klp-0k-TJz"/>
                             </mask>
@@ -368,6 +389,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Table" image="List" selectedImage="List" id="8qb-Lu-BRQ"/>
                     <connections>
+                        <outlet property="searchBar" destination="wDx-kE-gdc" id="P8D-xW-tjn"/>
                         <outlet property="tableView" destination="Xie-Pq-vZC" id="hEi-rz-M33"/>
                     </connections>
                 </viewController>

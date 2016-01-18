@@ -8,16 +8,21 @@
 
 import UIKit
 
+// MARK: - StudentTableViewController
+
 class StudentTableViewController: UIViewController, Alertable {
 
     @IBOutlet weak var tableView: UITableView!
+    
+    @IBOutlet weak var searchBar: UISearchBar!
+    
     var users:[StudentInformation] = [StudentInformation]()
+    var filteredUsers: [StudentInformation] = [StudentInformation]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         refresh()
-
-        // Do any additional setup after loading the view.
     }
 
     func refresh() {
@@ -35,6 +40,7 @@ class StudentTableViewController: UIViewController, Alertable {
             }
             
             self.users = users
+            self.filteredUsers = users
             
             dispatch_async(dispatch_get_main_queue(), {
                 self.tableView.reloadData()
@@ -45,12 +51,24 @@ class StudentTableViewController: UIViewController, Alertable {
 
 }
 
-extension StudentTableViewController:  UITableViewDelegate, UITableViewDataSource {
+// MARK: - StudentTableViewController: UISearchBarDelegate
+
+extension StudentTableViewController: UISearchBarDelegate {
+    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+        
+        filteredUsers = searchText != "" ?  users.filter({"\($0.firstName) \($0.lastName)".containsString(searchText)}) :  users
+        tableView.reloadData()
+    }
+}
+
+// MARK: - StudentTableViewController: UITableViewDelegate, UITableViewDataSource
+
+extension StudentTableViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         /* Get cell type */
         let cellReuseIdentifier = "StudentLocationViewCell"
-        let user = users[indexPath.row]
+        let user = filteredUsers[indexPath.row]
         let cell = tableView.dequeueReusableCellWithIdentifier(cellReuseIdentifier) as UITableViewCell!
 
         /* Set cell defaults */
@@ -62,7 +80,7 @@ extension StudentTableViewController:  UITableViewDelegate, UITableViewDataSourc
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return users.count
+        return filteredUsers.count
     }
     
 //    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
