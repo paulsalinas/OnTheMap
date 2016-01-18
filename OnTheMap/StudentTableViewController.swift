@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MapKit
 
 // MARK: - StudentTableViewController
 
@@ -69,12 +70,23 @@ extension StudentTableViewController: UITableViewDelegate, UITableViewDataSource
         /* Get cell type */
         let cellReuseIdentifier = "StudentLocationViewCell"
         let user = filteredUsers[indexPath.row]
-        let cell = tableView.dequeueReusableCellWithIdentifier(cellReuseIdentifier) as UITableViewCell!
+        let cell = tableView.dequeueReusableCellWithIdentifier(cellReuseIdentifier) as! OnTheMapTableViewCell
 
         /* Set cell defaults */
-        cell.textLabel!.text = "\(user.firstName) \(user.lastName)"
+        cell.name.text = "\(user.firstName) \(user.lastName)"
         
-        cell.detailTextLabel?.text = "\(user.url!)"
+        //add the pin
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = CLLocationCoordinate2D(latitude: user.latitude!, longitude: user.longitude!)
+        cell.mapView.addAnnotation(annotation)
+        cell.mapView.setRegion(MKCoordinateRegion(center: annotation.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)), animated: true)
+        
+        cell.mapView.zoomEnabled = false;
+        cell.mapView.scrollEnabled = false;
+        cell.mapView.userInteractionEnabled = false;
+        
+        
+        //cell.detailTextLabel?.text = "\(user.url!)"
         
         return cell
     }
@@ -92,6 +104,6 @@ extension StudentTableViewController: UITableViewDelegate, UITableViewDataSource
 //    }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 100
+        return 200
     }
 }
