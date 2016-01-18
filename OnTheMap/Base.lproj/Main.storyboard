@@ -18,7 +18,7 @@
         </mutableArray>
     </customFonts>
     <scenes>
-        <!--Login View Controller-->
+        <!--Delegate-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="LoginViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
@@ -92,6 +92,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pT8-EK-fHR" customClass="FBSDKLoginButton">
                                         <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                         <state key="normal" title="Place holder button for FB"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="BYZ-38-t0r" id="XsU-9X-DeW"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -175,25 +178,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1725" y="-401.25"/>
-        </scene>
-        <!--Item 2-->
-        <scene sceneID="AAG-R6-B59">
-            <objects>
-                <viewController id="5xl-ta-nWx" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="0FK-GT-4Nd"/>
-                        <viewControllerLayoutGuide type="bottom" id="taV-Vt-nfc"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="KN4-cU-NWK">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Item 2" id="BBO-xy-IsX"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Bt3-eG-wrZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="448" y="-62"/>
         </scene>
         <!--Map-->
         <scene sceneID="Wfe-TR-fDI">
@@ -292,12 +276,85 @@
                     </tabBar>
                     <connections>
                         <segue destination="uWA-dl-3QU" kind="relationship" relationship="viewControllers" id="uiL-Ux-26z"/>
-                        <segue destination="5xl-ta-nWx" kind="relationship" relationship="viewControllers" id="vee-95-VJ5"/>
+                        <segue destination="FKy-V8-HC9" kind="relationship" relationship="viewControllers" id="UbX-bF-FWq"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4lc-jF-jAb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-372" y="-392"/>
+        </scene>
+        <!--Table-->
+        <scene sceneID="Naq-Ye-Z8c">
+            <objects>
+                <viewController id="FKy-V8-HC9" customClass="StudentTableViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="x7q-8q-CI7"/>
+                        <viewControllerLayoutGuide type="bottom" id="AXH-RB-H7r"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="fvR-Ka-aqC">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Xie-Pq-vZC">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="StudentLocationViewCell" textLabel="80A-ov-rz2" detailTextLabel="Faw-nd-JTA" style="IBUITableViewCellStyleSubtitle" id="5Q4-Jg-Vgx">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5Q4-Jg-Vgx" id="T2R-Gz-ceG">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="80A-ov-rz2">
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                    <variation key="heightClass=regular-widthClass=compact">
+                                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    </variation>
+                                                </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Faw-nd-JTA">
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                    <variation key="heightClass=regular-widthClass=compact">
+                                                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                    </variation>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="0.0" y="20" width="400" height="780"/>
+                                </variation>
+                                <connections>
+                                    <outlet property="dataSource" destination="FKy-V8-HC9" id="Rdm-lr-Fje"/>
+                                    <outlet property="delegate" destination="FKy-V8-HC9" id="8K7-O9-Q3d"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="Xie-Pq-vZC"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="Xie-Pq-vZC"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Table" image="List" selectedImage="List" id="8qb-Lu-BRQ"/>
+                    <connections>
+                        <outlet property="tableView" destination="Xie-Pq-vZC" id="hEi-rz-M33"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rBg-p2-Vnf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="433.5" y="-70.5"/>
         </scene>
         <!--Add Pin View Controller-->
         <scene sceneID="4JL-qU-5mb">
@@ -553,6 +610,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="List" width="32" height="32"/>
         <image name="Map" width="32" height="32"/>
         <image name="Pin" width="32" height="32"/>
         <image name="Udacity" width="256" height="256"/>

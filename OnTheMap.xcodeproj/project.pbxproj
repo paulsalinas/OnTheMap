@@ -13,6 +13,7 @@
 		3C4239261C47204D005AD747 /* Roboto-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3C4239231C47204D005AD747 /* Roboto-Thin.ttf */; };
 		3C4239291C4AEF23005AD747 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C4239281C4AEF23005AD747 /* FBSDKCoreKit.framework */; };
 		3C42392B1C4AF9ED005AD747 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C42392A1C4AF9ED005AD747 /* FBSDKLoginKit.framework */; };
+		3C42392D1C4C6E47005AD747 /* StudentTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C42392C1C4C6E47005AD747 /* StudentTableViewController.swift */; };
 		3C4777611C34909E00DEA421 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C4777601C34909E00DEA421 /* AppDelegate.swift */; };
 		3C4777631C34909E00DEA421 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C4777621C34909E00DEA421 /* LoginViewController.swift */; };
 		3C4777661C34909E00DEA421 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C4777641C34909E00DEA421 /* Main.storyboard */; };
@@ -60,6 +61,7 @@
 		3C4239231C47204D005AD747 /* Roboto-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Thin.ttf"; sourceTree = "<group>"; };
 		3C4239281C4AEF23005AD747 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		3C42392A1C4AF9ED005AD747 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
+		3C42392C1C4C6E47005AD747 /* StudentTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentTableViewController.swift; sourceTree = "<group>"; };
 		3C47775D1C34909E00DEA421 /* OnTheMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OnTheMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C4777601C34909E00DEA421 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3C4777621C34909E00DEA421 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = LoginViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -239,6 +241,7 @@
 				3C4777621C34909E00DEA421 /* LoginViewController.swift */,
 				3CB909681C3CC25A00EA53C8 /* AddPinViewController.swift */,
 				3CAC1FBC1C3F295100740E45 /* PlaceHolderTextViewDelegate.swift */,
+				3C42392C1C4C6E47005AD747 /* StudentTableViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -385,6 +388,7 @@
 				3C4777981C3A016800DEA421 /* StudentInformation.swift in Sources */,
 				3CAC1FBD1C3F295100740E45 /* PlaceHolderTextViewDelegate.swift in Sources */,
 				3C4777961C39CD9900DEA421 /* UdacityConvenience.swift in Sources */,
+				3C42392D1C4C6E47005AD747 /* StudentTableViewController.swift in Sources */,
 				3C4777A71C3B046600DEA421 /* ParseConvenience.swift in Sources */,
 				3C4777B91C3C476E00DEA421 /* Client.swift in Sources */,
 				3C4777AB1C3B0AB500DEA421 /* OnTheMapTabBarController.swift in Sources */,
