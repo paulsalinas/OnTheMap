@@ -21,10 +21,6 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, Alertable
         super.viewDidLoad()
         fbLoginButton.delegate = self
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
     
     /* present udacity login page */
     @IBAction func signUpButtonTouch(sender: AnyObject) {
@@ -57,15 +53,28 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, Alertable
     /* facebook button delegate to handle the result from login */
     func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
         
-        loadingIndicatorView.hidden = false
+        // GUARD - do nothing if user cancelled
+        if result.isCancelled {
+            return
+        }
         
-        // logout of FB once you've obtained an access token
-        FBSDKLoginManager().logOut()
+        // GUARD - any errors?
+        if let error = error {
+            alert(error.localizedDescription)
+            return
+        }
         
+        // GUARD - valid access token
         guard let accessToken = result.token?.tokenString else {
             alert("There was an error authenticating via Facebook")
             return
         }
+        
+        loadingIndicatorView.hidden = false
+        
+        // logout of FB once you've obtained an access token
+        FBSDKLoginManager().logOut()
+      
         
         UdacityClient.sharedInstance().createSessionWithFacebookToken(accessToken) {
             success, error -> Void in
@@ -123,9 +132,16 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, Alertable
                 let tabController = controller.topViewController as! OnTheMapTabBarController
                 tabController.user = user
                 self.presentViewController(controller, animated: true, completion: nil)
+                
+                self.resetViewToInitialState()
             })
         }
-
+    }
+    
+    /* resets the view to its initial state */
+    func resetViewToInitialState() {
+        passwordInput.text = ""
+        usernameInput.text = ""
     }
 }
 
