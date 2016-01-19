@@ -303,73 +303,107 @@
                                     <outlet property="delegate" destination="FKy-V8-HC9" id="JkE-DL-SEu"/>
                                 </connections>
                             </searchBar>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="75" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Xie-Pq-vZC">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="162" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Xie-Pq-vZC">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="StudentLocationViewCell" rowHeight="75" id="5Q4-Jg-Vgx" customClass="OnTheMapTableViewCell" customModule="OnTheMap" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="StudentLocationViewCell" rowHeight="162" id="5Q4-Jg-Vgx" customClass="OnTheMapTableViewCell" customModule="OnTheMap" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5Q4-Jg-Vgx" id="T2R-Gz-ceG">
                                             <rect key="frame" x="0.0" y="0.0" width="240" height="74.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OCh-SN-xKJ">
-                                                    <rect key="frame" x="-42" y="-21" width="42" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                                 <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="M7Y-6q-5HF">
                                                     <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                                 </mapView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zoh-0U-4qk">
+                                                    <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="url" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vvd-u8-514">
+                                                    <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J08-1j-kHo">
+                                                    <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="12"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="bottomMargin" secondItem="M7Y-6q-5HF" secondAttribute="bottom" constant="-3.5" id="7ZQ-zh-3oF"/>
-                                                <constraint firstItem="OCh-SN-xKJ" firstAttribute="top" secondItem="T2R-Gz-ceG" secondAttribute="topMargin" id="8OO-Lt-heh"/>
-                                                <constraint firstItem="M7Y-6q-5HF" firstAttribute="leading" secondItem="OCh-SN-xKJ" secondAttribute="trailing" constant="41" id="C4s-Vl-BO3"/>
-                                                <constraint firstItem="OCh-SN-xKJ" firstAttribute="leading" secondItem="T2R-Gz-ceG" secondAttribute="leadingMargin" constant="73" id="OPh-1Q-O3E"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="M7Y-6q-5HF" secondAttribute="trailing" constant="78" id="TNL-XJ-gUG"/>
-                                                <constraint firstItem="M7Y-6q-5HF" firstAttribute="leading" secondItem="OCh-SN-xKJ" secondAttribute="trailing" constant="41" id="bRm-oZ-hai"/>
-                                                <constraint firstItem="M7Y-6q-5HF" firstAttribute="top" secondItem="T2R-Gz-ceG" secondAttribute="topMargin" id="wPd-6h-Y6O"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="OCh-SN-xKJ" secondAttribute="bottom" constant="37.5" id="zvJ-Ch-ORu"/>
+                                                <constraint firstItem="M7Y-6q-5HF" firstAttribute="trailing" secondItem="T2R-Gz-ceG" secondAttribute="trailingMargin" id="8Cu-zc-Bo1"/>
+                                                <constraint firstItem="Zoh-0U-4qk" firstAttribute="top" secondItem="T2R-Gz-ceG" secondAttribute="topMargin" id="9bn-KD-yKX"/>
+                                                <constraint firstItem="M7Y-6q-5HF" firstAttribute="top" secondItem="Vvd-u8-514" secondAttribute="bottom" constant="8" id="F5w-yh-Hkh"/>
+                                                <constraint firstItem="J08-1j-kHo" firstAttribute="top" secondItem="T2R-Gz-ceG" secondAttribute="topMargin" constant="-1" id="H5m-dg-uIf">
+                                                    <variation key="heightClass=regular-widthClass=compact" constant="3"/>
+                                                </constraint>
+                                                <constraint firstItem="J08-1j-kHo" firstAttribute="leading" secondItem="Zoh-0U-4qk" secondAttribute="trailing" constant="10" id="R5a-sk-5js">
+                                                    <variation key="heightClass=regular-widthClass=compact" constant="8"/>
+                                                </constraint>
+                                                <constraint firstItem="Vvd-u8-514" firstAttribute="leading" secondItem="T2R-Gz-ceG" secondAttribute="leadingMargin" constant="15" id="Sca-eP-kUE"/>
+                                                <constraint firstItem="M7Y-6q-5HF" firstAttribute="bottom" secondItem="T2R-Gz-ceG" secondAttribute="bottomMargin" id="TcQ-RL-YcK"/>
+                                                <constraint firstItem="Zoh-0U-4qk" firstAttribute="leading" secondItem="T2R-Gz-ceG" secondAttribute="leadingMargin" constant="15" id="ZTE-Xk-HXh"/>
+                                                <constraint firstItem="M7Y-6q-5HF" firstAttribute="top" secondItem="Vvd-u8-514" secondAttribute="bottom" constant="8" id="cSe-c5-vsI"/>
+                                                <constraint firstItem="Vvd-u8-514" firstAttribute="top" secondItem="Zoh-0U-4qk" secondAttribute="bottom" constant="2.5" id="hyZ-SR-SJM"/>
+                                                <constraint firstItem="M7Y-6q-5HF" firstAttribute="leading" secondItem="T2R-Gz-ceG" secondAttribute="leadingMargin" id="msY-hE-nBI"/>
+                                                <constraint firstItem="Vvd-u8-514" firstAttribute="top" secondItem="Zoh-0U-4qk" secondAttribute="bottom" constant="2.5" id="ogU-pc-4GS"/>
                                             </constraints>
                                             <variation key="default">
                                                 <mask key="subviews">
-                                                    <exclude reference="OCh-SN-xKJ"/>
                                                     <exclude reference="M7Y-6q-5HF"/>
+                                                    <exclude reference="Zoh-0U-4qk"/>
+                                                    <exclude reference="Vvd-u8-514"/>
+                                                    <exclude reference="J08-1j-kHo"/>
                                                 </mask>
                                                 <mask key="constraints">
-                                                    <exclude reference="8OO-Lt-heh"/>
-                                                    <exclude reference="OPh-1Q-O3E"/>
-                                                    <exclude reference="zvJ-Ch-ORu"/>
-                                                    <exclude reference="7ZQ-zh-3oF"/>
-                                                    <exclude reference="C4s-Vl-BO3"/>
-                                                    <exclude reference="TNL-XJ-gUG"/>
-                                                    <exclude reference="bRm-oZ-hai"/>
-                                                    <exclude reference="wPd-6h-Y6O"/>
+                                                    <exclude reference="9bn-KD-yKX"/>
+                                                    <exclude reference="ZTE-Xk-HXh"/>
+                                                    <exclude reference="Sca-eP-kUE"/>
+                                                    <exclude reference="hyZ-SR-SJM"/>
+                                                    <exclude reference="ogU-pc-4GS"/>
+                                                    <exclude reference="8Cu-zc-Bo1"/>
+                                                    <exclude reference="F5w-yh-Hkh"/>
+                                                    <exclude reference="TcQ-RL-YcK"/>
+                                                    <exclude reference="cSe-c5-vsI"/>
+                                                    <exclude reference="msY-hE-nBI"/>
+                                                    <exclude reference="H5m-dg-uIf"/>
+                                                    <exclude reference="R5a-sk-5js"/>
                                                 </mask>
                                             </variation>
                                             <variation key="heightClass=regular-widthClass=compact">
                                                 <mask key="subviews">
-                                                    <include reference="OCh-SN-xKJ"/>
                                                     <include reference="M7Y-6q-5HF"/>
+                                                    <include reference="Zoh-0U-4qk"/>
+                                                    <include reference="Vvd-u8-514"/>
+                                                    <include reference="J08-1j-kHo"/>
                                                 </mask>
                                                 <mask key="constraints">
-                                                    <include reference="8OO-Lt-heh"/>
-                                                    <include reference="OPh-1Q-O3E"/>
-                                                    <include reference="zvJ-Ch-ORu"/>
-                                                    <include reference="7ZQ-zh-3oF"/>
-                                                    <include reference="C4s-Vl-BO3"/>
-                                                    <include reference="TNL-XJ-gUG"/>
-                                                    <include reference="bRm-oZ-hai"/>
-                                                    <include reference="wPd-6h-Y6O"/>
+                                                    <include reference="9bn-KD-yKX"/>
+                                                    <include reference="ZTE-Xk-HXh"/>
+                                                    <include reference="Sca-eP-kUE"/>
+                                                    <include reference="hyZ-SR-SJM"/>
+                                                    <include reference="ogU-pc-4GS"/>
+                                                    <include reference="8Cu-zc-Bo1"/>
+                                                    <include reference="F5w-yh-Hkh"/>
+                                                    <include reference="TcQ-RL-YcK"/>
+                                                    <include reference="cSe-c5-vsI"/>
+                                                    <include reference="msY-hE-nBI"/>
+                                                    <include reference="H5m-dg-uIf"/>
+                                                    <include reference="R5a-sk-5js"/>
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="location" destination="J08-1j-kHo" id="Kgm-jG-Bad"/>
                                             <outlet property="mapView" destination="M7Y-6q-5HF" id="ZwJ-tg-vkq"/>
-                                            <outlet property="name" destination="OCh-SN-xKJ" id="xaU-LP-vEl"/>
+                                            <outlet property="name" destination="Zoh-0U-4qk" id="BcU-QY-3FO"/>
+                                            <outlet property="url" destination="Vvd-u8-514" id="pBh-Qf-lBd"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
