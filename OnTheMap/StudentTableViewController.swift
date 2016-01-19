@@ -17,59 +17,35 @@ class StudentTableViewController: UIViewController, Alertable, Refreshable {
     
     @IBOutlet weak var searchBar: UISearchBar!
     
-    //var users:[StudentInformation] = [StudentInformation]()
-    var filteredUsers: [StudentInformation]!  {
+    var users:[StudentInformation]! {
         return ParseClient.sharedInstance().users
     }
 
+    var filteredUsers: [StudentInformation]! = [StudentInformation]()
 
     override func viewDidLoad() {
-        //filteredUsers = ParseClient.sharedInstance().users
-        
         super.viewDidLoad()
         
-        
-        //refresh()
-    }
-    
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        tableView.reloadData()
+        refresh()
     }
     
     func refresh() {
         
-//        if tableView == nil {
-//            return
-//        }
+        if tableView == nil {
+            return
+        }
         
-        return
-//        dispatch_async(dispatch_get_main_queue(), {
-//            
-//        })
-        
-//        ParseClient.sharedInstance().getStudentLocations() { users, errorString -> Void in
-//            
-//            // GUARD: users must not be nil
-//            guard let users = users else {
-//                if let errorString = errorString {
-//                    self.alert(errorString)
-//                }
-//                else {
-//                    self.alert("Error fetching user locations")
-//                }
-//                return
-//            }
-//            
-//            //self.users = users
-//            self.filteredUsers = users
-//            
-//            dispatch_async(dispatch_get_main_queue(), {
-//                self.tableView.reloadData()
-//            })
-//        }
-        
+        // found that this kind of table can only be loaded asynchronously
+        let qualityOfServiceClass = QOS_CLASS_BACKGROUND
+        let backgroundQueue = dispatch_get_global_queue(qualityOfServiceClass, 0)
+        dispatch_async(backgroundQueue, {
+            
+            self.filteredUsers = self.users
+            
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                self.tableView.reloadData()
+            })
+        })
     }
 
 }
@@ -79,10 +55,8 @@ class StudentTableViewController: UIViewController, Alertable, Refreshable {
 extension StudentTableViewController: UISearchBarDelegate {
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
         
-//        let users = ParseClient.sharedInstance().users!
-//        
-//        filteredUsers = searchText != "" ?  users.filter({"\($0.firstName) \($0.lastName)".containsString(searchText)}) :  users
-//        tableView.reloadData()
+        filteredUsers = searchText != "" ?  users.filter({"\($0.firstName) \($0.lastName)".containsString(searchText)}) :  users
+        tableView.reloadData()
     }
 }
 
@@ -95,23 +69,23 @@ extension StudentTableViewController: UITableViewDelegate, UITableViewDataSource
         let cellReuseIdentifier = "StudentLocationViewCell"
         let user = filteredUsers[indexPath.row]
         print("\(indexPath.row) - \(user.firstName) \(user.lastName) \(user.longitude)")
-        let cell = tableView.dequeueReusableCellWithIdentifier(cellReuseIdentifier)!
+        let cell = tableView.dequeueReusableCellWithIdentifier(cellReuseIdentifier) as! OnTheMapTableViewCell
 
         /* Set cell defaults */
-        cell.textLabel?.text = "\(user.firstName) \(user.lastName)"
+        cell.name!.text = "\(user.firstName) \(user.lastName)"
         
-//        //add the pin
-//        let annotation = MKPointAnnotation()
-//        annotation.coordinate = CLLocationCoordinate2D(latitude: user.latitude!, longitude: user.longitude!)
-//        cell.mapView.addAnnotation(annotation)
-//        cell.mapView.setRegion(MKCoordinateRegion(center: annotation.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)), animated: true)
+        //add the pin
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = CLLocationCoordinate2D(latitude: user.latitude!, longitude: user.longitude!)
+        cell.mapView.addAnnotation(annotation)
+        cell.mapView.setRegion(MKCoordinateRegion(center: annotation.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)), animated: true)
         
-//        cell.mapView.zoomEnabled = false;
-//        cell.mapView.scrollEnabled = false;
-//        cell.mapView.userInteractionEnabled = false;
+        cell.mapView.zoomEnabled = false;
+        cell.mapView.scrollEnabled = false;
+        cell.mapView.userInteractionEnabled = false;
         
         
-        //cell.detailTextLabel?.text = "\(user.url!)"
+        cell.detailTextLabel?.text = "\(user.url!)"
         
         return cell
     }
