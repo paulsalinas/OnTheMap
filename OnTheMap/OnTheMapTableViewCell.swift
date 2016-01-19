@@ -13,6 +13,10 @@ class OnTheMapTableViewCell: UITableViewCell {
 
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var name: UILabel!
+    @IBOutlet weak var location: UILabel!
+    
+    @IBOutlet weak var url: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
