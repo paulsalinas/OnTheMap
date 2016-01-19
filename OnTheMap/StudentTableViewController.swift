@@ -22,11 +22,17 @@ class StudentTableViewController: UIViewController, Alertable, Refreshable {
     }
 
     var filteredUsers: [StudentInformation]! = [StudentInformation]()
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    var loaded : Bool = false
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
         
-        refresh()
+        // TODO: - this prevents the view from reloading when toggling tabs. 
+        //         would like to find an alternative to keeping this state variable
+        if !loaded {
+            refresh()
+            loaded = true
+        }
     }
     
     func refresh() {
@@ -34,18 +40,10 @@ class StudentTableViewController: UIViewController, Alertable, Refreshable {
         if tableView == nil {
             return
         }
-        
-        // found that this kind of table can only be loaded asynchronously
-        let qualityOfServiceClass = QOS_CLASS_BACKGROUND
-        let backgroundQueue = dispatch_get_global_queue(qualityOfServiceClass, 0)
-        dispatch_async(backgroundQueue, {
-            
-            self.filteredUsers = self.users
-            
-            dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                self.tableView.reloadData()
-            })
-        })
+
+        self.filteredUsers = self.users
+        tableView.reloadData()
+        self.searchBar!.text = ""
     }
 
 }
@@ -68,17 +66,18 @@ extension StudentTableViewController: UITableViewDelegate, UITableViewDataSource
         /* Get cell type */
         let cellReuseIdentifier = "StudentLocationViewCell"
         let user = filteredUsers[indexPath.row]
-        print("\(indexPath.row) - \(user.firstName) \(user.lastName) \(user.longitude)")
         let cell = tableView.dequeueReusableCellWithIdentifier(cellReuseIdentifier) as! OnTheMapTableViewCell
 
         /* Set cell defaults */
         cell.name!.text = "\(user.firstName) \(user.lastName)"
+        cell.url!.text = "\(user.url!)"
+        cell.location!.text = "- \(user.mapString!)"
         
         //add the pin
         let annotation = MKPointAnnotation()
         annotation.coordinate = CLLocationCoordinate2D(latitude: user.latitude!, longitude: user.longitude!)
         cell.mapView.addAnnotation(annotation)
-        cell.mapView.setRegion(MKCoordinateRegion(center: annotation.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)), animated: true)
+        cell.mapView.setRegion(MKCoordinateRegion(center: annotation.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.5, longitudeDelta: 0.5)), animated: false)
         
         cell.mapView.zoomEnabled = false;
         cell.mapView.scrollEnabled = false;
@@ -103,6 +102,6 @@ extension StudentTableViewController: UITableViewDelegate, UITableViewDataSource
 //    }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 150
+        return 200
     }
 }
