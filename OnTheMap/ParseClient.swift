@@ -12,6 +12,8 @@ class ParseClient: NSObject {
     
     // MARK: Properties
     
+    var users : [StudentInformation]?
+    
     /* Authentication state */
     var userID : String? = nil
     

@@ -30,56 +30,81 @@ class PinMapViewController: UIViewController, MKMapViewDelegate, Refreshable, Al
         // clear the map for new annotations
         removeMapAnnotations()
         
-        // turn on the loading indicators
-        loadingIndicators(arehidden: false)
-        
-        ParseClient.sharedInstance().getStudentLocations() { users, errorString -> Void in
-            
-            // make sure to turn off the loading indcators when this code block returns
-            defer {
-                dispatch_async(dispatch_get_main_queue(), {
-                    self.loadingIndicators(arehidden: true)
-                })
-            }
-            
-            // GUARD: users must not be nil
-            guard let users = users else {
-                if let errorString = errorString {
-                    self.alert(errorString)
-                }
-                else {
-                    self.alert("Error fetching user locations")
-                }
-                return
-            }
-            
-            // convert the users into annotations and then add them to the map
-            var annotations = [MKPointAnnotation]()
-            
-            for user in users {
-                
-                let lat = CLLocationDegrees(user.latitude!)
-                let long = CLLocationDegrees(user.longitude!)
-                
-                let coordinate = CLLocationCoordinate2D(latitude: lat, longitude: long)
-                
-                let first = user.firstName
-                let last = user.lastName
-                let mediaURL = user.url!
-                
-                let annotation = MKPointAnnotation()
-                annotation.coordinate = coordinate
-                annotation.title = "\(first) \(last)"
-                annotation.subtitle = mediaURL
-                
-                annotations.append(annotation)
-            }
-            
-            dispatch_async(dispatch_get_main_queue(), {
-                
-                self.mapView.addAnnotations(annotations)
-            })
+        var annotations = [MKPointAnnotation]()
+
+        for user in ParseClient.sharedInstance().users! {
+
+            let lat = CLLocationDegrees(user.latitude!)
+            let long = CLLocationDegrees(user.longitude!)
+
+            let coordinate = CLLocationCoordinate2D(latitude: lat, longitude: long)
+
+            let first = user.firstName
+            let last = user.lastName
+            let mediaURL = user.url!
+
+            let annotation = MKPointAnnotation()
+            annotation.coordinate = coordinate
+            annotation.title = "\(first) \(last)"
+            annotation.subtitle = mediaURL
+
+            annotations.append(annotation)
         }
+
+            
+        self.mapView.addAnnotations(annotations)
+
+        
+//        // turn on the loading indicators
+//        loadingIndicators(arehidden: false)
+//        
+//        ParseClient.sharedInstance().getStudentLocations() { users, errorString -> Void in
+//            
+//            // make sure to turn off the loading indcators when this code block returns
+//            defer {
+//                dispatch_async(dispatch_get_main_queue(), {
+//                    self.loadingIndicators(arehidden: true)
+//                })
+//            }
+//            
+//            // GUARD: users must not be nil
+//            guard let users = users else {
+//                if let errorString = errorString {
+//                    self.alert(errorString)
+//                }
+//                else {
+//                    self.alert("Error fetching user locations")
+//                }
+//                return
+//            }
+//            
+//            // convert the users into annotations and then add them to the map
+//            var annotations = [MKPointAnnotation]()
+//            
+//            for user in users {
+//                
+//                let lat = CLLocationDegrees(user.latitude!)
+//                let long = CLLocationDegrees(user.longitude!)
+//                
+//                let coordinate = CLLocationCoordinate2D(latitude: lat, longitude: long)
+//                
+//                let first = user.firstName
+//                let last = user.lastName
+//                let mediaURL = user.url!
+//                
+//                let annotation = MKPointAnnotation()
+//                annotation.coordinate = coordinate
+//                annotation.title = "\(first) \(last)"
+//                annotation.subtitle = mediaURL
+//                
+//                annotations.append(annotation)
+//            }
+//            
+//            dispatch_async(dispatch_get_main_queue(), {
+//                
+//                self.mapView.addAnnotations(annotations)
+//            })
+//        }
     }
     
     // MARK: - MKMapViewDelegate

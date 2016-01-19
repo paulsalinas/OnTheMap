@@ -32,7 +32,10 @@ extension ParseClient {
                 return
             }
             
-            completionHandler(users: ParseClient.studentInfoFromResults(result), errorString: nil)
+            // state of model now contains client user locations
+            self.users = ParseClient.studentInfoFromResults(result)
+            
+            completionHandler(users: self.users, errorString: nil)
         }
     }
     

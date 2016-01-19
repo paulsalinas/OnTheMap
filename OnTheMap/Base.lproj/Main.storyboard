@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
     </dependencies>
@@ -33,7 +34,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Qpm-Ih-at9">
                                 <rect key="frame" x="163" y="250" width="275" height="185"/>
                                 <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SS2-yE-jWi">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SS2-yE-jWi">
                                         <rect key="frame" x="0.0" y="0.0" width="275" height="33"/>
                                         <color key="textColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
@@ -44,7 +45,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="L0l-Z4-7fu">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="L0l-Z4-7fu">
                                         <rect key="frame" x="0.0" y="38" width="275" height="33"/>
                                         <color key="textColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
@@ -55,7 +56,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G3w-cu-3xc">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G3w-cu-3xc">
                                         <rect key="frame" x="0.0" y="76" width="275" height="33"/>
                                         <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
@@ -79,7 +80,7 @@
                                             <action selector="loginButtonTouch:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hBC-41-Kwq"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P29-7a-CUf">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P29-7a-CUf">
                                         <rect key="frame" x="0.0" y="114" width="275" height="33"/>
                                         <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="18"/>
                                         <state key="normal" title="Don't have an account? Sign Up!">
@@ -89,7 +90,7 @@
                                             <action selector="signUpButtonTouch:" destination="BYZ-38-t0r" eventType="touchUpInside" id="knc-Ve-Ye8"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pT8-EK-fHR" customClass="FBSDKLoginButton">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pT8-EK-fHR" customClass="FBSDKLoginButton">
                                         <rect key="frame" x="0.0" y="152" width="275" height="33"/>
                                         <state key="normal" title="Place holder button for FB"/>
                                         <connections>
@@ -306,72 +307,24 @@
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="StudentLocationViewCell" rowHeight="75" id="5Q4-Jg-Vgx" customClass="OnTheMapTableViewCell" customModule="OnTheMap" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="StudentLocationViewCell" textLabel="rPl-CZ-ovF" rowHeight="75" style="IBUITableViewCellStyleDefault" id="5Q4-Jg-Vgx" customClass="OnTheMapTableViewCell" customModule="OnTheMap" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5Q4-Jg-Vgx" id="T2R-Gz-ceG">
-                                            <rect key="frame" x="0.0" y="0.0" width="240" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="240" height="74.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pS9-s1-ZuY">
-                                                    <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="rPl-CZ-ovF">
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
+                                                    <variation key="heightClass=regular-widthClass=compact">
+                                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    </variation>
                                                 </label>
-                                                <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="abm-eF-Jlu">
-                                                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                                </mapView>
                                             </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="trailingMargin" secondItem="pS9-s1-ZuY" secondAttribute="trailing" constant="304" id="779-Ch-m40">
-                                                    <variation key="heightClass=regular-widthClass=compact" constant="21"/>
-                                                </constraint>
-                                                <constraint firstAttribute="trailingMargin" secondItem="abm-eF-Jlu" secondAttribute="trailing" id="AYM-cI-FhY"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="abm-eF-Jlu" secondAttribute="bottom" id="DrC-Pi-qJZ"/>
-                                                <constraint firstItem="abm-eF-Jlu" firstAttribute="top" secondItem="pS9-s1-ZuY" secondAttribute="bottom" constant="1" id="O23-mR-lLW"/>
-                                                <constraint firstItem="pS9-s1-ZuY" firstAttribute="leading" secondItem="T2R-Gz-ceG" secondAttribute="leadingMargin" constant="35" id="Yqv-Ze-QHj"/>
-                                                <constraint firstItem="pS9-s1-ZuY" firstAttribute="top" secondItem="T2R-Gz-ceG" secondAttribute="topMargin" id="f3P-Pc-h7c"/>
-                                                <constraint firstItem="abm-eF-Jlu" firstAttribute="top" secondItem="pS9-s1-ZuY" secondAttribute="bottom" constant="1" id="fHd-Sg-7sc"/>
-                                                <constraint firstItem="abm-eF-Jlu" firstAttribute="leading" secondItem="T2R-Gz-ceG" secondAttribute="leadingMargin" id="uBS-Vu-gbq"/>
-                                            </constraints>
-                                            <variation key="default">
-                                                <mask key="subviews">
-                                                    <exclude reference="pS9-s1-ZuY"/>
-                                                    <exclude reference="abm-eF-Jlu"/>
-                                                </mask>
-                                                <mask key="constraints">
-                                                    <exclude reference="AYM-cI-FhY"/>
-                                                    <exclude reference="DrC-Pi-qJZ"/>
-                                                    <exclude reference="O23-mR-lLW"/>
-                                                    <exclude reference="fHd-Sg-7sc"/>
-                                                    <exclude reference="uBS-Vu-gbq"/>
-                                                    <exclude reference="779-Ch-m40"/>
-                                                    <exclude reference="Yqv-Ze-QHj"/>
-                                                    <exclude reference="f3P-Pc-h7c"/>
-                                                </mask>
-                                            </variation>
-                                            <variation key="heightClass=regular-widthClass=compact">
-                                                <mask key="subviews">
-                                                    <include reference="pS9-s1-ZuY"/>
-                                                    <include reference="abm-eF-Jlu"/>
-                                                </mask>
-                                                <mask key="constraints">
-                                                    <include reference="AYM-cI-FhY"/>
-                                                    <include reference="DrC-Pi-qJZ"/>
-                                                    <include reference="O23-mR-lLW"/>
-                                                    <include reference="fHd-Sg-7sc"/>
-                                                    <include reference="uBS-Vu-gbq"/>
-                                                    <include reference="779-Ch-m40"/>
-                                                    <include reference="Yqv-Ze-QHj"/>
-                                                    <include reference="f3P-Pc-h7c"/>
-                                                </mask>
-                                            </variation>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="mapView" destination="abm-eF-Jlu" id="IdS-q9-cuc"/>
-                                            <outlet property="name" destination="pS9-s1-ZuY" id="yah-vC-UN8"/>
-                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -432,7 +385,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rBg-p2-Vnf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="433.5" y="-70.5"/>
+            <point key="canvasLocation" x="488" y="138"/>
         </scene>
         <!--Add Pin View Controller-->
         <scene sceneID="4JL-qU-5mb">
