@@ -109,13 +109,13 @@ extension StudentTableViewController: UITableViewDelegate, UITableViewDataSource
         return filteredUsers.count
     }
     
-//    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-//        
-////        /* Push the movie detail view */
-////        let controller = self.storyboard!.instantiateViewControllerWithIdentifier("MovieDetailViewController") as! MovieDetailViewController
-////        controller.movie = movies[indexPath.row]
-////        self.navigationController!.pushViewController(controller, animated: true)
-//    }
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        let user = filteredUsers[indexPath.row]
+        let app = UIApplication.sharedApplication()
+        let url = user.url!
+        app.openURL(NSURL(string: url)!)
+    }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 200
