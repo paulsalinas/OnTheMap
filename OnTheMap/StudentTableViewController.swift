@@ -17,12 +17,16 @@ class StudentTableViewController: UIViewController, Alertable, Refreshable {
     
     @IBOutlet weak var searchBar: UISearchBar!
     
+    @IBOutlet weak var loadingView: UIView!
+    
     var users:[StudentInformation]! {
         return ParseClient.sharedInstance().users
     }
 
     var filteredUsers: [StudentInformation]! = [StudentInformation]()
     var loaded : Bool = false
+    
+    
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -44,6 +48,18 @@ class StudentTableViewController: UIViewController, Alertable, Refreshable {
         self.filteredUsers = self.users
         tableView.reloadData()
         self.searchBar!.text = ""
+    }
+    
+    func startLoadingAnimations() {
+        if let loadingView = loadingView {
+            loadingView.hidden = false
+        }
+    }
+    
+    func endLoadingAnimations() {
+       if let loadingView = loadingView {
+            loadingView.hidden = true
+        }
     }
 
 }

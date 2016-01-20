@@ -100,19 +100,18 @@ class OnTheMapTabBarController: UITabBarController, Alertable {
     /* function to refresh all of the tab's child controllers */
     func refreshAllTabbedViewControllers() {
         
+        self.viewControllers?.forEach({ ($0 as! Refreshable).startLoadingAnimations() })
+        
         ParseClient.sharedInstance().getStudentLocations() { users, errorString -> Void in
             
             dispatch_async(dispatch_get_main_queue(), {
-                self.viewControllers?.forEach({ ($0 as! Refreshable).refresh() })
+                self.viewControllers?.forEach({
+                    let vc = $0 as! Refreshable
+                    vc.refresh()
+                    vc.endLoadingAnimations()
+                })
             })
             
         }
-        
-        // refresh all tabbed controllers that are Refreshable
-//        for vc in viewControllers! {
-//            if let vc = vc as? Refreshable {
-//                vc.refresh()
-//            }
-//        }
     }
 }

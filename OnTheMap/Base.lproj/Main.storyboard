@@ -412,24 +412,70 @@
                                     <outlet property="delegate" destination="FKy-V8-HC9" id="8K7-O9-Q3d"/>
                                 </connections>
                             </tableView>
+                            <view hidden="YES" clearsContextBeforeDrawing="NO" alpha="0.69999999999999996" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ndb-ck-vE7">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <subviews>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="51E-0U-VTd">
+                                        <rect key="frame" x="-10" y="-10" width="20" height="20"/>
+                                        <color key="color" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    </activityIndicatorView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="51E-0U-VTd" firstAttribute="leading" secondItem="ndb-ck-vE7" secondAttribute="leading" constant="182" id="871-rw-AiZ"/>
+                                    <constraint firstItem="51E-0U-VTd" firstAttribute="top" secondItem="ndb-ck-vE7" secondAttribute="top" constant="325" id="9vH-XH-8zE"/>
+                                    <constraint firstAttribute="bottom" secondItem="51E-0U-VTd" secondAttribute="bottom" constant="325" id="LZq-B1-Wli"/>
+                                    <constraint firstAttribute="trailing" secondItem="51E-0U-VTd" secondAttribute="trailing" constant="181" id="e7b-an-eFW"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="subviews">
+                                        <exclude reference="51E-0U-VTd"/>
+                                    </mask>
+                                    <mask key="constraints">
+                                        <exclude reference="871-rw-AiZ"/>
+                                        <exclude reference="9vH-XH-8zE"/>
+                                        <exclude reference="LZq-B1-Wli"/>
+                                        <exclude reference="e7b-an-eFW"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="subviews">
+                                        <include reference="51E-0U-VTd"/>
+                                    </mask>
+                                    <mask key="constraints">
+                                        <include reference="871-rw-AiZ"/>
+                                        <include reference="9vH-XH-8zE"/>
+                                        <include reference="LZq-B1-Wli"/>
+                                        <include reference="e7b-an-eFW"/>
+                                    </mask>
+                                </variation>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="wDx-kE-gdc" firstAttribute="leading" secondItem="fvR-Ka-aqC" secondAttribute="leadingMargin" constant="-20" id="4B0-hv-dGr"/>
                             <constraint firstItem="wDx-kE-gdc" firstAttribute="top" secondItem="x7q-8q-CI7" secondAttribute="bottom" id="8RG-72-yGh"/>
+                            <constraint firstItem="ndb-ck-vE7" firstAttribute="leading" secondItem="fvR-Ka-aqC" secondAttribute="leadingMargin" constant="-20" id="ElO-Xi-30d"/>
                             <constraint firstItem="Xie-Pq-vZC" firstAttribute="leading" secondItem="fvR-Ka-aqC" secondAttribute="leadingMargin" constant="-20" id="FTF-ZB-iaI"/>
                             <constraint firstItem="Xie-Pq-vZC" firstAttribute="top" secondItem="wDx-kE-gdc" secondAttribute="bottom" id="La3-27-pO5"/>
+                            <constraint firstItem="ndb-ck-vE7" firstAttribute="top" secondItem="x7q-8q-CI7" secondAttribute="bottom" id="LbX-1H-MaP"/>
                             <constraint firstItem="Xie-Pq-vZC" firstAttribute="top" secondItem="wDx-kE-gdc" secondAttribute="bottom" id="OfA-MR-Isf"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Xie-Pq-vZC" secondAttribute="trailing" constant="-20" id="RRb-0x-jyA"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="ndb-ck-vE7" secondAttribute="trailing" constant="-20" id="cH3-sF-c0M"/>
                             <constraint firstItem="Xie-Pq-vZC" firstAttribute="bottom" secondItem="fvR-Ka-aqC" secondAttribute="bottomMargin" id="klp-0k-TJz"/>
+                            <constraint firstItem="AXH-RB-H7r" firstAttribute="top" secondItem="ndb-ck-vE7" secondAttribute="bottom" id="nAv-W9-peh"/>
                             <constraint firstAttribute="trailingMargin" secondItem="wDx-kE-gdc" secondAttribute="trailing" constant="-20" id="xyZ-YW-wbB"/>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="wDx-kE-gdc"/>
                                 <exclude reference="Xie-Pq-vZC"/>
+                                <exclude reference="ndb-ck-vE7"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="ElO-Xi-30d"/>
+                                <exclude reference="LbX-1H-MaP"/>
+                                <exclude reference="cH3-sF-c0M"/>
                                 <exclude reference="4B0-hv-dGr"/>
                                 <exclude reference="8RG-72-yGh"/>
                                 <exclude reference="xyZ-YW-wbB"/>
@@ -438,14 +484,19 @@
                                 <exclude reference="OfA-MR-Isf"/>
                                 <exclude reference="RRb-0x-jyA"/>
                                 <exclude reference="klp-0k-TJz"/>
+                                <exclude reference="nAv-W9-peh"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
                             <mask key="subviews">
                                 <include reference="wDx-kE-gdc"/>
                                 <include reference="Xie-Pq-vZC"/>
+                                <include reference="ndb-ck-vE7"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="ElO-Xi-30d"/>
+                                <include reference="LbX-1H-MaP"/>
+                                <include reference="cH3-sF-c0M"/>
                                 <include reference="4B0-hv-dGr"/>
                                 <include reference="8RG-72-yGh"/>
                                 <include reference="xyZ-YW-wbB"/>
@@ -454,11 +505,13 @@
                                 <include reference="OfA-MR-Isf"/>
                                 <include reference="RRb-0x-jyA"/>
                                 <include reference="klp-0k-TJz"/>
+                                <include reference="nAv-W9-peh"/>
                             </mask>
                         </variation>
                     </view>
                     <tabBarItem key="tabBarItem" title="Table" image="List" selectedImage="List" id="8qb-Lu-BRQ"/>
                     <connections>
+                        <outlet property="loadingView" destination="ndb-ck-vE7" id="Dkx-0m-JBf"/>
                         <outlet property="searchBar" destination="wDx-kE-gdc" id="P8D-xW-tjn"/>
                         <outlet property="tableView" destination="Xie-Pq-vZC" id="hEi-rz-M33"/>
                     </connections>

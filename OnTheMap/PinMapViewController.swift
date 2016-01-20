@@ -25,6 +25,14 @@ class PinMapViewController: UIViewController, MKMapViewDelegate, Refreshable, Al
         loadingOverlayView.hidden = arehidden
     }
     
+    func startLoadingAnimations() {
+        loadingIndicators(arehidden: false)
+    }
+    
+    func endLoadingAnimations() {
+        loadingIndicators(arehidden: true)
+    }
+    
     func refresh() {
         
         // clear the map for new annotations
