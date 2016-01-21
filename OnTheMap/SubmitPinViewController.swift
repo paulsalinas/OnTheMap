@@ -33,11 +33,8 @@ class SubmitPinViewController: UIViewController, MKMapViewDelegate, Alertable {
         mapView.addAnnotation(annotation)
         mapView.setRegion(MKCoordinateRegion(center: annotation.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)), animated: true)
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+    
+    // MARK: - Button Touch Events
     
     @IBAction func submitLinkButtonTouch(sender: AnyObject) {
         
