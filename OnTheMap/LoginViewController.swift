@@ -25,34 +25,6 @@ class LoginViewController: UIViewController, Alertable {
         fbLoginButton.delegate = self
     }
     
-    /* present udacity login page */
-    @IBAction func signUpButtonTouch(sender: AnyObject) {
-        
-        let app = UIApplication.sharedApplication()
-        let udacitySignUpUrl = "http://www.udacity.com/account/auth#!/signup"
-        app.openURL(NSURL(string: udacitySignUpUrl)!)
-    }
-    
-    @IBAction func loginButtonTouch(sender: AnyObject) {
-        
-        loadingIndicatorView.hidden = false
-        
-        UdacityClient.sharedInstance().authenticateAndCreateSession(usernameInput.text!, password: passwordInput.text!) {
-            success, error -> Void in
-            
-            // GUARD - Authentication must be successful
-            guard success else {
-                dispatch_async(dispatch_get_main_queue(), {
-                    self.alert(error!)
-                    self.loadingIndicatorView.hidden = true
-                })
-                return
-            }
-            
-            self.fetchUserDataAndCompleteLogin()
-        }
-    }
-    
     /* fetch the user id corresponding to the logged in user and complete the login and transition to next VC */
     func fetchUserDataAndCompleteLogin() {
         
@@ -97,6 +69,36 @@ class LoginViewController: UIViewController, Alertable {
     func resetViewToInitialState() {
         passwordInput.text = ""
         usernameInput.text = ""
+    }
+    
+    // MARK: - Button Touch Events
+    
+    /* present udacity login page */
+    @IBAction func signUpButtonTouch(sender: AnyObject) {
+        
+        let app = UIApplication.sharedApplication()
+        let udacitySignUpUrl = "http://www.udacity.com/account/auth#!/signup"
+        app.openURL(NSURL(string: udacitySignUpUrl)!)
+    }
+    
+    @IBAction func loginButtonTouch(sender: AnyObject) {
+        
+        loadingIndicatorView.hidden = false
+        
+        UdacityClient.sharedInstance().authenticateAndCreateSession(usernameInput.text!, password: passwordInput.text!) {
+            success, error -> Void in
+            
+            // GUARD - Authentication must be successful
+            guard success else {
+                dispatch_async(dispatch_get_main_queue(), {
+                    self.alert(error!)
+                    self.loadingIndicatorView.hidden = true
+                })
+                return
+            }
+            
+            self.fetchUserDataAndCompleteLogin()
+        }
     }
 }
 
