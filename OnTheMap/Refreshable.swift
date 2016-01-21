@@ -9,9 +9,9 @@
 import Foundation
 
 protocol Refreshable {
+    
     func refresh()
     
-    func startLoadingAnimations()
-    
-    func endLoadingAnimations()
+    func setRefreshAnimation(isAnimating isAnimating: Bool)
+
 }

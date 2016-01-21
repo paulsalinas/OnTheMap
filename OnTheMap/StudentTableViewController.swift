@@ -50,18 +50,13 @@ class StudentTableViewController: UIViewController, Alertable, Refreshable {
         self.searchBar!.text = ""
     }
     
-    func startLoadingAnimations() {
+    func setRefreshAnimation(isAnimating isAnimating: Bool) {
         if let loadingView = loadingView {
-            loadingView.hidden = false
+            
+            // unhide when we want to animate
+            loadingView.hidden = !isAnimating
         }
     }
-    
-    func endLoadingAnimations() {
-       if let loadingView = loadingView {
-            loadingView.hidden = true
-        }
-    }
-
 }
 
 // MARK: - StudentTableViewController: UISearchBarDelegate
