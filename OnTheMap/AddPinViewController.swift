@@ -25,6 +25,8 @@ class AddPinViewController: UIViewController, Alertable {
         placeHolderDelegate = PlaceHolderTextViewDelegate(placeHolder: enterLocationTextView.text)
         enterLocationTextView.delegate = placeHolderDelegate
     }
+    
+    // MARK: - Button Touch Events
 
     @IBAction func cancelButtonTouch(sender: AnyObject) {
         presentingViewController!.dismissViewControllerAnimated(true, completion: nil)
