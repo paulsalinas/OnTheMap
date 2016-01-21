@@ -16,9 +16,7 @@ class PinMapViewController: UIViewController, MKMapViewDelegate, Refreshable, Al
     @IBOutlet weak var loadingOverlayView: UIView!
     @IBOutlet weak var loadingIndicatorView: UIActivityIndicatorView!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
+    // MARK: - Refreshable
     
     func setRefreshAnimation(isAnimating isAnimating: Bool) {
         
@@ -34,29 +32,29 @@ class PinMapViewController: UIViewController, MKMapViewDelegate, Refreshable, Al
         // clear the map for new annotations
         removeMapAnnotations()
         
-        var annotations = [MKPointAnnotation]()
-
-        for user in ParseClient.sharedInstance().users! {
-
+        // map users into annotations
+        let annotations = ParseClient.sharedInstance().users!.map {
+            user -> MKPointAnnotation in
+            
             let lat = CLLocationDegrees(user.latitude!)
             let long = CLLocationDegrees(user.longitude!)
-
+            
             let coordinate = CLLocationCoordinate2D(latitude: lat, longitude: long)
-
+            
             let first = user.firstName
             let last = user.lastName
             let mediaURL = user.url!
-
+            
             let annotation = MKPointAnnotation()
             annotation.coordinate = coordinate
             annotation.title = "\(first) \(last)"
             annotation.subtitle = mediaURL
-
-            annotations.append(annotation)
-        }
-
             
-        self.mapView.addAnnotations(annotations)
+            return annotation
+        }
+        
+        // pin them on the map
+        mapView.addAnnotations(annotations)
     }
     
     // MARK: - MKMapViewDelegate
@@ -92,6 +90,8 @@ class PinMapViewController: UIViewController, MKMapViewDelegate, Refreshable, Al
             }
         }
     }
+    
+    // MARK: - Helpers
     
     /* removes all of the annotations on the map */
     func removeMapAnnotations() {
