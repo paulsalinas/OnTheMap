@@ -12,15 +12,32 @@ class OnTheMapTabBarController: UITabBarController, Alertable {
     
     var user: StudentInformation?
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
         refreshAllTabbedViewControllers()
     }
+    
+    /* function to refresh all of the tab's child controllers */
+    func refreshAllTabbedViewControllers() {
+        
+        self.viewControllers?.forEach({ ($0 as! Refreshable).setRefreshAnimation(isAnimating: true) })
+        
+        ParseClient.sharedInstance().getStudentLocations() { users, errorString -> Void in
+            
+            dispatch_async(dispatch_get_main_queue(), {
+                self.viewControllers?.forEach({
+                    let vc = $0 as! Refreshable
+                    vc.refresh()
+                    vc.setRefreshAnimation(isAnimating: false)
+                })
+            })
+            
+        }
+    }
+    
+    
+    // MARK: - Touch Button Handlers
     
     @IBAction func refreshButtonTouch(sender: AnyObject) {
         
@@ -95,23 +112,5 @@ class OnTheMapTabBarController: UITabBarController, Alertable {
             }
         }
        
-    }
-    
-    /* function to refresh all of the tab's child controllers */
-    func refreshAllTabbedViewControllers() {
-        
-        self.viewControllers?.forEach({ ($0 as! Refreshable).setRefreshAnimation(isAnimating: true) })
-        
-        ParseClient.sharedInstance().getStudentLocations() { users, errorString -> Void in
-            
-            dispatch_async(dispatch_get_main_queue(), {
-                self.viewControllers?.forEach({
-                    let vc = $0 as! Refreshable
-                    vc.refresh()
-                    vc.setRefreshAnimation(isAnimating: false)
-                })
-            })
-            
-        }
     }
 }
