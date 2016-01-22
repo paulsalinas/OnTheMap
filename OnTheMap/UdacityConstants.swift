@@ -9,10 +9,13 @@
 import Foundation
 
 extension UdacityClient {
+    
+    // MARK: Constants
     struct Constants {
         static let BaseURLSecure : String = "https://www.udacity.com/api/"
     }
     
+    // MARK: Methods
     struct Methods {
         // MARK: Session
         static let SessionID = "session"

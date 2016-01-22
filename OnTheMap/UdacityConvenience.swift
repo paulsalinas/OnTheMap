@@ -10,7 +10,8 @@ import Foundation
 
 extension UdacityClient {
     
-     func createSessionWithFacebookToken(accessToken: String, completionHandler: (success: Bool, errorString: String?) -> Void) {
+    /* Create session with facebook access token. The result of the method will be passed to the completion handler */
+    func createSessionWithFacebookToken(accessToken: String, completionHandler: (success: Bool, errorString: String?) -> Void) {
         
         // 1) validate - check if username and password are empty
         guard accessToken != "" else {
@@ -25,6 +26,7 @@ extension UdacityClient {
         createSessionHelper(jsonBody, completionHandler: completionHandler)
     }
     
+    /* Authenticate with username and password. The result of the method will be passed to the completion handler. A successful authentication will create a session */
     func authenticateAndCreateSession(username: String, password: String , completionHandler: (success: Bool, errorString: String?) -> Void) {
         
         // 1) validate - check if username and password are empty
@@ -43,6 +45,7 @@ extension UdacityClient {
        createSessionHelper(jsonBody, completionHandler: completionHandler)
     }
     
+    /* End the session and pass the result to the completion handler */
     func logOutOfSession(completionHandler: (success: Bool, errorString: String?) -> Void) {
         
         var xsrfCookie: NSHTTPCookie? = nil
@@ -88,7 +91,7 @@ extension UdacityClient {
         }
     }
     
-    /* The completionHandler is passed the StudentInformation object with all of the user information from the api  */
+    /* The completion handler is passed the StudentInformation object with all of the user information from the api. */
     func getUserData(completionHandler: (user: StudentInformation?, errorString: String?) -> Void) {
         
         // GUARD: User id must be defined
@@ -127,7 +130,7 @@ extension UdacityClient {
         }
     }
     
-    /* executes the create session task */
+    /* Executes the create session task. the result will be passed to the completion handler */
     private func createSessionHelper(jsonBody: [String: AnyObject], completionHandler: (success: Bool, errorString: String?) -> Void) {
         
         // 2) POST the data over
