@@ -17,7 +17,8 @@ class StudentTableViewController: UIViewController, Alertable, Refreshable {
     
     @IBOutlet weak var searchBar: UISearchBar!
     
-    @IBOutlet weak var loadingView: UIView!
+    var overlayView: UIView!
+    var activityIndicator: UIActivityIndicatorView!
     
     // our main source of unfiltered users
     var users:[StudentInformation]! {
@@ -29,6 +30,21 @@ class StudentTableViewController: UIViewController, Alertable, Refreshable {
     
     // track the state if we've loaded already. used in 'viewWillAppear'
     var loaded : Bool = false
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        // setup of overlay view and activity indicator
+        // exact positioning will be determined later by the tableview
+        overlayView = UIView()
+        activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.WhiteLarge)
+        activityIndicator.startAnimating()
+        activityIndicator.color = UIColor.blackColor()
+        overlayView.alpha = 0.7
+        overlayView.backgroundColor = UIColor.whiteColor()
+        overlayView.addSubview(activityIndicator)
+    }
+
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -61,10 +77,18 @@ class StudentTableViewController: UIViewController, Alertable, Refreshable {
     }
     
     func setRefreshAnimation(isAnimating isAnimating: Bool) {
-        if let loadingView = loadingView {
+        if tableView == nil {
+            return
+        }
+        
+        if (isAnimating) {
             
-            // unhide when we want to animate
-            loadingView.hidden = !isAnimating
+            // set positioning of the overlay and action indicator before "showing" it
+            overlayView.frame = tableView.bounds
+            activityIndicator.center = CGPointMake(overlayView.frame.size.width / 2, (overlayView.frame.size.height / 2))
+            tableView.addSubview(overlayView)
+        } else {
+            overlayView.removeFromSuperview()
         }
     }
 }
