@@ -9,6 +9,9 @@
 import Foundation
 
 extension ParseClient {
+    
+    // MARK: - Constants
+    
     struct Constants {
         static let ApiKey : String = "QuWThTdiRmTux3YaDseUSEpUKo7aBYM737yKd4gY"
         static let ApplicationID : String = "QrX47CA9cyuGewLdsL7o5Eb8iug6Em8ye0dnAbIr" 
@@ -16,17 +19,21 @@ extension ParseClient {
         static let BaseURLSecure : String = "https://api.parse.com/1/classes/"
     }
     
+    // MARK: - Methods
+    
     struct Methods {
         static let StudentLocation = "StudentLocation"
         static let PUTStudentLocation = "StudentLocation/{objectId}"
     }
+    
+    // MARK: - Http Headers
     
     struct HttpHeaders {
         static let ApiKey : String = "X-Parse-REST-API-Key"
         static let ApplicationID : String = "X-Parse-Application-Id"
     }
     
-    // MARK: JSON Response Keys
+    // MARK: - JSON Response Keys
     
     struct JSONResponseKeys {
         static let UserID = "uniqueKey"
@@ -43,6 +50,8 @@ extension ParseClient {
         static let UpdatedAt = "updatedAt"
     }
     
+    // MARK: - JSON Body
+    
     struct JSONBody {
         static let UserID = "uniqueKey"
         static let FirstName = "firstName"
@@ -52,6 +61,8 @@ extension ParseClient {
         static let Url = "mediaURL"
         static let MapString = "mapString"
     }
+    
+    // MARK: - Errors
     
     struct Errors {
         static let ErrorReadingResults = "Error Reading Server Results"

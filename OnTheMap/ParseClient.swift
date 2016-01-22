@@ -12,10 +12,12 @@ class ParseClient: NSObject {
     
     // MARK: Properties
     
-    var users : [StudentInformation]?
-    
-    /* Authentication state */
+    // authentiation state
     var userID : String? = nil
+    
+    // store list of users from last call to 'getStudentLocations'. 
+    // before authentication and before fetching student location, it should be nil
+    var users : [StudentInformation]?
     
     let baseClient : Client
     
@@ -84,6 +86,8 @@ class ParseClient: NSObject {
         
         return Singleton.sharedInstance
     }
+    
+    // MARK: GET
     
     internal func taskForGETMethod(method: String, parameters: [String : AnyObject], completionHandler: (result: AnyObject!, error: NSError?) -> Void) -> NSURLSessionDataTask {
         

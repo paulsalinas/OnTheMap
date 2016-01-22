@@ -68,6 +68,7 @@ extension ParseClient {
         }
     }
     
+    /* add the student location. completion handler will pass the result via 'success' parameter */
     func addStudentLocation(user: StudentInformation, completionHandler: (success: Bool?, errorString: String?) -> Void){
         
         // validate the model
@@ -109,6 +110,7 @@ extension ParseClient {
         }
     }
     
+    /* change the student location. completion handler will pass the result via 'success' parameter */
     func changeStudentLocation(user: StudentInformation, completionHandler: (success: Bool?, errorString: String?) -> Void){
         
         // validate the model
@@ -152,6 +154,7 @@ extension ParseClient {
         }
     }
     
+    /* delete the student location. completion handler will pass the result via 'success' parameter */
     func deleteStudentLocation (user: StudentInformation, completionHandler: (success: Bool?, errorString: String?) -> Void){
         
         // validate the model
