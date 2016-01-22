@@ -12,11 +12,14 @@ import MapKit
 class SubmitPinViewController: UIViewController, MKMapViewDelegate, Alertable {
     
     @IBOutlet weak var mapView: MKMapView!
+    
+    @IBOutlet weak var enterLinkTextView: UITextView!
+    
     var user: StudentInformation!
     
     var rootPresentingController: UIViewController!
     
-    @IBOutlet weak var enterLinkTextView: UITextView!
+    let placeholderText = "Enter Link to Share Here"
     
     // strong reference to the delegate
     var placeHolderDelegate: PlaceHolderTextViewDelegate?
@@ -24,7 +27,7 @@ class SubmitPinViewController: UIViewController, MKMapViewDelegate, Alertable {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        placeHolderDelegate = PlaceHolderTextViewDelegate(placeHolder: enterLinkTextView.text)
+        placeHolderDelegate = PlaceHolderTextViewDelegate(placeHolder: placeholderText)
         enterLinkTextView.delegate = placeHolderDelegate
         
         //add the pin
@@ -38,7 +41,7 @@ class SubmitPinViewController: UIViewController, MKMapViewDelegate, Alertable {
     
     @IBAction func submitLinkButtonTouch(sender: AnyObject) {
         
-        guard let inputUrl = enterLinkTextView.text where inputUrl != "" else {
+        guard let inputUrl = enterLinkTextView.text where inputUrl != "" && inputUrl != placeholderText else {
             alert("Please enter a proper url for the link")
             return
         }
