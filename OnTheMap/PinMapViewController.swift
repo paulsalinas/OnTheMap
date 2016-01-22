@@ -29,11 +29,17 @@ class PinMapViewController: UIViewController, MKMapViewDelegate, Refreshable, Al
     
     func refresh() {
         
+        // make sure we access to the list of users from the model
+        guard let users = ParseClient.sharedInstance().users else {
+            alert("There's an issue communicating with the server. Please refresh and try again...")
+            return
+        }
+        
         // clear the map for new annotations
         removeMapAnnotations()
         
         // map users into annotations
-        let annotations = ParseClient.sharedInstance().users!.map {
+        let annotations = users.map {
             user -> MKPointAnnotation in
             
             let lat = CLLocationDegrees(user.latitude!)

@@ -19,14 +19,16 @@ class StudentTableViewController: UIViewController, Alertable, Refreshable {
     
     @IBOutlet weak var loadingView: UIView!
     
+    // our main source of unfiltered users
     var users:[StudentInformation]! {
         return ParseClient.sharedInstance().users
     }
-
+    
+    // our main collection to be used in the table. it essentially holds our filtered result
     var filteredUsers: [StudentInformation]! = [StudentInformation]()
+    
+    // track the state if we've loaded already. used in 'viewWillAppear'
     var loaded : Bool = false
-    
-    
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -41,13 +43,21 @@ class StudentTableViewController: UIViewController, Alertable, Refreshable {
     
     func refresh() {
         
+        // in case the parent vc refreshes when we haven't loaded yet
         if tableView == nil {
             return
         }
-
-        self.filteredUsers = self.users
+        
+        // make sure we access to the list of users from the model
+        guard let users = users else {
+            alert("There's an issue communicating with the server. Please refresh and try again...")
+            return
+        }
+        
+        // this is our initial state
+        filteredUsers = users
         tableView.reloadData()
-        self.searchBar!.text = ""
+        searchBar!.text = ""
     }
     
     func setRefreshAnimation(isAnimating isAnimating: Bool) {
@@ -64,6 +74,12 @@ class StudentTableViewController: UIViewController, Alertable, Refreshable {
 extension StudentTableViewController: UISearchBarDelegate {
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
         
+        // make sure we access to the list of users from the model
+        guard let users = users else {
+            alert("There's an issue communicating with the server. Please refresh and try again...")
+            return
+        }
+        
         filteredUsers = searchText != "" ?  users.filter({"\($0.firstName) \($0.lastName)".containsString(searchText)}) :  users
         tableView.reloadData()
     }
@@ -74,17 +90,17 @@ extension StudentTableViewController: UISearchBarDelegate {
 extension StudentTableViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        /* Get cell type */
+        // get cell type
         let cellReuseIdentifier = "StudentLocationViewCell"
         let user = filteredUsers[indexPath.row]
         let cell = tableView.dequeueReusableCellWithIdentifier(cellReuseIdentifier) as! OnTheMapTableViewCell
-
-        /* Set cell defaults */
+        
+        // set the values
         cell.name!.text = "\(user.firstName) \(user.lastName)"
         cell.url!.text = "\(user.url!)"
         cell.location!.text = "- \(user.mapString!)"
         
-        //add the pin
+        // add the pin
         let annotation = MKPointAnnotation()
         annotation.coordinate = CLLocationCoordinate2D(latitude: user.latitude!, longitude: user.longitude!)
         cell.mapView.addAnnotation(annotation)
@@ -93,7 +109,6 @@ extension StudentTableViewController: UITableViewDelegate, UITableViewDataSource
         cell.mapView.zoomEnabled = false;
         cell.mapView.scrollEnabled = false;
         cell.mapView.userInteractionEnabled = false;
-        
         
         cell.detailTextLabel?.text = "\(user.url!)"
         
