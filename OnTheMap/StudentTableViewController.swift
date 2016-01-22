@@ -76,12 +76,12 @@ class StudentTableViewController: UIViewController, Alertable, Refreshable {
         searchBar!.text = ""
     }
     
-    func setRefreshAnimation(isAnimating isAnimating: Bool) {
+    func refreshIndicator(isShowing isShowing: Bool) {
         if tableView == nil {
             return
         }
         
-        if (isAnimating) {
+        if (isShowing) {
             
             // set positioning of the overlay and action indicator before "showing" it
             overlayView.frame = tableView.bounds

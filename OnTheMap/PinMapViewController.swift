@@ -18,10 +18,10 @@ class PinMapViewController: UIViewController, MKMapViewDelegate, Refreshable, Al
     
     // MARK: - Refreshable
     
-    func setRefreshAnimation(isAnimating isAnimating: Bool) {
+    func refreshindicator(isShowing isShowing: Bool) {
         
         // for animation, we need to unhide the indicators
-        let hidden = !isAnimating
+        let hidden = !isShowing
         
         loadingIndicatorView.hidden = hidden
         loadingOverlayView.hidden = hidden

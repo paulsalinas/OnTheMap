@@ -12,6 +12,6 @@ protocol Refreshable {
     
     func refresh()
     
-    func setRefreshAnimation(isAnimating isAnimating: Bool)
+    func refreshIndicator(isShowing isShowing: Bool)
 
 }
