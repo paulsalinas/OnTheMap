@@ -12,6 +12,8 @@ import FBSDKLoginKit
 // MARK: - LoginViewController: UIViewController
 
 class LoginViewController: UIViewController, Alertable {
+    
+    var keyboardDismisser: KeyboardDismisser!
 
     @IBOutlet weak var usernameInput: UITextField!
     @IBOutlet weak var passwordInput: UITextField!
@@ -23,6 +25,9 @@ class LoginViewController: UIViewController, Alertable {
         super.viewDidLoad()
         
         fbLoginButton.delegate = self
+        
+        // will give the vc the behavior to able to dismiss the keyboard 'on tap'
+        keyboardDismisser = KeyboardDismisser(viewController: self)
     }
     
     /* fetch the user id corresponding to the logged in user and complete the login and transition to next VC */

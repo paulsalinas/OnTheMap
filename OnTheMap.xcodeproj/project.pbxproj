@@ -35,6 +35,7 @@
 		3C4777B91C3C476E00DEA421 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C4777B81C3C476E00DEA421 /* Client.swift */; };
 		3CAC1FBD1C3F295100740E45 /* PlaceHolderTextViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CAC1FBC1C3F295100740E45 /* PlaceHolderTextViewDelegate.swift */; };
 		3CB909691C3CC25A00EA53C8 /* AddPinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB909681C3CC25A00EA53C8 /* AddPinViewController.swift */; };
+		3CC730A21C54130200A472F0 /* KeyboardDismisser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CC730A11C54130200A472F0 /* KeyboardDismisser.swift */; };
 		3CDB93DF1C4C92A6007B108E /* OnTheMapTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CDB93DE1C4C92A6007B108E /* OnTheMapTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -90,6 +91,7 @@
 		3C4777B81C3C476E00DEA421 /* Client.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
 		3CAC1FBC1C3F295100740E45 /* PlaceHolderTextViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceHolderTextViewDelegate.swift; sourceTree = "<group>"; };
 		3CB909681C3CC25A00EA53C8 /* AddPinViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddPinViewController.swift; sourceTree = "<group>"; };
+		3CC730A11C54130200A472F0 /* KeyboardDismisser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardDismisser.swift; sourceTree = "<group>"; };
 		3CDB93DE1C4C92A6007B108E /* OnTheMapTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnTheMapTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -238,11 +240,12 @@
 			children = (
 				3CC7309D1C5324B500A472F0 /* Protocols */,
 				3C42391E1C449621005AD747 /* SubmitPinViewController.swift */,
+				3CB909681C3CC25A00EA53C8 /* AddPinViewController.swift */,
 				3C4777AC1C3B75FC00DEA421 /* PinMapViewController.swift */,
 				3C4777AA1C3B0AB500DEA421 /* OnTheMapTabBarController.swift */,
 				3C4777621C34909E00DEA421 /* LoginViewController.swift */,
-				3CB909681C3CC25A00EA53C8 /* AddPinViewController.swift */,
 				3C42392C1C4C6E47005AD747 /* StudentTableViewController.swift */,
+				3CC730A11C54130200A472F0 /* KeyboardDismisser.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -421,6 +424,7 @@
 				3C4777B91C3C476E00DEA421 /* Client.swift in Sources */,
 				3C4777AB1C3B0AB500DEA421 /* OnTheMapTabBarController.swift in Sources */,
 				3C4777A51C3AFFF000DEA421 /* ParseConstants.swift in Sources */,
+				3CC730A21C54130200A472F0 /* KeyboardDismisser.swift in Sources */,
 				3C4777B51C3C383500DEA421 /* Alertable.swift in Sources */,
 				3C4777921C39BB9700DEA421 /* UdacityConstants.swift in Sources */,
 				3C4777AD1C3B75FC00DEA421 /* PinMapViewController.swift in Sources */,

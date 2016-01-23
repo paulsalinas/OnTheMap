@@ -15,6 +15,7 @@ class AddPinViewController: UIViewController, UIGestureRecognizerDelegate, Alert
     @IBOutlet weak var enterLocationTextView: UITextView!
     
     var user: StudentInformation?
+    var keyboardDismisser: KeyboardDismisser!
     
     // strong reference to the delegate
     var placeHolderDelegate: PlaceHolderTextViewDelegate?
@@ -30,6 +31,9 @@ class AddPinViewController: UIViewController, UIGestureRecognizerDelegate, Alert
         tapRecognizer.numberOfTapsRequired = 1
         tapRecognizer.delegate = self
         self.view.addGestureRecognizer(tapRecognizer)
+        
+        // will give the vc the behavior to able to dismiss the keyboard 'on tap'
+        keyboardDismisser = KeyboardDismisser(viewController: self)
     }
     
     // MARK: Dismissals

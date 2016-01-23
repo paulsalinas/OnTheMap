@@ -9,7 +9,7 @@
 import UIKit
 import MapKit
 
-class SubmitPinViewController: UIViewController, MKMapViewDelegate, UIGestureRecognizerDelegate, Alertable {
+class SubmitPinViewController: UIViewController, MKMapViewDelegate, Alertable {
     
     @IBOutlet weak var mapView: MKMapView!
     
@@ -24,32 +24,24 @@ class SubmitPinViewController: UIViewController, MKMapViewDelegate, UIGestureRec
     // strong reference to the delegate
     var placeHolderDelegate: PlaceHolderTextViewDelegate?
     
+    var keyboardDismisser: KeyboardDismisser!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         placeHolderDelegate = PlaceHolderTextViewDelegate(placeHolder: placeholderText)
         enterLinkTextView.delegate = placeHolderDelegate
         
-        //add the pin
+        // add the pin
         let annotation = MKPointAnnotation()
         annotation.coordinate = CLLocationCoordinate2D(latitude: user!.latitude!, longitude: user! .longitude!)
         mapView.addAnnotation(annotation)
         mapView.setRegion(MKCoordinateRegion(center: annotation.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)), animated: true)
         
-        /* Configure tap recognizer */
-        let tapRecognizer = UITapGestureRecognizer(target: self, action: "handleSingleTap:")
-        tapRecognizer.numberOfTapsRequired = 1
-        tapRecognizer.delegate = self
-        self.view.addGestureRecognizer(tapRecognizer)
+        // will give the vc the behavior to able to dismiss the keyboard 'on tap'
+        keyboardDismisser = KeyboardDismisser(viewController: self)
     }
     
-    // MARK: Dismissals
-    
-    func handleSingleTap(recognizer: UITapGestureRecognizer) {
-        view.endEditing(true)
-    }
-    
-    // MARK: - Button Touch Events
     
     @IBAction func submitLinkButtonTouch(sender: AnyObject) {
         
