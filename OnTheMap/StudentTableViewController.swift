@@ -164,7 +164,13 @@ extension StudentTableViewController: UITableViewDelegate, UITableViewDataSource
         let user = filteredUsers[indexPath.row]
         let app = UIApplication.sharedApplication()
         if let url = user.url {
-            app.openURL(NSURL(string: url)!)
+            if let url = NSURL(string: url) {
+                if url.scheme != "" && url.host != nil {
+                    app.openURL(url)
+                } else {
+                    alert("The url for this student is invalid")
+                }
+            }
         }
     }
     

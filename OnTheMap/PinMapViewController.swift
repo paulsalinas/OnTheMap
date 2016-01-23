@@ -92,7 +92,13 @@ class PinMapViewController: UIViewController, MKMapViewDelegate, Refreshable, Al
         if control == view.rightCalloutAccessoryView {
             let app = UIApplication.sharedApplication()
             if let toOpen = view.annotation?.subtitle! {
-                app.openURL(NSURL(string: toOpen)!)
+                if let url = NSURL(string: toOpen) {
+                    if url.scheme != "" && url.host != nil {
+                        app.openURL(url)
+                    } else {
+                        alert("The url for this student is invalid")
+                    }
+                }
             }
         }
     }
