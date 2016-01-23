@@ -9,7 +9,7 @@
 import UIKit
 import MapKit
 
-class SubmitPinViewController: UIViewController, MKMapViewDelegate, Alertable {
+class SubmitPinViewController: UIViewController, MKMapViewDelegate, UIGestureRecognizerDelegate, Alertable {
     
     @IBOutlet weak var mapView: MKMapView!
     
@@ -35,6 +35,18 @@ class SubmitPinViewController: UIViewController, MKMapViewDelegate, Alertable {
         annotation.coordinate = CLLocationCoordinate2D(latitude: user!.latitude!, longitude: user! .longitude!)
         mapView.addAnnotation(annotation)
         mapView.setRegion(MKCoordinateRegion(center: annotation.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)), animated: true)
+        
+        /* Configure tap recognizer */
+        let tapRecognizer = UITapGestureRecognizer(target: self, action: "handleSingleTap:")
+        tapRecognizer.numberOfTapsRequired = 1
+        tapRecognizer.delegate = self
+        self.view.addGestureRecognizer(tapRecognizer)
+    }
+    
+    // MARK: Dismissals
+    
+    func handleSingleTap(recognizer: UITapGestureRecognizer) {
+        view.endEditing(true)
     }
     
     // MARK: - Button Touch Events

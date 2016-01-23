@@ -10,7 +10,7 @@ import UIKit
 import CoreLocation
 
 
-class AddPinViewController: UIViewController, Alertable {
+class AddPinViewController: UIViewController, UIGestureRecognizerDelegate, Alertable {
 
     @IBOutlet weak var enterLocationTextView: UITextView!
     
@@ -24,6 +24,18 @@ class AddPinViewController: UIViewController, Alertable {
         
         placeHolderDelegate = PlaceHolderTextViewDelegate(placeHolder: enterLocationTextView.text)
         enterLocationTextView.delegate = placeHolderDelegate
+        
+        /* Configure tap recognizer */
+        let tapRecognizer = UITapGestureRecognizer(target: self, action: "handleSingleTap:")
+        tapRecognizer.numberOfTapsRequired = 1
+        tapRecognizer.delegate = self
+        self.view.addGestureRecognizer(tapRecognizer)
+    }
+    
+    // MARK: Dismissals
+    
+    func handleSingleTap(recognizer: UITapGestureRecognizer) {
+        view.endEditing(true)
     }
     
     // MARK: - Button Touch Events
