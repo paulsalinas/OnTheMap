@@ -35,10 +35,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Qpm-Ih-at9">
-                                <rect key="frame" x="163" y="250" width="275" height="185"/>
+                                <rect key="frame" x="163" y="250" width="275" height="190"/>
                                 <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SS2-yE-jWi">
-                                        <rect key="frame" x="0.0" y="0.0" width="275" height="33"/>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SS2-yE-jWi">
+                                        <rect key="frame" x="0.0" y="0.0" width="275" height="34"/>
                                         <color key="textColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -48,8 +48,8 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="L0l-Z4-7fu">
-                                        <rect key="frame" x="0.0" y="38" width="275" height="33"/>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="L0l-Z4-7fu">
+                                        <rect key="frame" x="0.0" y="39" width="275" height="34"/>
                                         <color key="textColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
@@ -59,8 +59,8 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G3w-cu-3xc">
-                                        <rect key="frame" x="0.0" y="76" width="275" height="33"/>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G3w-cu-3xc">
+                                        <rect key="frame" x="0.0" y="78" width="275" height="34"/>
                                         <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="u3V-28-o5w"/>
@@ -83,8 +83,8 @@
                                             <action selector="loginButtonTouch:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hBC-41-Kwq"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P29-7a-CUf">
-                                        <rect key="frame" x="0.0" y="114" width="275" height="33"/>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P29-7a-CUf">
+                                        <rect key="frame" x="0.0" y="117" width="275" height="34"/>
                                         <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="18"/>
                                         <state key="normal" title="Don't have an account? Sign Up!">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -93,8 +93,8 @@
                                             <action selector="signUpButtonTouch:" destination="BYZ-38-t0r" eventType="touchUpInside" id="knc-Ve-Ye8"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pT8-EK-fHR" customClass="FBSDKLoginButton">
-                                        <rect key="frame" x="0.0" y="152" width="275" height="33"/>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pT8-EK-fHR" customClass="FBSDKLoginButton">
+                                        <rect key="frame" x="0.0" y="156" width="275" height="34"/>
                                         <state key="normal" title="Place holder button for FB"/>
                                         <connections>
                                             <outlet property="delegate" destination="BYZ-38-t0r" id="XsU-9X-DeW"/>
@@ -105,7 +105,7 @@
                                     <constraint firstAttribute="width" constant="275" id="3HI-bn-sd9"/>
                                 </constraints>
                             </stackView>
-                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="49r-Sk-4e4">
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="49r-Sk-4e4">
                                 <rect key="frame" x="290" y="290" width="20" height="20"/>
                                 <color key="color" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             </activityIndicatorView>
@@ -539,14 +539,37 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
+                                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="hYU-pS-uZF">
+                                                <rect key="frame" x="-10" y="-10" width="20" height="20"/>
+                                            </activityIndicatorView>
                                         </subviews>
                                         <color key="backgroundColor" red="0.26885685628854872" green="0.53035259251220956" blue="0.81726270051515149" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstItem="ArD-vI-Bg6" firstAttribute="top" secondItem="eO8-kB-vYb" secondAttribute="top" constant="44" id="I3Y-HY-eH4"/>
+                                            <constraint firstItem="hYU-pS-uZF" firstAttribute="centerX" secondItem="eO8-kB-vYb" secondAttribute="centerX" id="OsI-Hl-ilu"/>
                                             <constraint firstAttribute="bottom" secondItem="ArD-vI-Bg6" secondAttribute="bottom" id="Vni-O3-jIQ"/>
                                             <constraint firstItem="ArD-vI-Bg6" firstAttribute="leading" secondItem="eO8-kB-vYb" secondAttribute="leading" constant="20" id="ahv-Ab-yvL"/>
+                                            <constraint firstItem="hYU-pS-uZF" firstAttribute="centerY" secondItem="eO8-kB-vYb" secondAttribute="centerY" id="kka-BJ-CtP"/>
                                             <constraint firstAttribute="trailing" secondItem="ArD-vI-Bg6" secondAttribute="trailing" constant="20" id="yXL-rq-n5A"/>
                                         </constraints>
+                                        <variation key="default">
+                                            <mask key="subviews">
+                                                <exclude reference="hYU-pS-uZF"/>
+                                            </mask>
+                                            <mask key="constraints">
+                                                <exclude reference="OsI-Hl-ilu"/>
+                                                <exclude reference="kka-BJ-CtP"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="heightClass=regular-widthClass=compact">
+                                            <mask key="subviews">
+                                                <include reference="hYU-pS-uZF"/>
+                                            </mask>
+                                            <mask key="constraints">
+                                                <include reference="OsI-Hl-ilu"/>
+                                                <include reference="kka-BJ-CtP"/>
+                                            </mask>
+                                        </variation>
                                     </view>
                                     <view contentMode="scaleToFill" verticalCompressionResistancePriority="1" translatesAutoresizingMaskIntoConstraints="NO" id="0PX-g8-eXK" userLabel="BottomView">
                                         <rect key="frame" x="0.0" y="500" width="600" height="100"/>
@@ -592,6 +615,7 @@
                     </view>
                     <connections>
                         <outlet property="enterLocationTextView" destination="ArD-vI-Bg6" id="xZA-kg-WbF"/>
+                        <outlet property="loadingIndicator" destination="hYU-pS-uZF" id="nWD-ce-ams"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KBa-ko-tYu" userLabel="First Responder" sceneMemberID="firstResponder"/>

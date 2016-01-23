@@ -13,6 +13,7 @@ import CoreLocation
 class AddPinViewController: UIViewController, UIGestureRecognizerDelegate, Alertable {
 
     @IBOutlet weak var enterLocationTextView: UITextView!
+    @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
     
     var user: StudentInformation?
     var keyboardDismisser: KeyboardDismisser!
@@ -58,10 +59,22 @@ class AddPinViewController: UIViewController, UIGestureRecognizerDelegate, Alert
         
         // Geocode the string
         let geocode = CLGeocoder()
+        loadingIndicator.hidden = false
         geocode.geocodeAddressString(locationString) {(placemarks, error)->Void in
             
+            if error != nil {
+                dispatch_async(dispatch_get_main_queue(), {
+                    self.loadingIndicator.hidden = true
+                    self.alert("There was an errror geocoding your input")
+                    })
+                return
+            }
+            
             guard let location = placemarks?.first?.location, name = placemarks?.first?.name, user = self.user else {
-                self.alert("Location can not be Found")
+                dispatch_async(dispatch_get_main_queue(), {
+                    self.loadingIndicator.hidden = true
+                    self.alert("Location can not be Found")
+                })
                 return
             }
             
@@ -80,6 +93,7 @@ class AddPinViewController: UIViewController, UIGestureRecognizerDelegate, Alert
             )
             
             dispatch_async(dispatch_get_main_queue(), {
+                self.loadingIndicator.hidden = true
                 self.presentViewController(controller, animated: false, completion: nil)
             })
         }
