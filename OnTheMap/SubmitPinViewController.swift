@@ -12,7 +12,7 @@ import MapKit
 class SubmitPinViewController: UIViewController, MKMapViewDelegate, Alertable {
     
     @IBOutlet weak var mapView: MKMapView!
-    
+    @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
     @IBOutlet weak var enterLinkTextView: UITextView!
     
     var user: StudentInformation!
@@ -50,18 +50,32 @@ class SubmitPinViewController: UIViewController, MKMapViewDelegate, Alertable {
             return
         }
         
+        loadingIndicator.hidden = false
+        
         //see if the user has already been submitted
         ParseClient.sharedInstance().searchForStudenLocation(user!.userId) {
             user, errorString -> Void in
-            let onComplete = {(success: Bool?, errorString: String?) -> Void in
+            
+            if let errorString = errorString {
                 
-                if success == true {
-                    dispatch_async(dispatch_get_main_queue(), {
+                dispatch_async(dispatch_get_main_queue(), {
+                    self.alert(errorString)
+                    self.loadingIndicator.hidden = true
+                })
+                
+                return
+            }
+            
+            let onComplete = {(success: Bool?, errorString: String?) -> Void in
+                 dispatch_async(dispatch_get_main_queue(), {
+                    if success == true {
                         self.rootPresentingController.dismissViewControllerAnimated(true, completion: nil)
-                    })
-                } else {
-                    self.alert(errorString!)
-                }
+                    } else {
+                        self.alert(errorString!)
+                    }
+                    
+                    self.loadingIndicator.hidden = true
+                })
             }
             
             
