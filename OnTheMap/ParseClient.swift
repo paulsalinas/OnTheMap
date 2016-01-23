@@ -41,10 +41,12 @@ class ParseClient: NSObject {
             
             if let error = error {
                 completionHandler(result: nil, error: error)
+                return
             }
             
             guard let data = data else {
-                print("there's data returned")
+                let userInfo = [NSLocalizedDescriptionKey : "Could not find data in the response"]
+                completionHandler(result: nil, error: NSError(domain: "taskForGetMethod", code: 10, userInfo: userInfo))
                 return
             }
             
@@ -66,10 +68,12 @@ class ParseClient: NSObject {
             
             if let error = error {
                 completionHandler(result: nil, error: error)
+                return
             }
             
             guard let data = data else {
-                print("there's data returned")
+                let userInfo = [NSLocalizedDescriptionKey : "Could not find data in the response"]
+                completionHandler(result: nil, error: NSError(domain: "taskForGetMethod", code: 10, userInfo: userInfo))
                 return
             }
             
@@ -100,10 +104,12 @@ class ParseClient: NSObject {
             
             if let error = error {
                 completionHandler(result: nil, error: error)
+                return
             }
             
             guard let data = data else {
-                print("there's data returned")
+                let userInfo = [NSLocalizedDescriptionKey : "Could not find data in the response"]
+                completionHandler(result: nil, error: NSError(domain: "taskForGetMethod", code: 10, userInfo: userInfo))
                 return
             }
             

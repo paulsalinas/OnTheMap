@@ -22,8 +22,8 @@ extension ParseClient {
             (result, error) -> Void in
             
             // GUARD: fail and call completion handler on error
-            if let error = error {
-                completionHandler(users: nil, errorString: error.localizedDescription)
+            if error != nil {
+                completionHandler(users: nil, errorString: Errors.RequestErrror)
                 return
             }
             
@@ -49,8 +49,8 @@ extension ParseClient {
             (result, error) -> Void in
             
             // GUARD: fail and call completion handler on error
-            if let error = error {
-                completionHandler(user: nil, errorString: error.localizedDescription)
+            if error != nil {
+                completionHandler(user: nil, errorString: Errors.RequestErrror)
                 return
             }
             
@@ -96,8 +96,8 @@ extension ParseClient {
             (result, error) -> Void in
             
             // GUARD: fail and call completion handler on error
-            if let error = error {
-                completionHandler(success: false, errorString: error.localizedDescription)
+            if error != nil {
+                completionHandler(success: false, errorString: Errors.RequestErrror)
                 return
             }
             
@@ -140,8 +140,8 @@ extension ParseClient {
             (result, error) -> Void in
             
             // GUARD: fail and call completion handler on error
-            if let error = error {
-                completionHandler(success: false, errorString: error.localizedDescription)
+            if error != nil {
+                completionHandler(success: false, errorString: Errors.RequestErrror)
                 return
             }
             
@@ -174,8 +174,8 @@ extension ParseClient {
             (result, error) -> Void in
             
             // GUARD: fail and call completion handler on error
-            if let error = error {
-                completionHandler(success: false, errorString: error.localizedDescription)
+            if error != nil {
+                completionHandler(success: false, errorString: Errors.RequestErrror)
                 return
             }
             

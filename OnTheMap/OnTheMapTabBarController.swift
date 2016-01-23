@@ -25,6 +25,13 @@ class OnTheMapTabBarController: UITabBarController, Alertable {
         
         ParseClient.sharedInstance().getStudentLocations() { users, errorString -> Void in
             
+            if let errorString = errorString {
+                dispatch_async(dispatch_get_main_queue(), {
+                    self.alert(errorString)
+                })
+                return
+            }
+            
             dispatch_async(dispatch_get_main_queue(), {
                 self.viewControllers?.forEach({
                     let vc = $0 as! Refreshable
