@@ -236,22 +236,38 @@
 		3CB909631C3CA1D100EA53C8 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				3CC7309D1C5324B500A472F0 /* Protocols */,
 				3C42391E1C449621005AD747 /* SubmitPinViewController.swift */,
-				3C4777B21C3C143300DEA421 /* Refreshable.swift */,
-				3C4777B41C3C383500DEA421 /* Alertable.swift */,
 				3C4777AC1C3B75FC00DEA421 /* PinMapViewController.swift */,
 				3C4777AA1C3B0AB500DEA421 /* OnTheMapTabBarController.swift */,
 				3C4777621C34909E00DEA421 /* LoginViewController.swift */,
 				3CB909681C3CC25A00EA53C8 /* AddPinViewController.swift */,
-				3CAC1FBC1C3F295100740E45 /* PlaceHolderTextViewDelegate.swift */,
 				3C42392C1C4C6E47005AD747 /* StudentTableViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
 		};
+		3CC7309D1C5324B500A472F0 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				3C4777B21C3C143300DEA421 /* Refreshable.swift */,
+				3C4777B41C3C383500DEA421 /* Alertable.swift */,
+			);
+			name = Protocols;
+			sourceTree = "<group>";
+		};
+		3CC7309E1C5324D900A472F0 /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				3CAC1FBC1C3F295100740E45 /* PlaceHolderTextViewDelegate.swift */,
+			);
+			name = Delegates;
+			sourceTree = "<group>";
+		};
 		3CDB93DD1C4C9290007B108E /* View */ = {
 			isa = PBXGroup;
 			children = (
+				3CC7309E1C5324D900A472F0 /* Delegates */,
 				3CDB93DE1C4C92A6007B108E /* OnTheMapTableViewCell.swift */,
 			);
 			name = View;
