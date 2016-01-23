@@ -15,10 +15,6 @@ class ParseClient: NSObject {
     // authentiation state
     var userID : String? = nil
     
-    // store list of users from last call to 'getStudentLocations'. 
-    // before authentication and before fetching student location, it should be nil
-    var users : [StudentInformation]?
-    
     let baseClient : Client
     
     // MARK: Initializers

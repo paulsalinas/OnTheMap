@@ -33,9 +33,9 @@ extension ParseClient {
             }
             
             // state of model now contains client user locations
-            self.users = ParseClient.studentInfoFromResults(result)
+            StudentInformationCollection.sharedInstance().users = ParseClient.studentInfoFromResults(result)
             
-            completionHandler(users: self.users, errorString: nil)
+            completionHandler(users: StudentInformationCollection.sharedInstance().users, errorString: nil)
         }
     }
     

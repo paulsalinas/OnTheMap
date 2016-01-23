@@ -36,6 +36,7 @@
 		3CAC1FBD1C3F295100740E45 /* PlaceHolderTextViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CAC1FBC1C3F295100740E45 /* PlaceHolderTextViewDelegate.swift */; };
 		3CB909691C3CC25A00EA53C8 /* AddPinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB909681C3CC25A00EA53C8 /* AddPinViewController.swift */; };
 		3CC730A21C54130200A472F0 /* KeyboardDismisser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CC730A11C54130200A472F0 /* KeyboardDismisser.swift */; };
+		3CC730A41C5419AA00A472F0 /* StudentInformationCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CC730A31C5419AA00A472F0 /* StudentInformationCollection.swift */; };
 		3CDB93DF1C4C92A6007B108E /* OnTheMapTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CDB93DE1C4C92A6007B108E /* OnTheMapTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -92,6 +93,7 @@
 		3CAC1FBC1C3F295100740E45 /* PlaceHolderTextViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceHolderTextViewDelegate.swift; sourceTree = "<group>"; };
 		3CB909681C3CC25A00EA53C8 /* AddPinViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddPinViewController.swift; sourceTree = "<group>"; };
 		3CC730A11C54130200A472F0 /* KeyboardDismisser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardDismisser.swift; sourceTree = "<group>"; };
+		3CC730A31C5419AA00A472F0 /* StudentInformationCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentInformationCollection.swift; sourceTree = "<group>"; };
 		3CDB93DE1C4C92A6007B108E /* OnTheMapTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnTheMapTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -199,6 +201,8 @@
 		3C47778E1C39B98600DEA421 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				3CC730A31C5419AA00A472F0 /* StudentInformationCollection.swift */,
+				3C4777971C3A016800DEA421 /* StudentInformation.swift */,
 				3C47778F1C39BB5200DEA421 /* Clients */,
 			);
 			name = Model;
@@ -208,7 +212,6 @@
 			isa = PBXGroup;
 			children = (
 				3C4777B81C3C476E00DEA421 /* Client.swift */,
-				3C4777971C3A016800DEA421 /* StudentInformation.swift */,
 				3C4777A11C3AFF2D00DEA421 /* Parse */,
 				3C4777901C39BB6600DEA421 /* Udacity */,
 			);
@@ -417,6 +420,7 @@
 				3C4777631C34909E00DEA421 /* LoginViewController.swift in Sources */,
 				3C4777611C34909E00DEA421 /* AppDelegate.swift in Sources */,
 				3C4777981C3A016800DEA421 /* StudentInformation.swift in Sources */,
+				3CC730A41C5419AA00A472F0 /* StudentInformationCollection.swift in Sources */,
 				3CAC1FBD1C3F295100740E45 /* PlaceHolderTextViewDelegate.swift in Sources */,
 				3C4777961C39CD9900DEA421 /* UdacityConvenience.swift in Sources */,
 				3C42392D1C4C6E47005AD747 /* StudentTableViewController.swift in Sources */,

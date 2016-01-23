@@ -22,7 +22,7 @@ class StudentTableViewController: UIViewController, Alertable, Refreshable {
     
     // our main source of unfiltered users
     var users:[StudentInformation]! {
-        return ParseClient.sharedInstance().users
+        return StudentInformationCollection.sharedInstance().users
     }
     
     // our main collection to be used in the table. it essentially holds our filtered result

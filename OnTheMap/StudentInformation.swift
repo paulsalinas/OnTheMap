@@ -55,4 +55,5 @@ struct StudentInformation {
         self.mapString = mapString
         self.objectId = objectId
     }
+    
 }

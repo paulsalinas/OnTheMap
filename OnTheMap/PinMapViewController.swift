@@ -30,7 +30,7 @@ class PinMapViewController: UIViewController, MKMapViewDelegate, Refreshable, Al
     func refresh() {
         
         // make sure we access to the list of users from the model
-        guard let users = ParseClient.sharedInstance().users else {
+        guard let users = StudentInformationCollection.sharedInstance().users else {
             alert("There's an issue communicating with the server. Please refresh and try again...")
             return
         }
