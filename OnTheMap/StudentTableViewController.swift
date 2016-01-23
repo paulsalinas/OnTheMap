@@ -31,6 +31,10 @@ class StudentTableViewController: UIViewController, Alertable, Refreshable {
     // track the state if we've loaded already. used in 'viewWillAppear'
     var loaded : Bool = false
     
+    // colors
+    let udacityOrange = UIColor(red: 1, green: 0.608, blue: 0.244, alpha: 1)
+    let tableCellColor = UIColor (red: 0.271, green: 0.529, blue: 0.816, alpha: 1.0)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -134,9 +138,21 @@ extension StudentTableViewController: UITableViewDelegate, UITableViewDataSource
         cell.mapView.scrollEnabled = false;
         cell.mapView.userInteractionEnabled = false;
         
+        cell.mapView.layer.cornerRadius = 10
+        
         cell.detailTextLabel?.text = "\(user.url!)"
         
         return cell
+    }
+    
+    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        
+        // set the background color and the selection color
+        cell.backgroundColor = tableCellColor
+        
+        let bgColorView = UIView()
+        bgColorView.backgroundColor = udacityOrange
+        cell.selectedBackgroundView = bgColorView
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
