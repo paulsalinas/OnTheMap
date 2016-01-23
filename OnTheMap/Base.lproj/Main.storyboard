@@ -93,7 +93,7 @@
                                             <action selector="signUpButtonTouch:" destination="BYZ-38-t0r" eventType="touchUpInside" id="knc-Ve-Ye8"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pT8-EK-fHR" customClass="FBSDKLoginButton">
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pT8-EK-fHR" customClass="FBSDKLoginButton">
                                         <rect key="frame" x="0.0" y="156" width="275" height="34"/>
                                         <state key="normal" title="Place holder button for FB"/>
                                         <connections>

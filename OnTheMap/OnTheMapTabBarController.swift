@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FBSDKLoginKit
 
 class OnTheMapTabBarController: UITabBarController, Alertable {
     
@@ -73,6 +74,8 @@ class OnTheMapTabBarController: UITabBarController, Alertable {
             
             dispatch_async(dispatch_get_main_queue(), {
                 if success {
+                    
+                    FBSDKLoginManager().logOut()
                     self.dismissViewControllerAnimated(true, completion: nil)
                 } else {
                     self.alert(errorString!)

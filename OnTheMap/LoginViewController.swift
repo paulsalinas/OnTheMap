@@ -134,10 +134,6 @@ extension LoginViewController: FBSDKLoginButtonDelegate {
         
         loadingIndicatorView.hidden = false
         
-        // logout of FB once you've obtained an access token
-        FBSDKLoginManager().logOut()
-        
-        
         UdacityClient.sharedInstance().createSessionWithFacebookToken(accessToken) {
             success, error -> Void in
             
