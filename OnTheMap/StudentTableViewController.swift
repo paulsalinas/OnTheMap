@@ -147,8 +147,9 @@ extension StudentTableViewController: UITableViewDelegate, UITableViewDataSource
         
         let user = filteredUsers[indexPath.row]
         let app = UIApplication.sharedApplication()
-        let url = user.url!
-        app.openURL(NSURL(string: url)!)
+        if let url = user.url {
+            app.openURL(NSURL(string: url)!)
+        }
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
