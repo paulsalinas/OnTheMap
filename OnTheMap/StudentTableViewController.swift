@@ -17,8 +17,7 @@ class StudentTableViewController: UIViewController, Alertable, Refreshable {
     
     @IBOutlet weak var searchBar: UISearchBar!
     
-    var overlayView: UIView!
-    var activityIndicator: UIActivityIndicatorView!
+   let activityOverlay = ActivityOverlay(alpha: 0.7, activityIndicatorColor: UIColor.blackColor(), overlayColor: UIColor.whiteColor())
     
     // our main source of unfiltered users
     var users:[StudentInformation]! {
@@ -34,21 +33,6 @@ class StudentTableViewController: UIViewController, Alertable, Refreshable {
     // colors
     let udacityOrange = UIColor(red: 1, green: 0.608, blue: 0.244, alpha: 1)
     let tableCellColor = UIColor (red: 0.271, green: 0.529, blue: 0.816, alpha: 1.0)
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        // setup of overlay view and activity indicator
-        // exact positioning will be determined later by the tableview
-        overlayView = UIView()
-        activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.WhiteLarge)
-        activityIndicator.startAnimating()
-        activityIndicator.color = UIColor.blackColor()
-        overlayView.alpha = 0.7
-        overlayView.backgroundColor = UIColor.whiteColor()
-        overlayView.addSubview(activityIndicator)
-    }
-
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -86,13 +70,9 @@ class StudentTableViewController: UIViewController, Alertable, Refreshable {
         }
         
         if (isShowing) {
-            
-            // set positioning of the overlay and action indicator before "showing" it
-            overlayView.frame = tableView.bounds
-            activityIndicator.center = CGPointMake(overlayView.frame.size.width / 2, (overlayView.frame.size.height / 2))
-            tableView.addSubview(overlayView)
+            activityOverlay.overlay(tableView)
         } else {
-            overlayView.removeFromSuperview()
+            activityOverlay.removeOverlay()
         }
     }
 }

@@ -16,6 +16,7 @@ class PinMapViewController: UIViewController, MKMapViewDelegate, Refreshable, Al
     @IBOutlet weak var loadingOverlayView: UIView!
     @IBOutlet weak var loadingIndicatorView: UIActivityIndicatorView!
     
+    
     // MARK: - Refreshable
     
     func refreshIndicator(isShowing isShowing: Bool) {

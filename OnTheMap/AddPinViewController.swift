@@ -21,6 +21,11 @@ class AddPinViewController: UIViewController, UIGestureRecognizerDelegate, Alert
     // strong reference to the delegate
     var placeHolderDelegate: PlaceHolderTextViewDelegate?
     
+//    var overlayView: UIView!
+//    var activityIndicator: UIActivityIndicatorView!
+    
+    let activityOverlay = ActivityOverlay(alpha: 0.6, activityIndicatorColor: UIColor.whiteColor(), overlayColor: UIColor.blackColor())
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -59,12 +64,12 @@ class AddPinViewController: UIViewController, UIGestureRecognizerDelegate, Alert
         
         // Geocode the string
         let geocode = CLGeocoder()
-        loadingIndicator.hidden = false
+        activityOverlay.overlay(enterLocationTextView.superview!)
         geocode.geocodeAddressString(locationString) {(placemarks, error)->Void in
             
             if error != nil {
                 dispatch_async(dispatch_get_main_queue(), {
-                    self.loadingIndicator.hidden = true
+                    self.activityOverlay.removeOverlay()
                     self.alert("There was an errror geocoding your input")
                     })
                 return
@@ -72,7 +77,7 @@ class AddPinViewController: UIViewController, UIGestureRecognizerDelegate, Alert
             
             guard let location = placemarks?.first?.location, name = placemarks?.first?.name, user = self.user else {
                 dispatch_async(dispatch_get_main_queue(), {
-                    self.loadingIndicator.hidden = true
+                    self.activityOverlay.removeOverlay()
                     self.alert("Location can not be Found")
                 })
                 return
@@ -93,7 +98,7 @@ class AddPinViewController: UIViewController, UIGestureRecognizerDelegate, Alert
             )
             
             dispatch_async(dispatch_get_main_queue(), {
-                self.loadingIndicator.hidden = true
+                self.activityOverlay.removeOverlay()
                 self.presentViewController(controller, animated: false, completion: nil)
             })
         }

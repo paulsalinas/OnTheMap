@@ -24,6 +24,8 @@ class SubmitPinViewController: UIViewController, MKMapViewDelegate, Alertable {
     // strong reference to the delegate
     var placeHolderDelegate: PlaceHolderTextViewDelegate?
     
+    let activityOverlay = ActivityOverlay(alpha: 0.6, activityIndicatorColor: UIColor.whiteColor(), overlayColor: UIColor.blackColor())
+    
     var keyboardDismisser: KeyboardDismisser!
     
     override func viewDidLoad() {
@@ -42,7 +44,6 @@ class SubmitPinViewController: UIViewController, MKMapViewDelegate, Alertable {
         keyboardDismisser = KeyboardDismisser(viewController: self)
     }
     
-    
     @IBAction func submitLinkButtonTouch(sender: AnyObject) {
         
         guard let inputUrl = enterLinkTextView.text where inputUrl != "" && inputUrl != placeholderText else {
@@ -50,7 +51,7 @@ class SubmitPinViewController: UIViewController, MKMapViewDelegate, Alertable {
             return
         }
         
-        loadingIndicator.hidden = false
+        activityOverlay.overlay(mapView)
         
         //see if the user has already been submitted
         ParseClient.sharedInstance().searchForStudenLocation(user!.userId) {
@@ -60,7 +61,7 @@ class SubmitPinViewController: UIViewController, MKMapViewDelegate, Alertable {
                 
                 dispatch_async(dispatch_get_main_queue(), {
                     self.alert(errorString)
-                    self.loadingIndicator.hidden = true
+                    self.activityOverlay.removeOverlay()
                 })
                 
                 return
@@ -74,7 +75,7 @@ class SubmitPinViewController: UIViewController, MKMapViewDelegate, Alertable {
                         self.alert(errorString!)
                     }
                     
-                    self.loadingIndicator.hidden = true
+                    self.activityOverlay.removeOverlay()
                 })
             }
             

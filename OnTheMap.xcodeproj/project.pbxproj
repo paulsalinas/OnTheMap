@@ -37,6 +37,7 @@
 		3CB909691C3CC25A00EA53C8 /* AddPinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB909681C3CC25A00EA53C8 /* AddPinViewController.swift */; };
 		3CC730A21C54130200A472F0 /* KeyboardDismisser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CC730A11C54130200A472F0 /* KeyboardDismisser.swift */; };
 		3CC730A41C5419AA00A472F0 /* StudentInformationCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CC730A31C5419AA00A472F0 /* StudentInformationCollection.swift */; };
+		3CC730A61C55681600A472F0 /* ActivityOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CC730A51C55681600A472F0 /* ActivityOverlay.swift */; };
 		3CDB93DF1C4C92A6007B108E /* OnTheMapTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CDB93DE1C4C92A6007B108E /* OnTheMapTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -94,6 +95,7 @@
 		3CB909681C3CC25A00EA53C8 /* AddPinViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddPinViewController.swift; sourceTree = "<group>"; };
 		3CC730A11C54130200A472F0 /* KeyboardDismisser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardDismisser.swift; sourceTree = "<group>"; };
 		3CC730A31C5419AA00A472F0 /* StudentInformationCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentInformationCollection.swift; sourceTree = "<group>"; };
+		3CC730A51C55681600A472F0 /* ActivityOverlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityOverlay.swift; sourceTree = "<group>"; };
 		3CDB93DE1C4C92A6007B108E /* OnTheMapTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnTheMapTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -249,6 +251,7 @@
 				3C4777621C34909E00DEA421 /* LoginViewController.swift */,
 				3C42392C1C4C6E47005AD747 /* StudentTableViewController.swift */,
 				3CC730A11C54130200A472F0 /* KeyboardDismisser.swift */,
+				3CC730A51C55681600A472F0 /* ActivityOverlay.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -414,6 +417,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3C4777941C39BBE800DEA421 /* UdacityClient.swift in Sources */,
+				3CC730A61C55681600A472F0 /* ActivityOverlay.swift in Sources */,
 				3CDB93DF1C4C92A6007B108E /* OnTheMapTableViewCell.swift in Sources */,
 				3C42391F1C449621005AD747 /* SubmitPinViewController.swift in Sources */,
 				3CB909691C3CC25A00EA53C8 /* AddPinViewController.swift in Sources */,
