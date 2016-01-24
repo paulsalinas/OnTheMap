@@ -13,16 +13,12 @@ import CoreLocation
 class AddPinViewController: UIViewController, UIGestureRecognizerDelegate, Alertable {
 
     @IBOutlet weak var enterLocationTextView: UITextView!
-    @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
     
     var user: StudentInformation?
     var keyboardDismisser: KeyboardDismisser!
     
     // strong reference to the delegate
     var placeHolderDelegate: PlaceHolderTextViewDelegate?
-    
-//    var overlayView: UIView!
-//    var activityIndicator: UIActivityIndicatorView!
     
     let activityOverlay = ActivityOverlay(alpha: 0.6, activityIndicatorColor: UIColor.whiteColor(), overlayColor: UIColor.blackColor())
     

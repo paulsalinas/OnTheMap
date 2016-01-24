@@ -539,37 +539,14 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
-                                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="hYU-pS-uZF">
-                                                <rect key="frame" x="-10" y="-10" width="20" height="20"/>
-                                            </activityIndicatorView>
                                         </subviews>
                                         <color key="backgroundColor" red="0.26885685628854872" green="0.53035259251220956" blue="0.81726270051515149" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstItem="ArD-vI-Bg6" firstAttribute="top" secondItem="eO8-kB-vYb" secondAttribute="top" constant="44" id="I3Y-HY-eH4"/>
-                                            <constraint firstItem="hYU-pS-uZF" firstAttribute="centerX" secondItem="eO8-kB-vYb" secondAttribute="centerX" id="OsI-Hl-ilu"/>
                                             <constraint firstAttribute="bottom" secondItem="ArD-vI-Bg6" secondAttribute="bottom" id="Vni-O3-jIQ"/>
                                             <constraint firstItem="ArD-vI-Bg6" firstAttribute="leading" secondItem="eO8-kB-vYb" secondAttribute="leading" constant="20" id="ahv-Ab-yvL"/>
-                                            <constraint firstItem="hYU-pS-uZF" firstAttribute="centerY" secondItem="eO8-kB-vYb" secondAttribute="centerY" id="kka-BJ-CtP"/>
                                             <constraint firstAttribute="trailing" secondItem="ArD-vI-Bg6" secondAttribute="trailing" constant="20" id="yXL-rq-n5A"/>
                                         </constraints>
-                                        <variation key="default">
-                                            <mask key="subviews">
-                                                <exclude reference="hYU-pS-uZF"/>
-                                            </mask>
-                                            <mask key="constraints">
-                                                <exclude reference="OsI-Hl-ilu"/>
-                                                <exclude reference="kka-BJ-CtP"/>
-                                            </mask>
-                                        </variation>
-                                        <variation key="heightClass=regular-widthClass=compact">
-                                            <mask key="subviews">
-                                                <include reference="hYU-pS-uZF"/>
-                                            </mask>
-                                            <mask key="constraints">
-                                                <include reference="OsI-Hl-ilu"/>
-                                                <include reference="kka-BJ-CtP"/>
-                                            </mask>
-                                        </variation>
                                     </view>
                                     <view contentMode="scaleToFill" verticalCompressionResistancePriority="1" translatesAutoresizingMaskIntoConstraints="NO" id="0PX-g8-eXK" userLabel="BottomView">
                                         <rect key="frame" x="0.0" y="500" width="600" height="100"/>
@@ -615,7 +592,6 @@
                     </view>
                     <connections>
                         <outlet property="enterLocationTextView" destination="ArD-vI-Bg6" id="xZA-kg-WbF"/>
-                        <outlet property="loadingIndicator" destination="hYU-pS-uZF" id="nWD-ce-ams"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KBa-ko-tYu" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -709,10 +685,6 @@
                                                     <constraint firstAttribute="height" constant="100" id="ry6-GZ-uGp"/>
                                                 </constraints>
                                             </view>
-                                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="kpF-mb-Y1i">
-                                                <rect key="frame" x="-10" y="-10" width="20" height="20"/>
-                                                <color key="color" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                            </activityIndicatorView>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
@@ -723,27 +695,7 @@
                                             <constraint firstAttribute="trailing" secondItem="K7T-Wp-lDZ" secondAttribute="trailing" id="hzi-qz-4uX"/>
                                             <constraint firstItem="dCd-Yg-T9x" firstAttribute="leading" secondItem="eXY-wH-bbv" secondAttribute="leading" id="jMf-PO-eyf"/>
                                             <constraint firstItem="K7T-Wp-lDZ" firstAttribute="top" secondItem="eXY-wH-bbv" secondAttribute="top" id="qob-dS-zpM"/>
-                                            <constraint firstItem="kpF-mb-Y1i" firstAttribute="centerX" secondItem="K7T-Wp-lDZ" secondAttribute="centerX" id="u37-7I-f5y"/>
-                                            <constraint firstItem="kpF-mb-Y1i" firstAttribute="centerY" secondItem="K7T-Wp-lDZ" secondAttribute="centerY" id="w3D-wc-VeH"/>
                                         </constraints>
-                                        <variation key="default">
-                                            <mask key="subviews">
-                                                <exclude reference="kpF-mb-Y1i"/>
-                                            </mask>
-                                            <mask key="constraints">
-                                                <exclude reference="u37-7I-f5y"/>
-                                                <exclude reference="w3D-wc-VeH"/>
-                                            </mask>
-                                        </variation>
-                                        <variation key="heightClass=regular-widthClass=compact">
-                                            <mask key="subviews">
-                                                <include reference="kpF-mb-Y1i"/>
-                                            </mask>
-                                            <mask key="constraints">
-                                                <include reference="u37-7I-f5y"/>
-                                                <include reference="w3D-wc-VeH"/>
-                                            </mask>
-                                        </variation>
                                     </view>
                                 </subviews>
                                 <constraints>
@@ -764,7 +716,6 @@
                     </view>
                     <connections>
                         <outlet property="enterLinkTextView" destination="etY-C4-gfs" id="f3B-fp-gwS"/>
-                        <outlet property="loadingIndicator" destination="kpF-mb-Y1i" id="Ay9-KF-C6x"/>
                         <outlet property="mapView" destination="K7T-Wp-lDZ" id="bYB-pi-Zg6"/>
                     </connections>
                 </viewController>

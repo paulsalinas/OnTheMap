@@ -12,7 +12,6 @@ import MapKit
 class SubmitPinViewController: UIViewController, MKMapViewDelegate, Alertable {
     
     @IBOutlet weak var mapView: MKMapView!
-    @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
     @IBOutlet weak var enterLinkTextView: UITextView!
     
     var user: StudentInformation!
